@@ -136,7 +136,7 @@
       <circle cx="16" cy="15" r="4.5" fill="#00ff88">
         <animate attributeName="opacity" values="0.4;1;0.4" dur="1.5s" repeatCount="indefinite"/>
       </circle>
-      <text x="28" y="19" font-family="monospace" font-size="11px" font-weight="bold" fill="#00ff88" letter-spacing="0.5px">CURRENTLY BUILDING NEXT-GEN AI AGENTS &amp; WEB ARCHITECTURE</text>
+      <text x="28" y="19" font-family="monospace" font-size="11px" font-weight="bold" fill="#00ff88" letter-spacing="0.5px">CURRENTLY BUILDING NEXT-GEN AI AGENTS + WEB ARCHITECTURE</text>
     </g>
   </g>
 </svg>

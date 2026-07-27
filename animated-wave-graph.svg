@@ -19,7 +19,7 @@
     <circle cx="0" cy="-4" r="4.5" fill="#00f0ff">
       <animate attributeName="opacity" values="0.3; 1; 0.3" dur="1.5s" repeatCount="indefinite"/>
     </circle>
-    <text x="14" y="0" font-family="monospace" font-size="12px" font-weight="700" fill="#f0f6fc" letter-spacing="1px">LIVE SYSTEM ACTIVITY &amp; WAVEFORM TELEMETRY</text>
+    <text x="14" y="0" font-family="monospace" font-size="12px" font-weight="700" fill="#f0f6fc" letter-spacing="1px">LIVE SYSTEM ACTIVITY | WAVEFORM TELEMETRY</text>
   </g>
   <text x="860" y="26" font-family="monospace" font-size="10px" font-weight="600" fill="#00f0ff" text-anchor="end">REAL-TIME WAVEFORM</text>
   <line x1="20" y1="36" x2="860" y2="36" stroke="#1f293d" stroke-width="1"/>

@@ -2,10 +2,8 @@
 """
 GitHub-Sanitizer Fully Compliant Animated SVG Profile Generator
 ================================================================
-Fixes XML parsing errors (`xmlParseEntityRef: no name`) by:
- 1. Adding `<?xml version="1.0" encoding="UTF-8"?>` header to all SVGs.
- 2. Replacing non-ASCII bullet symbols (•) with safe ASCII dividers (`|`).
- 3. Escaping all ampersands as `&amp;`.
+Eliminates ALL ampersands (`&`) across all SVG files by replacing them with `+`
+and `|` symbols to guaranteed 100% eliminate any XML parser entity errors (`xmlParseEntityRef`)!
 """
 
 import os
@@ -109,7 +107,7 @@ def generate_hero_banner_svg(username, output_file="cyber-hero-banner.svg"):
         '      <circle cx="16" cy="15" r="4.5" fill="#00ff88">',
         '        <animate attributeName="opacity" values="0.4;1;0.4" dur="1.5s" repeatCount="indefinite"/>',
         '      </circle>',
-        '      <text x="28" y="19" font-family="monospace" font-size="11px" font-weight="bold" fill="#00ff88" letter-spacing="0.5px">CURRENTLY BUILDING NEXT-GEN AI AGENTS &amp; WEB ARCHITECTURE</text>',
+        '      <text x="28" y="19" font-family="monospace" font-size="11px" font-weight="bold" fill="#00ff88" letter-spacing="0.5px">CURRENTLY BUILDING NEXT-GEN AI AGENTS + WEB ARCHITECTURE</text>',
         '    </g>',
         '  </g>',
         '</svg>'
@@ -154,7 +152,7 @@ def generate_animated_wave_graph_svg(username, output_file="animated-wave-graph.
         '    <circle cx="0" cy="-4" r="4.5" fill="#00f0ff">',
         '      <animate attributeName="opacity" values="0.3; 1; 0.3" dur="1.5s" repeatCount="indefinite"/>',
         '    </circle>',
-        '    <text x="14" y="0" font-family="monospace" font-size="12px" font-weight="700" fill="#f0f6fc" letter-spacing="1px">LIVE SYSTEM ACTIVITY &amp; WAVEFORM TELEMETRY</text>',
+        '    <text x="14" y="0" font-family="monospace" font-size="12px" font-weight="700" fill="#f0f6fc" letter-spacing="1px">LIVE SYSTEM ACTIVITY | WAVEFORM TELEMETRY</text>',
         '  </g>',
         f'  <text x="{width-20}" y="26" font-family="monospace" font-size="10px" font-weight="600" fill="#00f0ff" text-anchor="end">REAL-TIME WAVEFORM</text>',
         '  <line x1="20" y1="36" x2="860" y2="36" stroke="#1f293d" stroke-width="1"/>',
@@ -204,7 +202,7 @@ def generate_animated_wave_graph_svg(username, output_file="animated-wave-graph.
         f.write('\n'.join(svg_lines))
     print(f"[✓] Successfully generated '{output_file}'")
 
-# --- 3. SVG 3: SCI-FI TECH SKILL RADAR HUD ---
+# --- 3. SVG 3: SCI-FI TECH SKILL RADAR HUD (ZERO AMPERSANDS) ---
 def generate_radar_hud_svg(username, output_file="tech-radar-hud.svg"):
     width = 440
     height = 440
@@ -212,10 +210,10 @@ def generate_radar_hud_svg(username, output_file="tech-radar-hud.svg"):
     cy = 230
 
     beacons = [
-        ("Python &amp; AI", cx + 75, cy - 60, "#00f0ff"),
-        ("TypeScript &amp; React", cx - 95, cy - 45, "#ff007f"),
+        ("Python + AI", cx + 75, cy - 60, "#00f0ff"),
+        ("TypeScript + React", cx - 95, cy - 45, "#ff007f"),
         ("System Architecture", cx + 80, cy + 85, "#a371f7"),
-        ("Docker &amp; Cloud", cx - 85, cy + 75, "#ffb800"),
+        ("Docker + Cloud", cx - 85, cy + 75, "#ffb800"),
     ]
 
     svg_lines = [
@@ -284,15 +282,15 @@ def generate_radar_hud_svg(username, output_file="tech-radar-hud.svg"):
         f.write('\n'.join(svg_lines))
     print(f"[✓] Successfully generated '{output_file}'")
 
-# --- 4. SVG 4: ARCHITECTURE SHOWCASE PILLARS ---
+# --- 4. SVG 4: ARCHITECTURE SHOWCASE PILLARS (ZERO AMPERSANDS) ---
 def generate_architecture_showcase_svg(username=DEFAULT_USERNAME, output_file="architecture-showcase.svg"):
     width = 440
     height = 440
 
     pillars = [
-        ("AI &amp; AGENTIC SYSTEMS", "Autonomous Workflows | Multi-Agent | LLMs", COLORS["cyan"], COLORS["pink"], "ai"),
+        ("AI + AGENTIC SYSTEMS", "Autonomous Workflows | Multi-Agent | LLMs", COLORS["cyan"], COLORS["pink"], "ai"),
         ("HIGH-PERFORMANCE WEB", "React | Next.js | Tailwind | Glassmorphic UI", COLORS["pink"], COLORS["purple"], "web"),
-        ("DISTRIBUTED &amp; CLOUD", "Python FastAPI | Docker | Microservices | CI/CD", COLORS["gold"], COLORS["green"], "cloud"),
+        ("DISTRIBUTED + CLOUD", "Python FastAPI | Docker | Microservices | CI/CD", COLORS["gold"], COLORS["green"], "cloud"),
     ]
 
     svg_lines = [
@@ -423,7 +421,7 @@ def generate_readme(username, repo_name=DEFAULT_REPO, readme_path="README.md"):
     content = f"""# <h1 align="center">✨ Hi there, I'm {username} 👋</h1>
 
 <p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=700&size=23&pause=1000&color=00F0FF&center=true&vcenter=true&width=650&lines=Full-Stack+Architect+%26+AI+Engineer;Building+Next-Gen+Interactive+Experiences;High-Performance+Code+%2B+Sci-Fi+Graphics" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=700&size=23&pause=1000&color=00F0FF&center=true&vcenter=true&width=650&lines=Full-Stack+Architect+%2B+AI+Engineer;Building+Next-Gen+Interactive+Experiences;High-Performance+Code+%2B+Sci-Fi+Graphics" alt="Typing SVG" />
 </p>
 
 <!-- Hero Banner -->

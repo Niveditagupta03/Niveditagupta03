@@ -1,7 +1,7 @@
 # <h1 align="center">✨ Hi there, I'm Niveditagupta03 👋</h1>
 
 <p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=700&size=23&pause=1000&color=00F0FF&center=true&vcenter=true&width=650&lines=Full-Stack+Architect+%26+AI+Engineer;Building+Next-Gen+Interactive+Experiences;High-Performance+Code+%2B+Sci-Fi+Graphics" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=700&size=23&pause=1000&color=00F0FF&center=true&vcenter=true&width=650&lines=Full-Stack+Architect+%2B+AI+Engineer;Building+Next-Gen+Interactive+Experiences;High-Performance+Code+%2B+Sci-Fi+Graphics" alt="Typing SVG" />
 </p>
 
 <!-- Hero Banner -->
