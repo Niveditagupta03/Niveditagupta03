@@ -22,14 +22,7 @@
     </linearGradient>
   </defs>
 
-  <style>
-    .hero-name { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 26px; font-weight: 900; letter-spacing: 2px; }
-    .hero-tag { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 12px; font-weight: 700; fill: #8b949e; letter-spacing: 1.5px; }
-    .status-txt { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; font-weight: bold; fill: #00ff88; letter-spacing: 0.5px; }
-  </style>
-
   <rect x="2" y="2" width="876" height="216" rx="16" fill="url(#hero-bg)" stroke="url(#hero-border)" stroke-width="1.5"/>
-
   <path d="M 6 22 L 6 6 L 22 6" fill="none" stroke="#00f0ff" stroke-width="2"/>
   <path d="M 858 6 L 874 6 L 874 22" fill="none" stroke="#ff007f" stroke-width="2"/>
   <path d="M 6 198 L 6 214 L 22 214" fill="none" stroke="#ff007f" stroke-width="2"/>
@@ -125,22 +118,6 @@
   <circle cx="418" cy="73" r="1.2" fill="#ffffff" opacity="0.3">
     <animate attributeName="opacity" values="0.1; 0.9; 0.1" dur="2.0s" repeatCount="indefinite"/>
   </circle>
-  <circle cx="307" cy="113" r="0.8" fill="#ffffff" opacity="0.3">
-    <animate attributeName="opacity" values="0.1; 0.9; 0.1" dur="1.8s" repeatCount="indefinite"/>
-  </circle>
-  <circle cx="533" cy="47" r="0.7" fill="#ffffff" opacity="0.3">
-    <animate attributeName="opacity" values="0.1; 0.9; 0.1" dur="2.5s" repeatCount="indefinite"/>
-  </circle>
-  <circle cx="391" cy="151" r="0.7" fill="#ffffff" opacity="0.3">
-    <animate attributeName="opacity" values="0.1; 0.9; 0.1" dur="2.1s" repeatCount="indefinite"/>
-  </circle>
-  <circle cx="64" cy="199" r="1.1" fill="#ffffff" opacity="0.3">
-    <animate attributeName="opacity" values="0.1; 0.9; 0.1" dur="1.5s" repeatCount="indefinite"/>
-  </circle>
-  <circle cx="745" cy="167" r="1.5" fill="#ffffff" opacity="0.3">
-    <animate attributeName="opacity" values="0.1; 0.9; 0.1" dur="2.1s" repeatCount="indefinite"/>
-  </circle>
-
   <g transform="translate(110, 110)">
     <circle cx="0" cy="0" r="58" fill="none" stroke="#00f0ff" stroke-opacity="0.4" stroke-width="1.5" stroke-dasharray="8 6">
       <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="12s" repeatCount="indefinite"/>
@@ -156,14 +133,14 @@
   </g>
 
   <g transform="translate(200, 60)">
-    <text x="0" y="24" class="hero-name" fill="url(#title-grad)">NIVEDITAGUPTA03</text>
-    <text x="0" y="52" class="hero-tag">FULL-STACK ARCHITECT • AI AGENT SYSTEMS • HIGH-PERF WEB</text>
+    <text x="0" y="24" font-family="monospace" font-size="26px" font-weight="900" fill="url(#title-grad)" letter-spacing="2px">NIVEDITAGUPTA03</text>
+    <text x="0" y="52" font-family="monospace" font-size="12px" font-weight="bold" fill="#8b949e" letter-spacing="1.5px">FULL-STACK ARCHITECT • AI AGENT SYSTEMS • HIGH-PERF WEB</text>
     <g transform="translate(0, 75)">
       <rect x="0" y="0" width="460" height="30" rx="8" fill="#0d1424" stroke="#00ff88" stroke-width="1" opacity="0.9"/>
       <circle cx="16" cy="15" r="4.5" fill="#00ff88">
         <animate attributeName="opacity" values="0.4;1;0.4" dur="1.5s" repeatCount="indefinite"/>
       </circle>
-      <text x="28" y="19" class="status-txt">CURRENTLY BUILDING NEXT-GEN AI AGENTS &amp; WEB ARCHITECTURE</text>
+      <text x="28" y="19" font-family="monospace" font-size="11px" font-weight="bold" fill="#00ff88" letter-spacing="0.5px">CURRENTLY BUILDING NEXT-GEN AI AGENTS &amp; WEB ARCHITECTURE</text>
     </g>
   </g>
 </svg>

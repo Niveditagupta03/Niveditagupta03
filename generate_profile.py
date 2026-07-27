@@ -1,15 +1,9 @@
 #!/usr/bin/env python3
 """
-Innovative Animated Wave Graph & Profile SVG Generator
-======================================================
-Generates four high-end, self-contained SMIL-animated SVG cards:
-  1. cyber-hero-banner.svg (Cinematic Glass Hero Header with 3D Cyber Orb & Live Status)
-  2. animated-wave-graph.svg (Sci-Fi Activity Wave Graph with morphing neon curves & peak metrics)
-  3. tech-radar-hud.svg (Sci-Fi Radar HUD with 360° rotating beam & signal pings)
-  4. architecture-showcase.svg (Glassmorphic Feature Cards for AI, Web & Cloud)
-  5. telemetry-metrics.svg (Apple-Style Glass Metric Telemetry with animated progress arcs)
-
-Updates README.md using clean GitHub-compatible image markup!
+GitHub-Sanitizer Compliant Animated SVG Profile Generator
+========================================================
+Uses 100% inline SVG presentation attributes (font-family, font-size, fill, etc.)
+so GitHub's SVG sanitizer renders all graphics without 'Invalid image source' errors!
 """
 
 import os
@@ -19,7 +13,6 @@ import random
 import json
 import argparse
 import html
-import urllib.request
 
 DEFAULT_USERNAME = "Niveditagupta03"
 DEFAULT_REPO = "Niveditagupta03"
@@ -40,7 +33,7 @@ COLORS = {
     "blue": "#38bdf8",
 }
 
-# --- 1. SVG GENERATOR 1: CYBER HERO BANNER ---
+# --- 1. SVG 1: CYBER HERO BANNER ---
 def generate_hero_banner_svg(username, output_file="cyber-hero-banner.svg"):
     width = 880
     height = 220
@@ -70,14 +63,7 @@ def generate_hero_banner_svg(username, output_file="cyber-hero-banner.svg"):
         '    </linearGradient>',
         '  </defs>',
         '',
-        '  <style>',
-        '    .hero-name { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 26px; font-weight: 900; letter-spacing: 2px; }',
-        '    .hero-tag { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 12px; font-weight: 700; fill: #8b949e; letter-spacing: 1.5px; }',
-        '    .status-txt { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; font-weight: bold; fill: #00ff88; letter-spacing: 0.5px; }',
-        '  </style>',
-        '',
         f'  <rect x="2" y="2" width="{width-4}" height="{height-4}" rx="16" fill="url(#hero-bg)" stroke="url(#hero-border)" stroke-width="1.5"/>',
-        '',
         '  <path d="M 6 22 L 6 6 L 22 6" fill="none" stroke="#00f0ff" stroke-width="2"/>',
         f'  <path d="M {width-22} 6 L {width-6} 6 L {width-6} 22" fill="none" stroke="#ff007f" stroke-width="2"/>',
         f'  <path d="M 6 {height-22} L 6 {height-6} L 22 {height-6}" fill="none" stroke="#ff007f" stroke-width="2"/>',
@@ -86,7 +72,7 @@ def generate_hero_banner_svg(username, output_file="cyber-hero-banner.svg"):
     ]
 
     random.seed(404)
-    for s in range(35):
+    for s in range(30):
         sx = random.randint(20, width - 20)
         sy = random.randint(20, height - 20)
         sr = round(random.uniform(0.7, 1.6), 1)
@@ -97,10 +83,8 @@ def generate_hero_banner_svg(username, output_file="cyber-hero-banner.svg"):
             f'  </circle>'
         )
 
-    ox = 110
-    oy = 110
+    ox, oy = 110, 110
     svg_lines.extend([
-        '',
         f'  <g transform="translate({ox}, {oy})">',
         '    <circle cx="0" cy="0" r="58" fill="none" stroke="#00f0ff" stroke-opacity="0.4" stroke-width="1.5" stroke-dasharray="8 6">',
         '      <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="12s" repeatCount="indefinite"/>',
@@ -120,14 +104,14 @@ def generate_hero_banner_svg(username, output_file="cyber-hero-banner.svg"):
     tx = 200
     svg_lines.extend([
         f'  <g transform="translate({tx}, 60)">',
-        f'    <text x="0" y="24" class="hero-name" fill="url(#title-grad)">{html.escape(username.upper())}</text>',
-        '    <text x="0" y="52" class="hero-tag">FULL-STACK ARCHITECT • AI AGENT SYSTEMS • HIGH-PERF WEB</text>',
+        f'    <text x="0" y="24" font-family="monospace" font-size="26px" font-weight="900" fill="url(#title-grad)" letter-spacing="2px">{html.escape(username.upper())}</text>',
+        '    <text x="0" y="52" font-family="monospace" font-size="12px" font-weight="bold" fill="#8b949e" letter-spacing="1.5px">FULL-STACK ARCHITECT • AI AGENT SYSTEMS • HIGH-PERF WEB</text>',
         '    <g transform="translate(0, 75)">',
         '      <rect x="0" y="0" width="460" height="30" rx="8" fill="#0d1424" stroke="#00ff88" stroke-width="1" opacity="0.9"/>',
         '      <circle cx="16" cy="15" r="4.5" fill="#00ff88">',
         '        <animate attributeName="opacity" values="0.4;1;0.4" dur="1.5s" repeatCount="indefinite"/>',
         '      </circle>',
-        '      <text x="28" y="19" class="status-txt">CURRENTLY BUILDING NEXT-GEN AI AGENTS &amp; WEB ARCHITECTURE</text>',
+        '      <text x="28" y="19" font-family="monospace" font-size="11px" font-weight="bold" fill="#00ff88" letter-spacing="0.5px">CURRENTLY BUILDING NEXT-GEN AI AGENTS &amp; WEB ARCHITECTURE</text>',
         '    </g>',
         '  </g>',
         '</svg>'
@@ -137,7 +121,7 @@ def generate_hero_banner_svg(username, output_file="cyber-hero-banner.svg"):
         f.write('\n'.join(svg_lines))
     print(f"[✓] Successfully generated '{output_file}'")
 
-# --- 2. SVG GENERATOR 2: ANIMATED SCI-FI ACTIVITY WAVE GRAPH ---
+# --- 2. SVG 2: ANIMATED SCI-FI ACTIVITY WAVE GRAPH ---
 def generate_animated_wave_graph_svg(username, output_file="animated-wave-graph.svg"):
     width = 880
     height = 200
@@ -173,21 +157,15 @@ def generate_animated_wave_graph_svg(username, output_file="animated-wave-graph.
         '    </linearGradient>',
         '  </defs>',
         '',
-        '  <style>',
-        '    .wave-title { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 12px; font-weight: 700; fill: #f0f6fc; letter-spacing: 1px; }',
-        '    .wave-sub { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 10px; font-weight: 600; fill: #00f0ff; }',
-        '    .beacon-lbl { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 9.5px; font-weight: bold; fill: #ffffff; }',
-        '  </style>',
-        '',
         f'  <rect x="2" y="2" width="{width-4}" height="{height-4}" rx="14" fill="url(#wave-bg)" stroke="url(#wave-border)" stroke-width="1.5"/>',
         '',
         '  <g transform="translate(20, 26)">',
         '    <circle cx="0" cy="-4" r="4.5" fill="#00f0ff">',
         '      <animate attributeName="opacity" values="0.3; 1; 0.3" dur="1.5s" repeatCount="indefinite"/>',
         '    </circle>',
-        '    <text x="14" y="0" class="wave-title">LIVE SYSTEM ACTIVITY &amp; WAVEFORM TELEMETRY</text>',
+        '    <text x="14" y="0" font-family="monospace" font-size="12px" font-weight="700" fill="#f0f6fc" letter-spacing="1px">LIVE SYSTEM ACTIVITY &amp; WAVEFORM TELEMETRY</text>',
         '  </g>',
-        f'  <text x="{width-20}" y="26" class="wave-sub" text-anchor="end">✦ REAL-TIME WAVEFORM</text>',
+        f'  <text x="{width-20}" y="26" font-family="monospace" font-size="10px" font-weight="600" fill="#00f0ff" text-anchor="end">✦ REAL-TIME WAVEFORM</text>',
         '  <line x1="20" y1="36" x2="860" y2="36" stroke="#1f293d" stroke-width="1"/>',
         '',
         '  <g stroke="#ffffff" stroke-opacity="0.05" stroke-width="1">',
@@ -224,7 +202,7 @@ def generate_animated_wave_graph_svg(username, output_file="animated-wave-graph.
             f'      <animate attributeName="opacity" values="0.8; 0" dur="1.8s" repeatCount="indefinite"/>\n'
             f'    </circle>\n'
             f'    <rect x="-60" y="-28" width="120" height="20" rx="4" fill="#0d1424" stroke="{b_color}" stroke-width="1" opacity="0.9"/>\n'
-            f'    <text x="0" y="-15" class="beacon-lbl" text-anchor="middle">{b_title}</text>\n'
+            f'    <text x="0" y="-15" font-family="monospace" font-size="9.5px" font-weight="bold" fill="#ffffff" text-anchor="middle">{b_title}</text>\n'
             f'  </g>'
         )
         svg_lines.append(beacon_html)
@@ -235,7 +213,7 @@ def generate_animated_wave_graph_svg(username, output_file="animated-wave-graph.
         f.write('\n'.join(svg_lines))
     print(f"[✓] Successfully generated '{output_file}'")
 
-# --- 3. SVG GENERATOR 3: SCI-FI TECH SKILL RADAR HUD ---
+# --- 3. SVG 3: SCI-FI TECH SKILL RADAR HUD ---
 def generate_radar_hud_svg(username, output_file="tech-radar-hud.svg"):
     width = 440
     height = 440
@@ -272,17 +250,11 @@ def generate_radar_hud_svg(username, output_file="tech-radar-hud.svg"):
         '    </filter>',
         '  </defs>',
         '',
-        '  <style>',
-        '    .hud-title { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 12px; fill: #f0f6fc; font-weight: 700; letter-spacing: 1px; }',
-        '    .hud-sub { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 10px; fill: #00f0ff; font-weight: 600; }',
-        '    .beacon-txt { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 9.5px; font-weight: bold; fill: #ffffff; }',
-        '  </style>',
-        '',
         f'  <rect x="2" y="2" width="{width-4}" height="{height-4}" rx="14" fill="url(#radar-bg)" stroke="url(#radar-border)" stroke-width="1.5"/>',
         '',
         '  <g transform="translate(20, 26)">',
-        '    <text x="0" y="0" class="hud-title">SCI-FI TECH SKILL RADAR</text>',
-        f'    <text x="{width-40}" y="0" class="hud-sub" text-anchor="end">SYS://RADAR.v4</text>',
+        '    <text x="0" y="0" font-family="monospace" font-size="12px" font-weight="700" fill="#f0f6fc" letter-spacing="1px">SCI-FI TECH SKILL RADAR</text>',
+        f'    <text x="{width-40}" y="0" font-family="monospace" font-size="10px" font-weight="600" fill="#00f0ff" text-anchor="end">SYS://RADAR.v4</text>',
         '  </g>',
         '  <line x1="20" y1="36" x2="420" y2="36" stroke="#1f293d" stroke-width="1"/>',
         '',
@@ -312,7 +284,7 @@ def generate_radar_hud_svg(username, output_file="tech-radar-hud.svg"):
             f'    </circle>\n'
             f'    <circle cx="{bx}" cy="{by}" r="4.5" fill="{b_color}" filter="url(#ping-glow)"/>\n'
             f'    <rect x="{bx + 10}" y="{by - 10}" width="{len(b_name)*7.2 + 8}" height="18" rx="4" fill="#0d1424" stroke="{b_color}" stroke-width="1" opacity="0.9"/>\n'
-            f'    <text x="{bx + 14}" y="{by + 2}" class="beacon-txt">{b_name}</text>\n'
+            f'    <text x="{bx + 14}" y="{by + 2}" font-family="monospace" font-size="9.5px" font-weight="bold" fill="#ffffff">{b_name}</text>\n'
             f'  </g>'
         )
         svg_lines.append(beacon_html)
@@ -320,8 +292,8 @@ def generate_radar_hud_svg(username, output_file="tech-radar-hud.svg"):
     svg_lines.extend([
         '',
         '  <g transform="translate(20, ' + str(height - 22) + ')">',
-        '    <text x="0" y="0" class="hud-sub">✦ RADAR SCANNER: ACTIVE</text>',
-        f'    <text x="{width-40}" y="0" class="hud-sub" text-anchor="end">4 BEACONS TRACKED</text>',
+        '    <text x="0" y="0" font-family="monospace" font-size="10px" font-weight="600" fill="#00f0ff">✦ RADAR SCANNER: ACTIVE</text>',
+        f'    <text x="{width-40}" y="0" font-family="monospace" font-size="10px" font-weight="600" fill="#00f0ff" text-anchor="end">4 BEACONS TRACKED</text>',
         '  </g>',
         '</svg>'
     ])
@@ -330,7 +302,7 @@ def generate_radar_hud_svg(username, output_file="tech-radar-hud.svg"):
         f.write('\n'.join(svg_lines))
     print(f"[✓] Successfully generated '{output_file}'")
 
-# --- 4. SVG GENERATOR 4: ARCHITECTURE SHOWCASE PILLARS ---
+# --- 4. SVG 4: ARCHITECTURE SHOWCASE PILLARS ---
 def generate_architecture_showcase_svg(username=DEFAULT_USERNAME, output_file="architecture-showcase.svg"):
     width = 440
     height = 440
@@ -356,18 +328,11 @@ def generate_architecture_showcase_svg(username=DEFAULT_USERNAME, output_file="a
         '    </linearGradient>',
         '  </defs>',
         '',
-        '  <style>',
-        '    .hud-title { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 12px; fill: #f0f6fc; font-weight: 700; letter-spacing: 1px; }',
-        '    .hud-sub { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 10px; fill: #00f0ff; font-weight: 600; }',
-        '    .card-title { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11.5px; font-weight: bold; fill: #f0f6fc; }',
-        '    .card-desc { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 10px; fill: #8b949e; }',
-        '  </style>',
-        '',
         f'  <rect x="2" y="2" width="{width-4}" height="{height-4}" rx="14" fill="url(#arch-bg)" stroke="url(#arch-border)" stroke-width="1.5"/>',
         '',
         '  <g transform="translate(20, 26)">',
-        '    <text x="0" y="0" class="hud-title">// FEATURED SYSTEM PILLARS</text>',
-        f'    <text x="{width-40}" y="0" class="hud-sub" text-anchor="end">SYS://SHOWCASE</text>',
+        '    <text x="0" y="0" font-family="monospace" font-size="12px" font-weight="700" fill="#f0f6fc" letter-spacing="1px">// FEATURED SYSTEM PILLARS</text>',
+        f'    <text x="{width-40}" y="0" font-family="monospace" font-size="10px" font-weight="600" fill="#00f0ff" text-anchor="end">SYS://SHOWCASE</text>',
         '  </g>',
         '  <line x1="20" y1="36" x2="420" y2="36" stroke="#1f293d" stroke-width="1"/>',
         '',
@@ -390,8 +355,8 @@ def generate_architecture_showcase_svg(username=DEFAULT_USERNAME, output_file="a
             f'    <g opacity="0">\n'
             f'      <rect x="0" y="{py}" width="400" height="98" rx="10" fill="#0d1424" stroke="#1f293d" stroke-width="1"/>\n'
             f'      <rect x="0" y="{py}" width="5" height="98" rx="2" fill="url(#{grad_id})"/>\n'
-            f'      <text x="20" y="{py+30}" class="card-title">{title}</text>\n'
-            f'      <text x="20" y="{py+58}" class="card-desc">{desc}</text>\n'
+            f'      <text x="20" y="{py+30}" font-family="monospace" font-size="11.5px" font-weight="bold" fill="#f0f6fc">{title}</text>\n'
+            f'      <text x="20" y="{py+58}" font-family="monospace" font-size="10px" font-weight="bold" fill="#8b949e">{desc}</text>\n'
             f'      <rect x="20" y="{py+74}" width="360" height="3" rx="1.5" fill="url(#{grad_id})" opacity="0.6"/>\n'
             f'      <animate attributeName="opacity" values="0; 1" dur="0.25s" begin="{delay}s" fill="freeze"/>\n'
             f'      <animateTransform attributeName="transform" type="translate" values="0 10; 0 0" dur="0.25s" begin="{delay}s" fill="freeze"/>\n'
@@ -408,7 +373,7 @@ def generate_architecture_showcase_svg(username=DEFAULT_USERNAME, output_file="a
         f.write('\n'.join(svg_lines))
     print(f"[✓] Successfully generated '{output_file}'")
 
-# --- 5. SVG GENERATOR 5: TELEMETRY METRICS ---
+# --- 5. SVG 5: TELEMETRY METRICS ---
 def generate_telemetry_metrics_svg(username, output_file="telemetry-metrics.svg"):
     width = 880
     height = 160
@@ -435,11 +400,6 @@ def generate_telemetry_metrics_svg(username, output_file="telemetry-metrics.svg"
         '    </linearGradient>',
         '  </defs>',
         '',
-        '  <style>',
-        '    .met-title { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 10px; font-weight: bold; fill: #8b949e; letter-spacing: 1px; }',
-        '    .met-val { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 13px; font-weight: bold; fill: #f0f6fc; }',
-        '  </style>',
-        '',
         f'  <rect x="2" y="2" width="{width-4}" height="{height-4}" rx="14" fill="url(#met-bg)" stroke="url(#met-border)" stroke-width="1.5"/>',
         ''
     ]
@@ -455,8 +415,8 @@ def generate_telemetry_metrics_svg(username, output_file="telemetry-metrics.svg"
             f'    <circle cx="45" cy="55" r="32" fill="none" stroke="{m_color}" stroke-width="6" stroke-dasharray="201" stroke-dashoffset="201" stroke-linecap="round" transform="rotate(-90 45 55)">\n'
             f'      <animate attributeName="stroke-dashoffset" values="201; {int(target_offset*0.5)}" dur="1.2s" begin="{0.2 + i*0.1}s" fill="freeze"/>\n'
             f'    </circle>\n'
-            f'    <text x="92" y="48" class="met-title">{m_title}</text>\n'
-            f'    <text x="92" y="70" class="met-val" fill="{m_color}">{m_val}</text>\n'
+            f'    <text x="92" y="48" font-family="monospace" font-size="10px" font-weight="bold" fill="#8b949e" letter-spacing="1px">{m_title}</text>\n'
+            f'    <text x="92" y="70" font-family="monospace" font-size="13px" font-weight="bold" fill="{m_color}">{m_val}</text>\n'
             f'  </g>'
         )
         svg_lines.append(pill_html)
@@ -467,7 +427,7 @@ def generate_telemetry_metrics_svg(username, output_file="telemetry-metrics.svg"
         f.write('\n'.join(svg_lines))
     print(f"[✓] Successfully generated '{output_file}'")
 
-# --- 6. README GENERATOR (STANDARDIZED GITHUB MARKUP) ---
+# --- 6. README GENERATOR ---
 def generate_readme(username, repo_name=DEFAULT_REPO, readme_path="README.md"):
     content = f"""# <h1 align="center">✨ Hi there, I'm {username} 👋</h1>
 
@@ -530,7 +490,7 @@ def generate_readme(username, repo_name=DEFAULT_REPO, readme_path="README.md"):
 
 # --- MAIN CLI EXECUTION ---
 def main():
-    parser = argparse.ArgumentParser(description="Generate Fresh Innovative Profile README & Animated Wave SVGs")
+    parser = argparse.ArgumentParser(description="Generate GitHub Sanitizer Compliant Profile README & SVGs")
     parser.add_argument("--username", type=str, default=DEFAULT_USERNAME, help="GitHub username")
     parser.add_argument("--repo", type=str, default=DEFAULT_REPO, help="GitHub repository name")
     parser.add_argument("--outdir", type=str, default=".", help="Output directory")
@@ -541,7 +501,7 @@ def main():
     outdir = args.outdir
     os.makedirs(outdir, exist_ok=True)
 
-    print(f"[+] Generating Fresh Innovative SVGs for user '{username}' (repo: '{repo}')...")
+    print(f"[+] Generating GitHub Sanitizer Compliant SVGs for user '{username}'...")
 
     hero_path = os.path.join(outdir, "cyber-hero-banner.svg")
     wave_path = os.path.join(outdir, "animated-wave-graph.svg")
@@ -557,7 +517,7 @@ def main():
     generate_telemetry_metrics_svg(username, met_path)
     generate_readme(username, repo, readme_path)
 
-    print("[🎉] All fresh innovative SVG cards and README generated successfully!")
+    print("[🎉] All GitHub-compliant SVG cards generated successfully!")
 
 if __name__ == "__main__":
     main()
