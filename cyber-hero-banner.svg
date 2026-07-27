@@ -1,10 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 220" width="880" height="220">
   <defs>
-    <filter id="orb-glow" x="-100%" y="-100%" width="300%" height="300%">
-      <feGaussianBlur stdDeviation="8" result="blur1"/>
-      <feGaussianBlur stdDeviation="3" result="blur2"/>
-      <feMerge><feMergeNode in="blur1"/><feMergeNode in="blur2"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
     <linearGradient id="hero-bg" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#160829"/>
       <stop offset="50%" stop-color="#090e1f"/>
@@ -125,11 +120,11 @@
     <circle cx="0" cy="0" r="48" fill="none" stroke="#ff007f" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="12 8">
       <animateTransform attributeName="transform" type="rotate" from="360" to="0" dur="8s" repeatCount="indefinite"/>
     </circle>
-    <circle cx="0" cy="0" r="36" fill="#00f0ff" filter="url(#orb-glow)">
+    <circle cx="0" cy="0" r="36" fill="#00f0ff" opacity="0.8">
       <animate attributeName="r" values="34; 38; 34" dur="3s" repeatCount="indefinite"/>
     </circle>
     <circle cx="0" cy="0" r="32" fill="#0d1424"/>
-    <text x="0" y="7" font-family="monospace" font-size="22px" font-weight="bold" fill="#00f0ff" text-anchor="middle">⚡</text>
+    <text x="0" y="8" font-family="monospace" font-size="20px" font-weight="bold" fill="#00f0ff" text-anchor="middle">SYS</text>
   </g>
 
   <g transform="translate(200, 60)">

@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-GitHub-Sanitizer Compliant Animated SVG Profile Generator
-========================================================
-Uses 100% inline SVG presentation attributes (font-family, font-size, fill, etc.)
-so GitHub's SVG sanitizer renders all graphics without 'Invalid image source' errors!
+GitHub-Sanitizer Fully Compliant Animated SVG Profile Generator
+================================================================
+Fixes SVG rendering errors on GitHub by removing raw emojis inside SVG text
+(which trigger GitHub SVG Sanitizer 'Invalid image source' errors) and using clean ASCII vector labels!
 """
 
 import os
@@ -41,11 +41,6 @@ def generate_hero_banner_svg(username, output_file="cyber-hero-banner.svg"):
     svg_lines = [
         f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}" width="{width}" height="{height}">',
         '  <defs>',
-        '    <filter id="orb-glow" x="-100%" y="-100%" width="300%" height="300%">',
-        '      <feGaussianBlur stdDeviation="8" result="blur1"/>',
-        '      <feGaussianBlur stdDeviation="3" result="blur2"/>',
-        '      <feMerge><feMergeNode in="blur1"/><feMergeNode in="blur2"/><feMergeNode in="SourceGraphic"/></feMerge>',
-        '    </filter>',
         '    <linearGradient id="hero-bg" x1="0%" y1="0%" x2="100%" y2="100%">',
         '      <stop offset="0%" stop-color="#160829"/>',
         '      <stop offset="50%" stop-color="#090e1f"/>',
@@ -92,11 +87,11 @@ def generate_hero_banner_svg(username, output_file="cyber-hero-banner.svg"):
         '    <circle cx="0" cy="0" r="48" fill="none" stroke="#ff007f" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="12 8">',
         '      <animateTransform attributeName="transform" type="rotate" from="360" to="0" dur="8s" repeatCount="indefinite"/>',
         '    </circle>',
-        '    <circle cx="0" cy="0" r="36" fill="#00f0ff" filter="url(#orb-glow)">',
+        '    <circle cx="0" cy="0" r="36" fill="#00f0ff" opacity="0.8">',
         '      <animate attributeName="r" values="34; 38; 34" dur="3s" repeatCount="indefinite"/>',
         '    </circle>',
         '    <circle cx="0" cy="0" r="32" fill="#0d1424"/>',
-        '    <text x="0" y="7" font-family="monospace" font-size="22px" font-weight="bold" fill="#00f0ff" text-anchor="middle">⚡</text>',
+        '    <text x="0" y="8" font-family="monospace" font-size="20px" font-weight="bold" fill="#00f0ff" text-anchor="middle">SYS</text>',
         '  </g>',
         ''
     ])
@@ -137,14 +132,6 @@ def generate_animated_wave_graph_svg(username, output_file="animated-wave-graph.
     svg_lines = [
         f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}" width="{width}" height="{height}">',
         '  <defs>',
-        '    <filter id="wave-cyan-glow" x="-50%" y="-50%" width="200%" height="200%">',
-        '      <feGaussianBlur stdDeviation="3.5" result="blur"/>',
-        '      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>',
-        '    </filter>',
-        '    <filter id="wave-pink-glow" x="-50%" y="-50%" width="200%" height="200%">',
-        '      <feGaussianBlur stdDeviation="3.5" result="blur"/>',
-        '      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>',
-        '    </filter>',
         '    <linearGradient id="wave-bg" x1="0%" y1="0%" x2="100%" y2="100%">',
         '      <stop offset="0%" stop-color="#160829"/>',
         '      <stop offset="50%" stop-color="#070b18"/>',
@@ -165,7 +152,7 @@ def generate_animated_wave_graph_svg(username, output_file="animated-wave-graph.
         '    </circle>',
         '    <text x="14" y="0" font-family="monospace" font-size="12px" font-weight="700" fill="#f0f6fc" letter-spacing="1px">LIVE SYSTEM ACTIVITY &amp; WAVEFORM TELEMETRY</text>',
         '  </g>',
-        f'  <text x="{width-20}" y="26" font-family="monospace" font-size="10px" font-weight="600" fill="#00f0ff" text-anchor="end">✦ REAL-TIME WAVEFORM</text>',
+        f'  <text x="{width-20}" y="26" font-family="monospace" font-size="10px" font-weight="600" fill="#00f0ff" text-anchor="end">REAL-TIME WAVEFORM</text>',
         '  <line x1="20" y1="36" x2="860" y2="36" stroke="#1f293d" stroke-width="1"/>',
         '',
         '  <g stroke="#ffffff" stroke-opacity="0.05" stroke-width="1">',
@@ -177,11 +164,11 @@ def generate_animated_wave_graph_svg(username, output_file="animated-wave-graph.
         '    <line x1="640" y1="45" x2="640" y2="165"/>',
         '  </g>',
         '',
-        f'  <path d="{wave1_v1}" fill="none" stroke="#00f0ff" stroke-width="3" filter="url(#wave-cyan-glow)">\n'
+        f'  <path d="{wave1_v1}" fill="none" stroke="#00f0ff" stroke-width="3">\n'
         f'    <animate attributeName="d" values="{wave1_v1}; {wave1_v2}; {wave1_v3}" dur="5s" repeatCount="indefinite"/>\n'
         f'  </path>',
         '',
-        f'  <path d="{wave2_v1}" fill="none" stroke="#ff007f" stroke-width="2.5" opacity="0.85" filter="url(#wave-pink-glow)">\n'
+        f'  <path d="{wave2_v1}" fill="none" stroke="#ff007f" stroke-width="2.5" opacity="0.85">\n'
         f'    <animate attributeName="d" values="{wave2_v1}; {wave2_v2}; {wave2_v3}" dur="6s" repeatCount="indefinite"/>\n'
         f'  </path>',
         ''
@@ -244,10 +231,6 @@ def generate_radar_hud_svg(username, output_file="tech-radar-hud.svg"):
         '      <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.4"/>',
         '      <stop offset="100%" stop-color="#00f0ff" stop-opacity="0"/>',
         '    </linearGradient>',
-        '    <filter id="ping-glow" x="-50%" y="-50%" width="200%" height="200%">',
-        '      <feGaussianBlur stdDeviation="3" result="blur" />',
-        '      <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>',
-        '    </filter>',
         '  </defs>',
         '',
         f'  <rect x="2" y="2" width="{width-4}" height="{height-4}" rx="14" fill="url(#radar-bg)" stroke="url(#radar-border)" stroke-width="1.5"/>',
@@ -269,7 +252,6 @@ def generate_radar_hud_svg(username, output_file="tech-radar-hud.svg"):
     svg_lines.extend([
         f'  <g transform="rotate(0 {cx} {cy})">',
         '    <animateTransform attributeName="transform" type="rotate" from="0 ' + str(cx) + ' ' + str(cy) + '" to="360 ' + str(cx) + ' ' + str(cy) + '" dur="5s" repeatCount="indefinite"/>',
-        f'    <path d="M {cx} {cy} L {cx+150} {cy-40} A 150 150 0 0 0 {cx+150} {cy+40} Z" fill="url(#beam-sweep-grad)"/>',
         f'    <line x1="{cx}" y1="{cy}" x2="{cx + 150}" y2="{cy}" stroke="#00f0ff" stroke-width="2" opacity="0.9"/>',
         '  </g>',
         ''
@@ -282,7 +264,7 @@ def generate_radar_hud_svg(username, output_file="tech-radar-hud.svg"):
             f'      <animate attributeName="r" values="4; 18; 4" dur="2s" repeatCount="indefinite"/>\n'
             f'      <animate attributeName="opacity" values="0.8; 0; 0.8" dur="2s" repeatCount="indefinite"/>\n'
             f'    </circle>\n'
-            f'    <circle cx="{bx}" cy="{by}" r="4.5" fill="{b_color}" filter="url(#ping-glow)"/>\n'
+            f'    <circle cx="{bx}" cy="{by}" r="4.5" fill="{b_color}"/>\n'
             f'    <rect x="{bx + 10}" y="{by - 10}" width="{len(b_name)*7.2 + 8}" height="18" rx="4" fill="#0d1424" stroke="{b_color}" stroke-width="1" opacity="0.9"/>\n'
             f'    <text x="{bx + 14}" y="{by + 2}" font-family="monospace" font-size="9.5px" font-weight="bold" fill="#ffffff">{b_name}</text>\n'
             f'  </g>'
@@ -292,7 +274,7 @@ def generate_radar_hud_svg(username, output_file="tech-radar-hud.svg"):
     svg_lines.extend([
         '',
         '  <g transform="translate(20, ' + str(height - 22) + ')">',
-        '    <text x="0" y="0" font-family="monospace" font-size="10px" font-weight="600" fill="#00f0ff">✦ RADAR SCANNER: ACTIVE</text>',
+        '    <text x="0" y="0" font-family="monospace" font-size="10px" font-weight="600" fill="#00f0ff">RADAR SCANNER: ACTIVE</text>',
         f'    <text x="{width-40}" y="0" font-family="monospace" font-size="10px" font-weight="600" fill="#00f0ff" text-anchor="end">4 BEACONS TRACKED</text>',
         '  </g>',
         '</svg>'
@@ -302,15 +284,15 @@ def generate_radar_hud_svg(username, output_file="tech-radar-hud.svg"):
         f.write('\n'.join(svg_lines))
     print(f"[✓] Successfully generated '{output_file}'")
 
-# --- 4. SVG 4: ARCHITECTURE SHOWCASE PILLARS ---
+# --- 4. SVG 4: ARCHITECTURE SHOWCASE PILLARS (NO EMOJIS - SANITIZER COMPLIANT) ---
 def generate_architecture_showcase_svg(username=DEFAULT_USERNAME, output_file="architecture-showcase.svg"):
     width = 440
     height = 440
 
     pillars = [
-        ("🤖 AI & AGENTIC SYSTEMS", "Autonomous Workflows • Multi-Agent • LLMs", COLORS["cyan"], COLORS["pink"]),
-        ("⚡ HIGH-PERFORMANCE WEB", "React • Next.js • Tailwind • Glassmorphic UI", COLORS["pink"], COLORS["purple"]),
-        ("☁️ DISTRIBUTED & CLOUD", "Python FastAPI • Docker • Microservices • CI/CD", COLORS["gold"], COLORS["green"]),
+        ("[AI] AI & AGENTIC SYSTEMS", "Autonomous Workflows • Multi-Agent • LLMs", COLORS["cyan"], COLORS["pink"]),
+        ("[WEB] HIGH-PERFORMANCE WEB", "React • Next.js • Tailwind • Glassmorphic UI", COLORS["pink"], COLORS["purple"]),
+        ("[CLOUD] DISTRIBUTED & CLOUD", "Python FastAPI • Docker • Microservices • CI/CD", COLORS["gold"], COLORS["green"]),
     ]
 
     svg_lines = [

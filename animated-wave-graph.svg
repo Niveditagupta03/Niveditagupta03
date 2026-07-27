@@ -1,13 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 200" width="880" height="200">
   <defs>
-    <filter id="wave-cyan-glow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="3.5" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-    <filter id="wave-pink-glow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="3.5" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
     <linearGradient id="wave-bg" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#160829"/>
       <stop offset="50%" stop-color="#070b18"/>
@@ -28,7 +20,7 @@
     </circle>
     <text x="14" y="0" font-family="monospace" font-size="12px" font-weight="700" fill="#f0f6fc" letter-spacing="1px">LIVE SYSTEM ACTIVITY &amp; WAVEFORM TELEMETRY</text>
   </g>
-  <text x="860" y="26" font-family="monospace" font-size="10px" font-weight="600" fill="#00f0ff" text-anchor="end">✦ REAL-TIME WAVEFORM</text>
+  <text x="860" y="26" font-family="monospace" font-size="10px" font-weight="600" fill="#00f0ff" text-anchor="end">REAL-TIME WAVEFORM</text>
   <line x1="20" y1="36" x2="860" y2="36" stroke="#1f293d" stroke-width="1"/>
 
   <g stroke="#ffffff" stroke-opacity="0.05" stroke-width="1">
@@ -40,11 +32,11 @@
     <line x1="640" y1="45" x2="640" y2="165"/>
   </g>
 
-  <path d="M 40 130 C 140 40, 240 160, 340 60 C 440 150, 540 40, 640 120 C 740 30, 800 90, 840 65" fill="none" stroke="#00f0ff" stroke-width="3" filter="url(#wave-cyan-glow)">
+  <path d="M 40 130 C 140 40, 240 160, 340 60 C 440 150, 540 40, 640 120 C 740 30, 800 90, 840 65" fill="none" stroke="#00f0ff" stroke-width="3">
     <animate attributeName="d" values="M 40 130 C 140 40, 240 160, 340 60 C 440 150, 540 40, 640 120 C 740 30, 800 90, 840 65; M 40 110 C 140 140, 240 50, 340 120 C 440 40, 540 130, 640 50 C 740 110, 800 40, 840 85; M 40 130 C 140 40, 240 160, 340 60 C 440 150, 540 40, 640 120 C 740 30, 800 90, 840 65" dur="5s" repeatCount="indefinite"/>
   </path>
 
-  <path d="M 40 90 C 140 150, 240 50, 340 130 C 440 60, 540 140, 640 60 C 740 130, 800 70, 840 110" fill="none" stroke="#ff007f" stroke-width="2.5" opacity="0.85" filter="url(#wave-pink-glow)">
+  <path d="M 40 90 C 140 150, 240 50, 340 130 C 440 60, 540 140, 640 60 C 740 130, 800 70, 840 110" fill="none" stroke="#ff007f" stroke-width="2.5" opacity="0.85">
     <animate attributeName="d" values="M 40 90 C 140 150, 240 50, 340 130 C 440 60, 540 140, 640 60 C 740 130, 800 70, 840 110; M 40 140 C 140 60, 240 130, 340 50 C 440 120, 540 70, 640 130 C 740 50, 800 110, 840 70; M 40 90 C 140 150, 240 50, 340 130 C 440 60, 540 140, 640 60 C 740 130, 800 70, 840 110" dur="6s" repeatCount="indefinite"/>
   </path>
 
