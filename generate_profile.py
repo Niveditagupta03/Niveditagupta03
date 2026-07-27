@@ -2,8 +2,10 @@
 """
 GitHub-Sanitizer Fully Compliant Animated SVG Profile Generator
 ================================================================
-Fixes XML entity parsing errors (`xmlParseEntityRef: no name`) by escaping all
-ampersands `&` to `&amp;` across all text elements in SVG files!
+Fixes XML parsing errors (`xmlParseEntityRef: no name`) by:
+ 1. Adding `<?xml version="1.0" encoding="UTF-8"?>` header to all SVGs.
+ 2. Replacing non-ASCII bullet symbols (•) with safe ASCII dividers (`|`).
+ 3. Escaping all ampersands as `&amp;`.
 """
 
 import os
@@ -39,6 +41,7 @@ def generate_hero_banner_svg(username, output_file="cyber-hero-banner.svg"):
     height = 220
 
     svg_lines = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
         f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}" width="{width}" height="{height}">',
         '  <defs>',
         '    <linearGradient id="hero-bg" x1="0%" y1="0%" x2="100%" y2="100%">',
@@ -100,7 +103,7 @@ def generate_hero_banner_svg(username, output_file="cyber-hero-banner.svg"):
     svg_lines.extend([
         f'  <g transform="translate({tx}, 60)">',
         f'    <text x="0" y="24" font-family="monospace" font-size="26px" font-weight="900" fill="url(#title-grad)" letter-spacing="2px">{html.escape(username.upper())}</text>',
-        '    <text x="0" y="52" font-family="monospace" font-size="12px" font-weight="bold" fill="#8b949e" letter-spacing="1.5px">FULL-STACK ARCHITECT • AI AGENT SYSTEMS • HIGH-PERF WEB</text>',
+        '    <text x="0" y="52" font-family="monospace" font-size="12px" font-weight="bold" fill="#8b949e" letter-spacing="1.5px">FULL-STACK ARCHITECT | AI AGENT SYSTEMS | HIGH-PERF WEB</text>',
         '    <g transform="translate(0, 75)">',
         '      <rect x="0" y="0" width="460" height="30" rx="8" fill="#0d1424" stroke="#00ff88" stroke-width="1" opacity="0.9"/>',
         '      <circle cx="16" cy="15" r="4.5" fill="#00ff88">',
@@ -130,6 +133,7 @@ def generate_animated_wave_graph_svg(username, output_file="animated-wave-graph.
     wave2_v3 = "M 40 90 C 140 150, 240 50, 340 130 C 440 60, 540 140, 640 60 C 740 130, 800 70, 840 110"
 
     svg_lines = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
         f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}" width="{width}" height="{height}">',
         '  <defs>',
         '    <linearGradient id="wave-bg" x1="0%" y1="0%" x2="100%" y2="100%">',
@@ -200,7 +204,7 @@ def generate_animated_wave_graph_svg(username, output_file="animated-wave-graph.
         f.write('\n'.join(svg_lines))
     print(f"[✓] Successfully generated '{output_file}'")
 
-# --- 3. SVG 3: SCI-FI TECH SKILL RADAR HUD (XML ESCAPED) ---
+# --- 3. SVG 3: SCI-FI TECH SKILL RADAR HUD ---
 def generate_radar_hud_svg(username, output_file="tech-radar-hud.svg"):
     width = 440
     height = 440
@@ -215,6 +219,7 @@ def generate_radar_hud_svg(username, output_file="tech-radar-hud.svg"):
     ]
 
     svg_lines = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
         f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}" width="{width}" height="{height}">',
         '  <defs>',
         '    <linearGradient id="radar-bg" x1="0%" y1="0%" x2="100%" y2="100%">',
@@ -279,18 +284,19 @@ def generate_radar_hud_svg(username, output_file="tech-radar-hud.svg"):
         f.write('\n'.join(svg_lines))
     print(f"[✓] Successfully generated '{output_file}'")
 
-# --- 4. SVG 4: ARCHITECTURE SHOWCASE PILLARS (XML ESCAPED) ---
+# --- 4. SVG 4: ARCHITECTURE SHOWCASE PILLARS ---
 def generate_architecture_showcase_svg(username=DEFAULT_USERNAME, output_file="architecture-showcase.svg"):
     width = 440
     height = 440
 
     pillars = [
-        ("AI &amp; AGENTIC SYSTEMS", "Autonomous Workflows • Multi-Agent • LLMs", COLORS["cyan"], COLORS["pink"], "ai"),
-        ("HIGH-PERFORMANCE WEB", "React • Next.js • Tailwind • Glassmorphic UI", COLORS["pink"], COLORS["purple"], "web"),
-        ("DISTRIBUTED &amp; CLOUD", "Python FastAPI • Docker • Microservices • CI/CD", COLORS["gold"], COLORS["green"], "cloud"),
+        ("AI &amp; AGENTIC SYSTEMS", "Autonomous Workflows | Multi-Agent | LLMs", COLORS["cyan"], COLORS["pink"], "ai"),
+        ("HIGH-PERFORMANCE WEB", "React | Next.js | Tailwind | Glassmorphic UI", COLORS["pink"], COLORS["purple"], "web"),
+        ("DISTRIBUTED &amp; CLOUD", "Python FastAPI | Docker | Microservices | CI/CD", COLORS["gold"], COLORS["green"], "cloud"),
     ]
 
     svg_lines = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
         f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}" width="{width}" height="{height}">',
         '  <defs>',
         '    <linearGradient id="arch-bg" x1="0%" y1="0%" x2="100%" y2="100%">',
@@ -320,7 +326,7 @@ def generate_architecture_showcase_svg(username=DEFAULT_USERNAME, output_file="a
         py = p_idx * 115
         grad_id = f"pillar-grad-{p_idx}"
 
-        svg_lines.insert(8, (
+        svg_lines.insert(9, (
             f'    <linearGradient id="{grad_id}" x1="0%" y1="0%" x2="100%" y2="0%">\n'
             f'      <stop offset="0%" stop-color="{c1}"/>\n'
             f'      <stop offset="100%" stop-color="{c2}"/>\n'
@@ -368,6 +374,7 @@ def generate_telemetry_metrics_svg(username, output_file="telemetry-metrics.svg"
     ]
 
     svg_lines = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
         f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}" width="{width}" height="{height}">',
         '  <defs>',
         '    <linearGradient id="met-bg" x1="0%" y1="0%" x2="100%" y2="100%">',

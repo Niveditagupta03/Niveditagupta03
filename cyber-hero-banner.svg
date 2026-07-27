@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 220" width="880" height="220">
   <defs>
     <linearGradient id="hero-bg" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -129,7 +130,7 @@
 
   <g transform="translate(200, 60)">
     <text x="0" y="24" font-family="monospace" font-size="26px" font-weight="900" fill="url(#title-grad)" letter-spacing="2px">NIVEDITAGUPTA03</text>
-    <text x="0" y="52" font-family="monospace" font-size="12px" font-weight="bold" fill="#8b949e" letter-spacing="1.5px">FULL-STACK ARCHITECT • AI AGENT SYSTEMS • HIGH-PERF WEB</text>
+    <text x="0" y="52" font-family="monospace" font-size="12px" font-weight="bold" fill="#8b949e" letter-spacing="1.5px">FULL-STACK ARCHITECT | AI AGENT SYSTEMS | HIGH-PERF WEB</text>
     <g transform="translate(0, 75)">
       <rect x="0" y="0" width="460" height="30" rx="8" fill="#0d1424" stroke="#00ff88" stroke-width="1" opacity="0.9"/>
       <circle cx="16" cy="15" r="4.5" fill="#00ff88">
