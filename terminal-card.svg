@@ -1,171 +1,181 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 430" width="440" height="430">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 440" width="440" height="440">
   <defs>
-    <linearGradient id="term-bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#161b22" stop-opacity="0.98"/>
-      <stop offset="100%" stop-color="#0d1117" stop-opacity="0.99"/>
+    <linearGradient id="term-bg-space" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d1424" stop-opacity="0.98"/>
+      <stop offset="100%" stop-color="#050812" stop-opacity="0.99"/>
     </linearGradient>
-    <linearGradient id="term-border" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#00f3ff" stop-opacity="0.5"/>
-      <stop offset="50%" stop-color="#30363d" stop-opacity="0.8"/>
-      <stop offset="100%" stop-color="#a371f7" stop-opacity="0.4"/>
+    <linearGradient id="hud-border" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00f0ff"/>
+      <stop offset="50%" stop-color="#ff007f"/>
+      <stop offset="100%" stop-color="#7928ca"/>
+    </linearGradient>
+    <linearGradient id="laser-line-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00f0ff" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#00f0ff" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#ff007f" stop-opacity="0"/>
     </linearGradient>
   </defs>
 
   <style>
-    .term-header-title { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; fill: #8b949e; font-weight: 600; }
+    .term-title { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; fill: #00f0ff; font-weight: 700; letter-spacing: 0.8px; }
     .ascii-text { font-family: "Courier New", Courier, ui-monospace, monospace; font-size: 10px; font-weight: bold; white-space: pre; }
-    .prompt-user { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 12px; font-weight: bold; fill: #39d353; }
-    .prompt-host { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 12px; font-weight: bold; fill: #00f3ff; }
-    .prompt-cmd { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 12px; fill: #f0f6fc; }
-    .prompt-out { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 12px; font-weight: bold; fill: #00f3ff; }
+    .prompt-user { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11.5px; font-weight: bold; fill: #ff007f; }
+    .prompt-host { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11.5px; font-weight: bold; fill: #00f0ff; }
+    .prompt-cmd { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11.5px; fill: #f0f6fc; }
+    .prompt-out { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11.5px; font-weight: bold; fill: #00ff66; }
   </style>
 
-  <!-- Terminal Outer Window Frame -->
-  <rect x="2" y="2" width="436" height="426" rx="12" fill="url(#term-bg)" stroke="url(#term-border)" stroke-width="1.5"/>
+  <!-- Terminal Window Frame -->
+  <rect x="2" y="2" width="436" height="436" rx="12" fill="url(#term-bg-space)" stroke="url(#hud-border)" stroke-width="1.5"/>
 
-  <!-- macOS Control Buttons Bar -->
-  <path d="M 2 2 L 438 2 L 438 34 L 2 34 Z" fill="#1c2128" clip-path="inset(0 0 0 0 round 12px 12px 0 0)"/>
-  <circle cx="18" cy="18" r="5.5" fill="#ff5f56"/>
-  <circle cx="34" cy="18" r="5.5" fill="#ffbd2e"/>
-  <circle cx="50" cy="18" r="5.5" fill="#27c93f"/>
-  <text x="220.0" y="22" class="term-header-title" text-anchor="middle">zsh — Niveditagupta03@ascii-terminal ~ 80x24</text>
-  <line x1="2" y1="34" x2="438" y2="34" stroke="#30363d" stroke-width="1"/>
+  <!-- Cyber Corner HUD Accents -->
+  <path d="M 6 18 L 6 6 L 18 6" fill="none" stroke="#00f0ff" stroke-width="2"/>
+  <path d="M 422 6 L 434 6 L 434 18" fill="none" stroke="#ff007f" stroke-width="2"/>
+  <path d="M 6 422 L 6 434 L 18 434" fill="none" stroke="#ff007f" stroke-width="2"/>
+  <path d="M 422 434 L 434 434 L 434 422" fill="none" stroke="#00f0ff" stroke-width="2"/>
 
-  <!-- ASCII Portrait Terminal Output Area -->
+  <!-- Header Control Bar -->
+  <path d="M 2 2 L 438 2 L 438 34 L 2 34 Z" fill="#141c2e" clip-path="inset(0 0 0 0 round 12px 12px 0 0)"/>
+  <circle cx="18" cy="18" r="5" fill="#ff5f56"/>
+  <circle cx="34" cy="18" r="5" fill="#ffbd2e"/>
+  <circle cx="50" cy="18" r="5" fill="#27c93f"/>
+  <text x="220.0" y="22" class="term-title" text-anchor="middle">SYS://OPTICAL_TERMINAL.v3 [LIVE]</text>
+  <line x1="2" y1="34" x2="438" y2="34" stroke="#1f293d" stroke-width="1"/>
+
+  <!-- ASCII Portrait Terminal Area -->
   <g transform="translate(20, 50)">
-    <text x="0" y="10.0" class="ascii-text" fill="#00f3ff" opacity="0">
+    <text x="0" y="10.0" class="ascii-text" fill="#00f0ff" opacity="0">
       +++==+**#%@@@@%%##*=-==+*+-----=**###***
       <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="0.1s" fill="freeze"/>
-      <animateTransform attributeName="transform" type="translate" values="-8 0; 0 0" dur="0.12s" begin="0.1s" fill="freeze"/>
+      <animateTransform attributeName="transform" type="translate" values="-10 0; 0 0" dur="0.12s" begin="0.1s" fill="freeze"/>
     </text>
-    <text x="0" y="23.5" class="ascii-text" fill="#00f3ff" opacity="0">
+    <text x="0" y="23.5" class="ascii-text" fill="#00f0ff" opacity="0">
       ###*+*****#########+=*+=--::::=#%%%%%%##
-      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="0.16s" fill="freeze"/>
-      <animateTransform attributeName="transform" type="translate" values="-8 0; 0 0" dur="0.12s" begin="0.16s" fill="freeze"/>
+      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="0.15s" fill="freeze"/>
+      <animateTransform attributeName="transform" type="translate" values="-10 0; 0 0" dur="0.12s" begin="0.15s" fill="freeze"/>
     </text>
-    <text x="0" y="37.0" class="ascii-text" fill="#00f3ff" opacity="0">
+    <text x="0" y="37.0" class="ascii-text" fill="#00f0ff" opacity="0">
       *+=--+######****%%==+***-*%%%%%%%%%%%%%#
-      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="0.22s" fill="freeze"/>
-      <animateTransform attributeName="transform" type="translate" values="-8 0; 0 0" dur="0.12s" begin="0.22s" fill="freeze"/>
+      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="0.2s" fill="freeze"/>
+      <animateTransform attributeName="transform" type="translate" values="-10 0; 0 0" dur="0.12s" begin="0.2s" fill="freeze"/>
     </text>
-    <text x="0" y="50.5" class="ascii-text" fill="#00f3ff" opacity="0">
+    <text x="0" y="50.5" class="ascii-text" fill="#00f0ff" opacity="0">
       @%****####%%%%%#%+=*=+=**=@@@@%%%%%%#*%#
-      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="0.28s" fill="freeze"/>
-      <animateTransform attributeName="transform" type="translate" values="-8 0; 0 0" dur="0.12s" begin="0.28s" fill="freeze"/>
+      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="0.25s" fill="freeze"/>
+      <animateTransform attributeName="transform" type="translate" values="-10 0; 0 0" dur="0.12s" begin="0.25s" fill="freeze"/>
     </text>
-    <text x="0" y="64.0" class="ascii-text" fill="#00f3ff" opacity="0">
+    <text x="0" y="64.0" class="ascii-text" fill="#00f0ff" opacity="0">
       #===*+*#%#**#%%@%:+++**+***@%%%%%%%#=:*%
-      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="0.34s" fill="freeze"/>
-      <animateTransform attributeName="transform" type="translate" values="-8 0; 0 0" dur="0.12s" begin="0.34s" fill="freeze"/>
+      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="0.3s" fill="freeze"/>
+      <animateTransform attributeName="transform" type="translate" values="-10 0; 0 0" dur="0.12s" begin="0.3s" fill="freeze"/>
     </text>
-    <text x="0" y="77.5" class="ascii-text" fill="#00f3ff" opacity="0">
+    <text x="0" y="77.5" class="ascii-text" fill="#00f0ff" opacity="0">
       *+--+++#%#*++*##*::+*+**+-+@%%%%%##=-=#%
-      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="0.4s" fill="freeze"/>
-      <animateTransform attributeName="transform" type="translate" values="-8 0; 0 0" dur="0.12s" begin="0.4s" fill="freeze"/>
+      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="0.35s" fill="freeze"/>
+      <animateTransform attributeName="transform" type="translate" values="-10 0; 0 0" dur="0.12s" begin="0.35s" fill="freeze"/>
     </text>
-    <text x="0" y="91.0" class="ascii-text" fill="#00f3ff" opacity="0">
+    <text x="0" y="91.0" class="ascii-text" fill="#00f0ff" opacity="0">
       *-=*+**+*##*=-::::..--*%- -#%%%%#+=--+#%
-      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="0.46s" fill="freeze"/>
-      <animateTransform attributeName="transform" type="translate" values="-8 0; 0 0" dur="0.12s" begin="0.46s" fill="freeze"/>
+      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="0.4s" fill="freeze"/>
+      <animateTransform attributeName="transform" type="translate" values="-10 0; 0 0" dur="0.12s" begin="0.4s" fill="freeze"/>
     </text>
-    <text x="0" y="104.5" class="ascii-text" fill="#00ff88" opacity="0">
+    <text x="0" y="104.5" class="ascii-text" fill="#ff007f" opacity="0">
       **%####*#%*-::-.....-:.=##+#%%%#*******#
-      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="0.52s" fill="freeze"/>
-      <animateTransform attributeName="transform" type="translate" values="-8 0; 0 0" dur="0.12s" begin="0.52s" fill="freeze"/>
+      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="0.45s" fill="freeze"/>
+      <animateTransform attributeName="transform" type="translate" values="-10 0; 0 0" dur="0.12s" begin="0.45s" fill="freeze"/>
     </text>
-    <text x="0" y="118.0" class="ascii-text" fill="#00ff88" opacity="0">
+    <text x="0" y="118.0" class="ascii-text" fill="#ff007f" opacity="0">
       %%***+=--+-:... .::.:.  .=**############
-      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="0.58s" fill="freeze"/>
-      <animateTransform attributeName="transform" type="translate" values="-8 0; 0 0" dur="0.12s" begin="0.58s" fill="freeze"/>
+      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="0.5s" fill="freeze"/>
+      <animateTransform attributeName="transform" type="translate" values="-10 0; 0 0" dur="0.12s" begin="0.5s" fill="freeze"/>
     </text>
-    <text x="0" y="131.5" class="ascii-text" fill="#00ff88" opacity="0">
+    <text x="0" y="131.5" class="ascii-text" fill="#ff007f" opacity="0">
       #+*+=:--:--:...   ..      -+++**###*==#+
-      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="0.64s" fill="freeze"/>
-      <animateTransform attributeName="transform" type="translate" values="-8 0; 0 0" dur="0.12s" begin="0.64s" fill="freeze"/>
+      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="0.55s" fill="freeze"/>
+      <animateTransform attributeName="transform" type="translate" values="-10 0; 0 0" dur="0.12s" begin="0.55s" fill="freeze"/>
     </text>
-    <text x="0" y="145.0" class="ascii-text" fill="#00ff88" opacity="0">
+    <text x="0" y="145.0" class="ascii-text" fill="#ff007f" opacity="0">
       *-=--:----::...       .-+*##**+++###++#*
-      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="0.7s" fill="freeze"/>
-      <animateTransform attributeName="transform" type="translate" values="-8 0; 0 0" dur="0.12s" begin="0.7s" fill="freeze"/>
+      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="0.6s" fill="freeze"/>
+      <animateTransform attributeName="transform" type="translate" values="-10 0; 0 0" dur="0.12s" begin="0.6s" fill="freeze"/>
     </text>
-    <text x="0" y="158.5" class="ascii-text" fill="#00ff88" opacity="0">
+    <text x="0" y="158.5" class="ascii-text" fill="#ff007f" opacity="0">
       +-:::::.::::...  .:-+***##***####%%%%%%%
-      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="0.76s" fill="freeze"/>
-      <animateTransform attributeName="transform" type="translate" values="-8 0; 0 0" dur="0.12s" begin="0.76s" fill="freeze"/>
+      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="0.65s" fill="freeze"/>
+      <animateTransform attributeName="transform" type="translate" values="-10 0; 0 0" dur="0.12s" begin="0.65s" fill="freeze"/>
     </text>
-    <text x="0" y="172.0" class="ascii-text" fill="#00ff88" opacity="0">
+    <text x="0" y="172.0" class="ascii-text" fill="#ff007f" opacity="0">
       -:::....:..:.-+***#*+==*%%%%%%%%%%%%%*++
-      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="0.82s" fill="freeze"/>
-      <animateTransform attributeName="transform" type="translate" values="-8 0; 0 0" dur="0.12s" begin="0.82s" fill="freeze"/>
+      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="0.7s" fill="freeze"/>
+      <animateTransform attributeName="transform" type="translate" values="-10 0; 0 0" dur="0.12s" begin="0.7s" fill="freeze"/>
     </text>
     <text x="0" y="185.5" class="ascii-text" fill="#a371f7" opacity="0">
       --:. ..::..=+***+=-:-*%%%%%%%%%%%%%%%%%%
-      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="0.88s" fill="freeze"/>
-      <animateTransform attributeName="transform" type="translate" values="-8 0; 0 0" dur="0.12s" begin="0.88s" fill="freeze"/>
+      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="0.75s" fill="freeze"/>
+      <animateTransform attributeName="transform" type="translate" values="-10 0; 0 0" dur="0.12s" begin="0.75s" fill="freeze"/>
     </text>
     <text x="0" y="199.0" class="ascii-text" fill="#a371f7" opacity="0">
       +=: ..::.. :=-:.. :*%%%%%%%%%%%%%%%%%%%%
-      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="0.94s" fill="freeze"/>
-      <animateTransform attributeName="transform" type="translate" values="-8 0; 0 0" dur="0.12s" begin="0.94s" fill="freeze"/>
+      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="0.8s" fill="freeze"/>
+      <animateTransform attributeName="transform" type="translate" values="-10 0; 0 0" dur="0.12s" begin="0.8s" fill="freeze"/>
     </text>
     <text x="0" y="212.5" class="ascii-text" fill="#a371f7" opacity="0">
       -. ..:.:-=+*******%@%%%%%%%%%%%%%%%%%%%%
-      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="1.0s" fill="freeze"/>
-      <animateTransform attributeName="transform" type="translate" values="-8 0; 0 0" dur="0.12s" begin="1.0s" fill="freeze"/>
+      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="0.85s" fill="freeze"/>
+      <animateTransform attributeName="transform" type="translate" values="-10 0; 0 0" dur="0.12s" begin="0.85s" fill="freeze"/>
     </text>
     <text x="0" y="226.0" class="ascii-text" fill="#a371f7" opacity="0">
       :.::::+#%%%%%%%%@@%%%%%%%%%%%%%%%%%@@@%%
-      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="1.06s" fill="freeze"/>
-      <animateTransform attributeName="transform" type="translate" values="-8 0; 0 0" dur="0.12s" begin="1.06s" fill="freeze"/>
+      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="0.9s" fill="freeze"/>
+      <animateTransform attributeName="transform" type="translate" values="-10 0; 0 0" dur="0.12s" begin="0.9s" fill="freeze"/>
     </text>
     <text x="0" y="239.5" class="ascii-text" fill="#a371f7" opacity="0">
       ::::. +%#####%%%%%%%%%%%%%%%%%%%%%%%@@%%
-      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="1.12s" fill="freeze"/>
-      <animateTransform attributeName="transform" type="translate" values="-8 0; 0 0" dur="0.12s" begin="1.12s" fill="freeze"/>
+      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="0.95s" fill="freeze"/>
+      <animateTransform attributeName="transform" type="translate" values="-10 0; 0 0" dur="0.12s" begin="0.95s" fill="freeze"/>
     </text>
     <text x="0" y="253.0" class="ascii-text" fill="#a371f7" opacity="0">
       -=--===*###**+++****####%%%%%%%%%%%%%%%%
-      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="1.18s" fill="freeze"/>
-      <animateTransform attributeName="transform" type="translate" values="-8 0; 0 0" dur="0.12s" begin="1.18s" fill="freeze"/>
+      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="1.0s" fill="freeze"/>
+      <animateTransform attributeName="transform" type="translate" values="-10 0; 0 0" dur="0.12s" begin="1.0s" fill="freeze"/>
     </text>
     <text x="0" y="266.5" class="ascii-text" fill="#a371f7" opacity="0">
       *##***+--+***+===========++++**###%%%%%%
-      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="1.24s" fill="freeze"/>
-      <animateTransform attributeName="transform" type="translate" values="-8 0; 0 0" dur="0.12s" begin="1.24s" fill="freeze"/>
+      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="1.05s" fill="freeze"/>
+      <animateTransform attributeName="transform" type="translate" values="-10 0; 0 0" dur="0.12s" begin="1.05s" fill="freeze"/>
     </text>
-    <!-- Sweeping Reveal Cursor -->
-    <rect x="0" y="0" width="8" height="12" fill="#ffffff" opacity="0.9">
-      <animate attributeName="y" values="0; 256.5" dur="1.3s" begin="0.1s" fill="freeze"/>
-      <animate attributeName="opacity" values="0.9; 0.9; 0" keyTimes="0; 0.95; 1" dur="1.5s" begin="0.1s" fill="freeze"/>
+    <!-- Optical Laser Scanner Bar -->
+    <rect x="0" y="5" width="390" height="2" fill="url(#laser-line-grad)" opacity="0.95">
+      <animate attributeName="y" values="5; 271.5; 5" dur="3.2s" begin="0.1s" repeatCount="indefinite"/>
     </rect>
   </g>
 
   <!-- Terminal Footer Typewriter Command Prompt -->
-  <line x1="15" y1="360" x2="425" y2="360" stroke="#21262d" stroke-width="1"/>
-  <g transform="translate(20, 375)">
+  <line x1="15" y1="370" x2="425" y2="370" stroke="#1f293d" stroke-width="1"/>
+  <g transform="translate(20, 385)">
     <text x="0" y="0">
-      <tspan class="prompt-user">developer</tspan>
-      <tspan class="prompt-cmd">@cyber-term</tspan>
+      <tspan class="prompt-user">cyber</tspan>
+      <tspan class="prompt-cmd">@node-x</tspan>
       <tspan class="prompt-user">:</tspan>
       <tspan class="prompt-host">~</tspan>
       <tspan class="prompt-cmd">$ </tspan>
     </text>
 
-    <!-- Typewriter Command: whoami -->
-    <text x="145" y="0" class="prompt-cmd" opacity="0">
-      whoami
-      <animate attributeName="opacity" values="0; 1" dur="0.2s" begin="1.5s" fill="freeze"/>
+    <!-- Typewriter Command -->
+    <text x="125" y="0" class="prompt-cmd" opacity="0">
+      whoami --verbose
+      <animate attributeName="opacity" values="0; 1" dur="0.2s" begin="1.25s" fill="freeze"/>
     </text>
 
-    <!-- Command Output: username result -->
+    <!-- Command Output -->
     <text x="0" y="24" class="prompt-out" opacity="0">
-      &gt; Niveditagupta03
-      <animate attributeName="opacity" values="0; 1" dur="0.25s" begin="1.8s" fill="freeze"/>
+      &gt; USER: Niveditagupta03 | STATUS: ACTIVE
+      <animate attributeName="opacity" values="0; 1" dur="0.25s" begin="1.5s" fill="freeze"/>
     </text>
 
-    <!-- Blinking Cursor Block -->
-    <rect x="142.5" y="13" width="8" height="13" fill="#00f3ff" opacity="0">
-      <animate attributeName="opacity" values="0; 1; 1; 0" keyTimes="0; 0.1; 0.5; 1" dur="0.8s" begin="1.85s" repeatCount="indefinite"/>
+    <!-- Blinking Neon Cursor -->
+    <rect x="262.5" y="13" width="8" height="13" fill="#00f0ff" opacity="0">
+      <animate attributeName="opacity" values="0; 1; 1; 0" keyTimes="0; 0.1; 0.5; 1" dur="0.8s" begin="1.55s" repeatCount="indefinite"/>
     </rect>
   </g>
 </svg>

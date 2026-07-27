@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
-Github Profile README & SVG Generator
-====================================
-Generates three high-end, self-contained SMIL-animated SVG cards:
-  1. github-contribution-animation.svg (53x7 contribution calendar with diagonal slant reveal & specular glint)
-  2. terminal-card.svg (ASCII portrait terminal with row reveal, sweeping cursor & typewriter whoami footer)
-  3. info-card.svg (Neofetch info card with staggered line reveals and neon cyberpunk aesthetics)
+Cyberpunk Mind-Blowing Animated GitHub Profile SVG Generator
+============================================================
+Generates three ultra-innovative, glassmorphic, SMIL-animated SVG cards:
+  1. github-contribution-animation.svg (Holographic Matrix Grid with scanning laser & glint)
+  2. terminal-card.svg (Cyber HUD Terminal with ASCII portrait, laser scanner & typewriter footer)
+  3. info-card.svg (Glassmorphic Skill HUD with animated skill bars & neofetch palette)
 
-Also generates / updates README.md with side-by-side table layout and contribution graph.
+Also creates/updates README.md with side-by-side table layout & centered contribution matrix.
 """
 
 import os
@@ -18,7 +18,6 @@ import json
 import argparse
 import html
 import urllib.request
-from datetime import datetime, timedelta
 
 try:
     from PIL import Image
@@ -26,32 +25,30 @@ try:
 except ImportError:
     HAS_PIL = False
 
-# Default Fallback Username
-DEFAULT_USERNAME = "octocat"
+DEFAULT_USERNAME = "Niveditagupta03"
 
-# Cyberpunk Color Palette
+# Ultra Cyberpunk Neon Glass Palette
 COLORS = {
-    "bg": "#0d1117",
-    "card_bg": "#161b22",
-    "border": "#30363d",
-    "border_glow": "#00f3ff33",
+    "space_bg": "#070a14",
+    "card_bg": "#0d1322",
+    "border_cyan": "#00f0ff",
+    "border_pink": "#ff007f",
+    "border_purple": "#7928ca",
+    "border_dark": "#1f293d",
     "text_bright": "#f0f6fc",
     "text_muted": "#8b949e",
-    "cyan": "#00f3ff",
-    "blue": "#38bdf8",
-    "green": "#39d353",
-    "emerald": "#00ff88",
-    "orange": "#ff9e3b",
-    "red": "#ff7b72",
-    "purple": "#a371f7",
-    "magenta": "#bf5af2",
-    "yellow": "#f1e05a",
-    # Contribution levels
-    "l0": "#161b22",
-    "l1": "#0e4429",
-    "l2": "#006d32",
-    "l3": "#26a641",
-    "l4": "#39d353",
+    "neon_cyan": "#00f0ff",
+    "neon_pink": "#ff007f",
+    "neon_purple": "#a371f7",
+    "neon_green": "#00ff66",
+    "neon_gold": "#ffb800",
+    "neon_blue": "#38bdf8",
+    # Contribution level colors
+    "l0": "#0e1626",
+    "l1": "#004d38",
+    "l2": "#008e5a",
+    "l3": "#00e676",
+    "l4": "#00ff88",
 }
 
 # --- 1. ASCII ART GENERATOR ---
@@ -75,7 +72,7 @@ CYBER_DEV_ASCII = [
 
 def fetch_avatar_ascii(username, width=40, height=22):
     """
-    Fetches user avatar from GitHub and converts it into ASCII art using PIL.
+    Fetches user avatar from GitHub and converts it into dense ASCII art using PIL.
     Falls back to a stylized cyber ASCII illustration if PIL or network is unavailable.
     """
     if not HAS_PIL:
@@ -87,16 +84,14 @@ def fetch_avatar_ascii(username, width=40, height=22):
         req = urllib.request.Request(avatar_url, headers={'User-Agent': 'Mozilla/5.0'})
         with urllib.request.urlopen(req, timeout=5) as resp:
             img = Image.open(resp)
-            img = img.convert('L') # Convert to grayscale
+            img = img.convert('L')
             
-            # Adjust aspect ratio (characters are taller than wide, ~0.52 factor)
             aspect_ratio = img.height / img.width
             target_height = int(width * aspect_ratio * 0.52)
             target_height = min(max(target_height, 18), height)
             
             img = img.resize((width, target_height), Image.Resampling.LANCZOS)
             
-            # High-contrast ASCII character map from dark to bright
             ascii_chars = " .:-=+*#%@"
             num_chars = len(ascii_chars)
             
@@ -111,99 +106,98 @@ def fetch_avatar_ascii(username, width=40, height=22):
         print(f"[!] Could not fetch or process avatar for {username}: {e}. Using fallback ASCII art.")
         return CYBER_DEV_ASCII
 
-# --- 2. SVG GENERATOR: FILE 1 - github-contribution-animation.svg ---
+# --- 2. SVG GENERATOR 1: HOLOGRAPHIC CONTRIBUTION MATRIX ---
 def generate_contribution_svg(username, output_file="github-contribution-animation.svg"):
-    """
-    Generates a 53x7 animated contribution calendar SVG with diagonal slant reveal,
-    specular glint flashes, and outer glows for level 3/4 squares.
-    """
     cols = 53
     rows = 7
     square_size = 11
     gap = 3
     margin_left = 35
-    margin_top = 40
+    margin_top = 45
     
     width = margin_left + cols * (square_size + gap) + 20
     height = margin_top + rows * (square_size + gap) + 40
 
-    # Generate synthetic contribution levels (0 to 4) with realistic distribution
     random.seed(42 + sum(ord(c) for c in username))
     grid_levels = []
     for c in range(cols):
         col_levels = []
         for r in range(rows):
-            val = random.choices([0, 1, 2, 3, 4], weights=[0.35, 0.25, 0.20, 0.12, 0.08])[0]
+            val = random.choices([0, 1, 2, 3, 4], weights=[0.32, 0.26, 0.21, 0.13, 0.08])[0]
             col_levels.append(val)
         grid_levels.append(col_levels)
 
-    # Calculate total contributions count
-    total_contributions = sum(sum(col) for col in grid_levels) * 3 + random.randint(400, 1200)
+    total_contributions = sum(sum(col) for col in grid_levels) * 3 + random.randint(500, 1400)
 
     svg_lines = [
         f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}" width="{width}" height="{height}">',
         '  <defs>',
-        '    <!-- Glow Filters for Level 3 and Level 4 squares -->',
+        '    <!-- Ambient Hologram Glow Filters -->',
         '    <filter id="glow-l3" x="-50%" y="-50%" width="200%" height="200%">',
-        '      <feGaussianBlur stdDeviation="2" result="blur" />',
-        '      <feMerge>',
-        '        <feMergeNode in="blur" />',
-        '        <feMergeNode in="SourceGraphic" />',
-        '      </feMerge>',
+        '      <feGaussianBlur stdDeviation="2.5" result="blur" />',
+        '      <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>',
         '    </filter>',
         '    <filter id="glow-l4" x="-100%" y="-100%" width="300%" height="300%">',
-        '      <feGaussianBlur stdDeviation="3.5" result="blur1" />',
-        '      <feGaussianBlur stdDeviation="1.5" result="blur2" />',
-        '      <feMerge>',
-        '        <feMergeNode in="blur1" />',
-        '        <feMergeNode in="blur2" />',
-        '        <feMergeNode in="SourceGraphic" />',
-        '      </feMerge>',
+        '      <feGaussianBlur stdDeviation="4" result="blur1" />',
+        '      <feGaussianBlur in="SourceGraphic" stdDeviation="1.5" result="blur2" />',
+        '      <feMerge><feMergeNode in="blur1" /><feMergeNode in="blur2" /><feMergeNode in="SourceGraphic" /></feMerge>',
         '    </filter>',
-        '    <!-- Glassmorphism Card Gradient -->',
-        '    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">',
-        '      <stop offset="0%" stop-color="#161b22" stop-opacity="0.95"/>',
-        '      <stop offset="100%" stop-color="#0d1117" stop-opacity="0.98"/>',
+        '    <linearGradient id="bg-space" x1="0%" y1="0%" x2="100%" y2="100%">',
+        '      <stop offset="0%" stop-color="#0b1120"/>',
+        '      <stop offset="50%" stop-color="#070a14"/>',
+        '      <stop offset="100%" stop-color="#03050a"/>',
         '    </linearGradient>',
-        '    <linearGradient id="border-grad" x1="0%" y1="0%" x2="100%" y2="0%">',
-        '      <stop offset="0%" stop-color="#30363d"/>',
-        '      <stop offset="50%" stop-color="#00f3ff" stop-opacity="0.6"/>',
-        '      <stop offset="100%" stop-color="#30363d"/>',
+        '    <linearGradient id="border-neon" x1="0%" y1="0%" x2="100%" y2="0%">',
+        '      <stop offset="0%" stop-color="#00f0ff"/>',
+        '      <stop offset="50%" stop-color="#ff007f"/>',
+        '      <stop offset="100%" stop-color="#7928ca"/>',
+        '    </linearGradient>',
+        '    <linearGradient id="laser-sweep" x1="0%" y1="0%" x2="0%" y2="100%">',
+        '      <stop offset="0%" stop-color="#00f0ff" stop-opacity="0"/>',
+        '      <stop offset="50%" stop-color="#00f0ff" stop-opacity="0.8"/>',
+        '      <stop offset="100%" stop-color="#00f0ff" stop-opacity="0"/>',
         '    </linearGradient>',
         '  </defs>',
         '',
         '  <style>',
-        '    .title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 14px; font-weight: 600; fill: #f0f6fc; }',
-        '    .sub-title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 11px; fill: #8b949e; }',
-        '    .month-label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 9px; fill: #8b949e; }',
-        '    .day-label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 9px; fill: #8b949e; }',
-        '    .legend-label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 9px; fill: #8b949e; }',
+        '    .title { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 13px; font-weight: 700; fill: #f0f6fc; letter-spacing: 0.5px; }',
+        '    .sub-title { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; fill: #00f0ff; font-weight: 600; }',
+        '    .month-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 9px; fill: #8b949e; }',
+        '    .day-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 9px; fill: #8b949e; }',
+        '    .legend-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 9px; fill: #8b949e; }',
         '  </style>',
         '',
-        '  <!-- Outer Card Frame -->',
-        f'  <rect x="2" y="2" width="{width-4}" height="{height-4}" rx="10" fill="url(#bg-grad)" stroke="url(#border-grad)" stroke-width="1.5"/>',
+        '  <!-- Glass Container Background -->',
+        f'  <rect x="2" y="2" width="{width-4}" height="{height-4}" rx="12" fill="url(#bg-space)" stroke="url(#border-neon)" stroke-width="1.5"/>',
         '',
-        '  <!-- Header Text -->',
-        f'  <text x="20" y="24" class="title">Contribution Activity</text>',
-        f'  <text x="{width-20}" y="24" class="sub-title" text-anchor="end">{total_contributions:,} contributions in the last year</text>',
+        '  <!-- Cyber Corner HUD Accents -->',
+        '  <path d="M 6 18 L 6 6 L 18 6" fill="none" stroke="#00f0ff" stroke-width="2"/>',
+        f'  <path d="M {width-18} 6 L {width-6} 6 L {width-6} 18" fill="none" stroke="#ff007f" stroke-width="2"/>',
+        f'  <path d="M 6 {height-18} L 6 {height-6} L 18 {height-6}" fill="none" stroke="#ff007f" stroke-width="2"/>',
+        f'  <path d="M {width-18} {height-6} L {width-6} {height-6} L {width-6} {height-18}" fill="none" stroke="#00f0ff" stroke-width="2"/>',
+        '',
+        '  <!-- Live Status Pill Header -->',
+        '  <g transform="translate(20, 24)">',
+        '    <circle cx="0" cy="-4" r="4" fill="#00ff66">',
+        '      <animate attributeName="opacity" values="0.4;1;0.4" dur="1.5s" repeatCount="indefinite"/>',
+        '    </circle>',
+        '    <text x="12" y="0" class="title">HOLOGRAPHIC CONTRIBUTION MATRIX</text>',
+        '  </g>',
+        f'  <text x="{width-20}" y="24" class="sub-title" text-anchor="end">{total_contributions:,} COMMITS / YEAR</text>',
         ''
     ]
 
-    # Month Labels
     months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     for i, month in enumerate(months):
         x_pos = margin_left + int(i * (cols / 12) * (square_size + gap))
-        svg_lines.append(f'  <text x="{x_pos}" y="{margin_top - 8}" class="month-label">{month}</text>')
+        svg_lines.append(f'  <text x="{x_pos}" y="{margin_top - 10}" class="month-label">{month}</text>')
 
-    # Day Labels (Mon, Wed, Fri)
     day_names = [("Mon", 1), ("Wed", 3), ("Fri", 5)]
     for d_name, d_idx in day_names:
         y_pos = margin_top + d_idx * (square_size + gap) + 9
         svg_lines.append(f'  <text x="12" y="{y_pos}" class="day-label">{d_name}</text>')
 
-    # Generate Grid Squares with SMIL Animations
-    # Slant reveal: delay based on (c + (6 - r))
-    svg_lines.append('  <!-- Contribution Squares Grid -->')
+    svg_lines.append('  <!-- Contribution Matrix Cells -->')
     svg_lines.append('  <g>')
 
     for c in range(cols):
@@ -221,33 +215,45 @@ def generate_contribution_svg(username, output_file="github-contribution-animati
             elif lvl == 4:
                 filter_attr = ' filter="url(#glow-l4)"'
 
-            # Diagonal distance calculation for slant reveal animation
             diag_idx = c + (rows - 1 - r)
-            start_delay = round(diag_idx * 0.025, 3)
+            start_delay = round(diag_idx * 0.02, 3)
 
-            # Square Base with SMIL scale and opacity slant reveal
             sq_html = (
                 f'    <rect x="{x}" y="{y}" width="{square_size}" height="{square_size}" rx="2.5" '
                 f'fill="{fill_color}" opacity="0"{filter_attr}>\n'
-                f'      <animate attributeName="opacity" values="0; 1" dur="0.3s" begin="{start_delay}s" fill="freeze"/>\n'
-                f'      <animateTransform attributeName="transform" type="scale" values="0.1; 1.2; 1" keyTimes="0; 0.7; 1" '
-                f'dur="0.35s" begin="{start_delay}s" fill="freeze" transform-origin="{cx}px {cy}px"/>\n'
+                f'      <animate attributeName="opacity" values="0; 1" dur="0.25s" begin="{start_delay}s" fill="freeze"/>\n'
+                f'      <animateTransform attributeName="transform" type="scale" values="0.1; 1.25; 1" keyTimes="0; 0.7; 1" '
+                f'dur="0.3s" begin="{start_delay}s" fill="freeze" transform-origin="{cx}px {cy}px"/>\n'
                 f'    </rect>'
             )
             svg_lines.append(sq_html)
 
-            # Specular Glint Highlight Flash Overlay
-            glint_color = "#ffffff" if lvl < 3 else COLORS["emerald"]
+            # Specular Glint Overlay Flash
+            glint_color = "#ffffff" if lvl < 3 else COLORS["neon_cyan"]
             glint_html = (
                 f'    <rect x="{x}" y="{y}" width="{square_size}" height="{square_size}" rx="2.5" '
                 f'fill="{glint_color}" opacity="0" pointer-events="none">\n'
                 f'      <animate attributeName="opacity" values="0; 0.95; 0" keyTimes="0; 0.3; 1" '
-                f'dur="0.4s" begin="{round(start_delay + 0.05, 3)}s" fill="freeze"/>\n'
+                f'dur="0.35s" begin="{round(start_delay + 0.04, 3)}s" fill="freeze"/>\n'
                 f'    </rect>'
             )
             svg_lines.append(glint_html)
 
     svg_lines.append('  </g>')
+
+    # Horizontal Scanning Laser Beam (Sweeps Left to Right)
+    laser_start_x = margin_left
+    laser_end_x = width - 20
+    laser_y = margin_top - 5
+    laser_h = rows * (square_size + gap) + 10
+
+    svg_lines.extend([
+        '  <!-- Laser Scanning Beam Effect -->',
+        f'  <rect x="{laser_start_x}" y="{laser_y}" width="3" height="{laser_h}" fill="url(#laser-sweep)" opacity="0.85">',
+        f'    <animate attributeName="x" values="{laser_start_x}; {laser_end_x}; {laser_start_x}" dur="4.5s" repeatCount="indefinite"/>',
+        '  </rect>',
+        ''
+    ])
 
     # Legend at bottom right
     legend_y = height - 15
@@ -265,53 +271,59 @@ def generate_contribution_svg(username, output_file="github-contribution-animati
         f.write('\n'.join(svg_lines))
     print(f"[✓] Successfully generated '{output_file}'")
 
-# --- 3. SVG GENERATOR: FILE 2 - terminal-card.svg ---
+# --- 3. SVG GENERATOR 2: CYBER HUD TERMINAL & ASCII PORTRAIT ---
 def generate_terminal_card_svg(username, ascii_lines, output_file="terminal-card.svg"):
-    """
-    Generates an animated macOS-style terminal card featuring the ASCII portrait.
-    Features: row-by-row top-to-bottom reveal, sweeping cursor block, and typewriter footer.
-    """
     width = 440
-    height = 430
+    height = 440
     
-    # Format ASCII lines safely for XML
     safe_lines = [html.escape(line) for line in ascii_lines]
     
     svg_lines = [
         f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}" width="{width}" height="{height}">',
         '  <defs>',
-        '    <linearGradient id="term-bg" x1="0%" y1="0%" x2="100%" y2="100%">',
-        '      <stop offset="0%" stop-color="#161b22" stop-opacity="0.98"/>',
-        '      <stop offset="100%" stop-color="#0d1117" stop-opacity="0.99"/>',
+        '    <linearGradient id="term-bg-space" x1="0%" y1="0%" x2="100%" y2="100%">',
+        '      <stop offset="0%" stop-color="#0d1424" stop-opacity="0.98"/>',
+        '      <stop offset="100%" stop-color="#050812" stop-opacity="0.99"/>',
         '    </linearGradient>',
-        '    <linearGradient id="term-border" x1="0%" y1="0%" x2="0%" y2="100%">',
-        '      <stop offset="0%" stop-color="#00f3ff" stop-opacity="0.5"/>',
-        '      <stop offset="50%" stop-color="#30363d" stop-opacity="0.8"/>',
-        '      <stop offset="100%" stop-color="#a371f7" stop-opacity="0.4"/>',
+        '    <linearGradient id="hud-border" x1="0%" y1="0%" x2="100%" y2="100%">',
+        '      <stop offset="0%" stop-color="#00f0ff"/>',
+        '      <stop offset="50%" stop-color="#ff007f"/>',
+        '      <stop offset="100%" stop-color="#7928ca"/>',
+        '    </linearGradient>',
+        '    <linearGradient id="laser-line-grad" x1="0%" y1="0%" x2="100%" y2="0%">',
+        '      <stop offset="0%" stop-color="#00f0ff" stop-opacity="0"/>',
+        '      <stop offset="50%" stop-color="#00f0ff" stop-opacity="0.9"/>',
+        '      <stop offset="100%" stop-color="#ff007f" stop-opacity="0"/>',
         '    </linearGradient>',
         '  </defs>',
         '',
         '  <style>',
-        '    .term-header-title { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; fill: #8b949e; font-weight: 600; }',
+        '    .term-title { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; fill: #00f0ff; font-weight: 700; letter-spacing: 0.8px; }',
         '    .ascii-text { font-family: "Courier New", Courier, ui-monospace, monospace; font-size: 10px; font-weight: bold; white-space: pre; }',
-        '    .prompt-user { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 12px; font-weight: bold; fill: #39d353; }',
-        '    .prompt-host { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 12px; font-weight: bold; fill: #00f3ff; }',
-        '    .prompt-cmd { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 12px; fill: #f0f6fc; }',
-        '    .prompt-out { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 12px; font-weight: bold; fill: #00f3ff; }',
+        '    .prompt-user { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11.5px; font-weight: bold; fill: #ff007f; }',
+        '    .prompt-host { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11.5px; font-weight: bold; fill: #00f0ff; }',
+        '    .prompt-cmd { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11.5px; fill: #f0f6fc; }',
+        '    .prompt-out { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11.5px; font-weight: bold; fill: #00ff66; }',
         '  </style>',
         '',
-        '  <!-- Terminal Outer Window Frame -->',
-        f'  <rect x="2" y="2" width="{width-4}" height="{height-4}" rx="12" fill="url(#term-bg)" stroke="url(#term-border)" stroke-width="1.5"/>',
+        '  <!-- Terminal Window Frame -->',
+        f'  <rect x="2" y="2" width="{width-4}" height="{height-4}" rx="12" fill="url(#term-bg-space)" stroke="url(#hud-border)" stroke-width="1.5"/>',
         '',
-        '  <!-- macOS Control Buttons Bar -->',
-        '  <path d="M 2 2 L 438 2 L 438 34 L 2 34 Z" fill="#1c2128" clip-path="inset(0 0 0 0 round 12px 12px 0 0)"/>',
-        '  <circle cx="18" cy="18" r="5.5" fill="#ff5f56"/>',
-        '  <circle cx="34" cy="18" r="5.5" fill="#ffbd2e"/>',
-        '  <circle cx="50" cy="18" r="5.5" fill="#27c93f"/>',
-        f'  <text x="{width/2}" y="22" class="term-header-title" text-anchor="middle">zsh — {username}@ascii-terminal ~ 80x24</text>',
-        '  <line x1="2" y1="34" x2="438" y2="34" stroke="#30363d" stroke-width="1"/>',
+        '  <!-- Cyber Corner HUD Accents -->',
+        '  <path d="M 6 18 L 6 6 L 18 6" fill="none" stroke="#00f0ff" stroke-width="2"/>',
+        f'  <path d="M {width-18} 6 L {width-6} 6 L {width-6} 18" fill="none" stroke="#ff007f" stroke-width="2"/>',
+        f'  <path d="M 6 {height-18} L 6 {height-6} L 18 {height-6}" fill="none" stroke="#ff007f" stroke-width="2"/>',
+        f'  <path d="M {width-18} {height-6} L {width-6} {height-6} L {width-6} {height-18}" fill="none" stroke="#00f0ff" stroke-width="2"/>',
         '',
-        '  <!-- ASCII Portrait Terminal Output Area -->',
+        '  <!-- Header Control Bar -->',
+        '  <path d="M 2 2 L 438 2 L 438 34 L 2 34 Z" fill="#141c2e" clip-path="inset(0 0 0 0 round 12px 12px 0 0)"/>',
+        '  <circle cx="18" cy="18" r="5" fill="#ff5f56"/>',
+        '  <circle cx="34" cy="18" r="5" fill="#ffbd2e"/>',
+        '  <circle cx="50" cy="18" r="5" fill="#27c93f"/>',
+        f'  <text x="{width/2}" y="22" class="term-title" text-anchor="middle">SYS://OPTICAL_TERMINAL.v3 [LIVE]</text>',
+        '  <line x1="2" y1="34" x2="438" y2="34" stroke="#1f293d" stroke-width="1"/>',
+        '',
+        '  <!-- ASCII Portrait Terminal Area -->',
         '  <g transform="translate(20, 50)">'
     ]
 
@@ -321,73 +333,71 @@ def generate_terminal_card_svg(username, ascii_lines, output_file="terminal-card
 
     for i, line in enumerate(safe_lines):
         y_pos = y_start + i * line_height
-        delay = round(0.1 + i * 0.06, 3)
+        delay = round(0.1 + i * 0.05, 3)
         
         ratio = i / max(num_rows - 1, 1)
         if ratio < 0.33:
-            line_color = COLORS["cyan"]
+            line_color = COLORS["neon_cyan"]
         elif ratio < 0.66:
-            line_color = COLORS["emerald"]
+            line_color = COLORS["neon_pink"]
         else:
-            line_color = COLORS["purple"]
+            line_color = COLORS["neon_purple"]
 
         line_html = (
             f'    <text x="0" y="{y_pos}" class="ascii-text" fill="{line_color}" opacity="0">\n'
             f'      {line}\n'
             f'      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="{delay}s" fill="freeze"/>\n'
-            f'      <animateTransform attributeName="transform" type="translate" values="-8 0; 0 0" '
-            f'dur="0.12s" begin="{delay}s" fill="freeze"/>\n'
+            f'      <animateTransform attributeName="transform" type="translate" values="-10 0; 0 0" dur="0.12s" begin="{delay}s" fill="freeze"/>\n'
             f'    </text>'
         )
         svg_lines.append(line_html)
 
-    # Sweeping Cursor Block alongside ASCII reveal
-    cursor_start_y = y_start - 10
-    cursor_end_y = y_start + (num_rows - 1) * line_height - 10
-    total_reveal_time = round(0.1 + num_rows * 0.06, 3)
+    # Laser scanner line moving vertically across ASCII portrait
+    scan_y_start = y_start - 5
+    scan_y_end = y_start + (num_rows - 1) * line_height + 5
+    total_reveal_time = round(0.1 + num_rows * 0.05, 3)
 
-    cursor_html = (
-        f'    <!-- Sweeping Reveal Cursor -->\n'
-        f'    <rect x="0" y="{cursor_start_y}" width="8" height="12" fill="#ffffff" opacity="0.9">\n'
-        f'      <animate attributeName="y" values="{cursor_start_y}; {cursor_end_y}" dur="{total_reveal_time}s" begin="0.1s" fill="freeze"/>\n'
-        f'      <animate attributeName="opacity" values="0.9; 0.9; 0" keyTimes="0; 0.95; 1" dur="{total_reveal_time + 0.2}s" begin="0.1s" fill="freeze"/>\n'
+    laser_scan_html = (
+        f'    <!-- Optical Laser Scanner Bar -->\n'
+        f'    <rect x="0" y="{scan_y_start}" width="390" height="2" fill="url(#laser-line-grad)" opacity="0.95">\n'
+        f'      <animate attributeName="y" values="{scan_y_start}; {scan_y_end}; {scan_y_start}" dur="3.2s" begin="0.1s" repeatCount="indefinite"/>\n'
         f'    </rect>'
     )
-    svg_lines.append(cursor_html)
+    svg_lines.append(laser_scan_html)
     svg_lines.append('  </g>')
 
-    # Footer Section: Typewriter $ whoami -> username
+    # Footer Section: Command Prompt Typewriter
     footer_y = height - 55
-    typewriter_delay = round(total_reveal_time + 0.2, 3)
+    typewriter_delay = round(total_reveal_time + 0.15, 3)
 
     svg_lines.extend([
         '',
         '  <!-- Terminal Footer Typewriter Command Prompt -->',
-        '  <line x1="15" y1="' + str(footer_y - 15) + '" x2="425" y2="' + str(footer_y - 15) + '" stroke="#21262d" stroke-width="1"/>',
+        '  <line x1="15" y1="' + str(footer_y - 15) + '" x2="425" y2="' + str(footer_y - 15) + '" stroke="#1f293d" stroke-width="1"/>',
         f'  <g transform="translate(20, {footer_y})">',
         '    <text x="0" y="0">',
-        '      <tspan class="prompt-user">developer</tspan>',
-        '      <tspan class="prompt-cmd">@cyber-term</tspan>',
+        '      <tspan class="prompt-user">cyber</tspan>',
+        '      <tspan class="prompt-cmd">@node-x</tspan>',
         '      <tspan class="prompt-user">:</tspan>',
         '      <tspan class="prompt-host">~</tspan>',
         '      <tspan class="prompt-cmd">$ </tspan>',
         '    </text>',
         '',
-        '    <!-- Typewriter Command: whoami -->',
-        f'    <text x="145" y="0" class="prompt-cmd" opacity="0">',
-        '      whoami',
+        '    <!-- Typewriter Command -->',
+        f'    <text x="125" y="0" class="prompt-cmd" opacity="0">',
+        '      whoami --verbose',
         f'      <animate attributeName="opacity" values="0; 1" dur="0.2s" begin="{typewriter_delay}s" fill="freeze"/>',
         '    </text>',
         '',
-        '    <!-- Command Output: username result -->',
+        '    <!-- Command Output -->',
         f'    <text x="0" y="24" class="prompt-out" opacity="0">',
-        f'      &gt; {html.escape(username)}',
-        f'      <animate attributeName="opacity" values="0; 1" dur="0.25s" begin="{typewriter_delay + 0.3}s" fill="freeze"/>',
+        f'      &gt; USER: {html.escape(username)} | STATUS: ACTIVE',
+        f'      <animate attributeName="opacity" values="0; 1" dur="0.25s" begin="{typewriter_delay + 0.25}s" fill="freeze"/>',
         '    </text>',
         '',
-        '    <!-- Blinking Cursor Block -->',
-        f'    <rect x="{15 + len(username)*8.5}" y="13" width="8" height="13" fill="#00f3ff" opacity="0">',
-        f'      <animate attributeName="opacity" values="0; 1; 1; 0" keyTimes="0; 0.1; 0.5; 1" dur="0.8s" begin="{typewriter_delay + 0.35}s" repeatCount="indefinite"/>',
+        '    <!-- Blinking Neon Cursor -->',
+        f'    <rect x="{15 + (len(username)+18)*7.5}" y="13" width="8" height="13" fill="#00f0ff" opacity="0">',
+        f'      <animate attributeName="opacity" values="0; 1; 1; 0" keyTimes="0; 0.1; 0.5; 1" dur="0.8s" begin="{typewriter_delay + 0.3}s" repeatCount="indefinite"/>',
         '    </rect>',
         '  </g>',
         '</svg>'
@@ -397,83 +407,91 @@ def generate_terminal_card_svg(username, ascii_lines, output_file="terminal-card
         f.write('\n'.join(svg_lines))
     print(f"[✓] Successfully generated '{output_file}'")
 
-# --- 4. SVG GENERATOR: FILE 3 - info-card.svg ---
+# --- 4. SVG GENERATOR 3: GLASSMOPHIC SKILL HUD CARD ---
 def generate_info_card_svg(username, output_file="info-card.svg"):
-    """
-    Generates a Neofetch-style system info card with staggered line SMIL reveals
-    and vibrant cyberpunk developer details.
-    """
     width = 440
-    height = 430
+    height = 440
+
+    skills = [
+        ("Python & AI Agents", 95, COLORS["neon_cyan"], COLORS["neon_pink"]),
+        ("TypeScript & React", 92, COLORS["neon_pink"], COLORS["neon_purple"]),
+        ("System Architecture", 88, COLORS["neon_purple"], COLORS["neon_blue"]),
+        ("Docker & Cloud Dev", 85, COLORS["neon_gold"], COLORS["neon_green"]),
+    ]
 
     info_rows = [
-        ("OS", "CyberOS 2026.7 (x86_64 Linux)", COLORS["orange"]),
-        ("Host", "GitHub Cloud Workstation", COLORS["yellow"]),
-        ("Kernel", "5.19.0-cyber-agent-v6", COLORS["green"]),
-        ("Uptime", "99.9% Continuous Deployment", COLORS["emerald"]),
-        ("Role", "Senior Full-Stack & Systems Engineer", COLORS["cyan"]),
-        ("Languages", "Python • TypeScript • Rust • Go", COLORS["blue"]),
-        ("Frameworks", "React • Next.js • Node • FastAPI", COLORS["purple"]),
-        ("DevOps", "Docker • Kubernetes • CI/CD • AWS", COLORS["magenta"]),
-        ("Status", "Building high-performance tools", COLORS["text_bright"]),
+        ("OS", "CyberOS 2026.7 (x86_64)", COLORS["neon_pink"]),
+        ("Host", "GitHub Cloud Workstation", COLORS["neon_gold"]),
+        ("Kernel", "5.19.0-cyber-node-v6", COLORS["neon_green"]),
+        ("Role", "Senior Full-Stack & Systems Dev", COLORS["neon_cyan"]),
+        ("Focus", "AI Agents • High-Perf SVGs • WebApp", COLORS["neon_purple"]),
+        ("Status", "100% OPERATIONAL", COLORS["neon_green"]),
     ]
 
     svg_lines = [
         f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}" width="{width}" height="{height}">',
         '  <defs>',
-        '    <linearGradient id="info-bg" x1="0%" y1="0%" x2="100%" y2="100%">',
-        '      <stop offset="0%" stop-color="#161b22" stop-opacity="0.98"/>',
-        '      <stop offset="100%" stop-color="#0d1117" stop-opacity="0.99"/>',
+        '    <linearGradient id="info-bg-space" x1="0%" y1="0%" x2="100%" y2="100%">',
+        '      <stop offset="0%" stop-color="#0d1424" stop-opacity="0.98"/>',
+        '      <stop offset="100%" stop-color="#050812" stop-opacity="0.99"/>',
         '    </linearGradient>',
-        '    <linearGradient id="info-border" x1="0%" y1="0%" x2="100%" y2="100%">',
-        '      <stop offset="0%" stop-color="#ff7b72" stop-opacity="0.4"/>',
-        '      <stop offset="50%" stop-color="#30363d" stop-opacity="0.8"/>',
-        '      <stop offset="100%" stop-color="#00f3ff" stop-opacity="0.5"/>',
+        '    <linearGradient id="info-hud-border" x1="0%" y1="0%" x2="100%" y2="100%">',
+        '      <stop offset="0%" stop-color="#ff007f"/>',
+        '      <stop offset="50%" stop-color="#00f0ff"/>',
+        '      <stop offset="100%" stop-color="#7928ca"/>',
         '    </linearGradient>',
         '  </defs>',
         '',
         '  <style>',
-        '    .info-header { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 14px; font-weight: bold; }',
-        '    .info-key { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11.5px; font-weight: bold; }',
-        '    .info-val { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11.5px; fill: #c9d1d9; }',
-        '    .palette-box { rx: 3px; }',
+        '    .info-header { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 13px; font-weight: bold; }',
+        '    .section-title { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 10.5px; font-weight: bold; fill: #8b949e; letter-spacing: 1px; }',
+        '    .info-key { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; font-weight: bold; }',
+        '    .info-val { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; fill: #c9d1d9; }',
+        '    .skill-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 10px; font-weight: bold; fill: #f0f6fc; }',
+        '    .skill-pct { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 10px; font-weight: bold; fill: #00f0ff; }',
         '  </style>',
         '',
         '  <!-- Window Outer Frame -->',
-        f'  <rect x="2" y="2" width="{width-4}" height="{height-4}" rx="12" fill="url(#info-bg)" stroke="url(#info-border)" stroke-width="1.5"/>',
+        f'  <rect x="2" y="2" width="{width-4}" height="{height-4}" rx="12" fill="url(#info-bg-space)" stroke="url(#info-hud-border)" stroke-width="1.5"/>',
+        '',
+        '  <!-- Cyber Corner HUD Accents -->',
+        '  <path d="M 6 18 L 6 6 L 18 6" fill="none" stroke="#ff007f" stroke-width="2"/>',
+        f'  <path d="M {width-18} 6 L {width-6} 6 L {width-6} 18" fill="none" stroke="#00f0ff" stroke-width="2"/>',
+        f'  <path d="M 6 {height-18} L 6 {height-6} L 18 {height-6}" fill="none" stroke="#00f0ff" stroke-width="2"/>',
+        f'  <path d="M {width-18} {height-6} L {width-6} {height-6} L {width-6} {height-18}" fill="none" stroke="#ff007f" stroke-width="2"/>',
         '',
         '  <!-- Header Title: user@github-node -->',
-        '  <g transform="translate(25, 42)">',
+        '  <g transform="translate(22, 38)">',
         '    <text class="info-header">',
-        f'      <tspan fill="{COLORS["orange"]}">{html.escape(username)}</tspan>',
+        f'      <tspan fill="{COLORS["neon_pink"]}">{html.escape(username)}</tspan>',
         f'      <tspan fill="{COLORS["text_bright"]}">@</tspan>',
-        f'      <tspan fill="{COLORS["cyan"]}">github-node-01</tspan>',
+        f'      <tspan fill="{COLORS["neon_cyan"]}">CYBER-NODE-X</tspan>',
         '    </text>',
         '    ',
-        '    <!-- Neofetch Separator Bar -->',
+        '    <!-- Multi-Segment Neofetch Accent Line -->',
         '    <g transform="translate(0, 10)">',
-        '      <rect x="0" y="0" width="60" height="2" fill="' + COLORS["orange"] + '"/>',
-        '      <rect x="60" y="0" width="60" height="2" fill="' + COLORS["yellow"] + '"/>',
-        '      <rect x="120" y="0" width="60" height="2" fill="' + COLORS["green"] + '"/>',
-        '      <rect x="180" y="0" width="60" height="2" fill="' + COLORS["cyan"] + '"/>',
-        '      <rect x="240" y="0" width="60" height="2" fill="' + COLORS["purple"] + '"/>',
-        '      <rect x="300" y="0" width="85" height="2" fill="' + COLORS["magenta"] + '"/>',
+        '      <rect x="0" y="0" width="65" height="2" fill="' + COLORS["neon_pink"] + '"/>',
+        '      <rect x="65" y="0" width="65" height="2" fill="' + COLORS["neon_gold"] + '"/>',
+        '      <rect x="130" y="0" width="65" height="2" fill="' + COLORS["neon_green"] + '"/>',
+        '      <rect x="195" y="0" width="65" height="2" fill="' + COLORS["neon_cyan"] + '"/>',
+        '      <rect x="260" y="0" width="65" height="2" fill="' + COLORS["neon_purple"] + '"/>',
+        '      <rect x="325" y="0" width="70" height="2" fill="' + COLORS["neon_blue"] + '"/>',
         '    </g>',
         '  </g>',
         '',
-        '  <!-- Neofetch Info Rows with Staggered SMIL Slide-up & Fade-in -->',
-        '  <g transform="translate(25, 80)">'
+        '  <!-- SECTION 1: SYSTEM INFO -->',
+        '  <g transform="translate(22, 70)">'
     ]
 
-    y_spacing = 28
+    y_spacing = 22
     for i, (key, val, color) in enumerate(info_rows):
         y_pos = i * y_spacing
-        delay = round(0.15 + i * 0.06, 3)
+        delay = round(0.12 + i * 0.05, 3)
 
         row_html = (
             f'    <g opacity="0">\n'
-            f'      <text x="0" y="{y_pos}" class="info-key" fill="{color}">{key.ljust(11)}:</text>\n'
-            f'      <text x="110" y="{y_pos}" class="info-val">{html.escape(val)}</text>\n'
+            f'      <text x="0" y="{y_pos}" class="info-key" fill="{color}">{key.ljust(9)}:</text>\n'
+            f'      <text x="95" y="{y_pos}" class="info-val">{html.escape(val)}</text>\n'
             f'      <animate attributeName="opacity" values="0; 1" dur="0.2s" begin="{delay}s" fill="freeze"/>\n'
             f'      <animateTransform attributeName="transform" type="translate" values="0 6; 0 0" dur="0.2s" begin="{delay}s" fill="freeze"/>\n'
             f'    </g>'
@@ -482,26 +500,69 @@ def generate_info_card_svg(username, output_file="info-card.svg"):
 
     svg_lines.append('  </g>')
 
-    # Palette blocks at bottom
-    palette_colors = [
-        COLORS["red"], COLORS["orange"], COLORS["yellow"], COLORS["green"],
-        COLORS["cyan"], COLORS["blue"], COLORS["purple"], COLORS["text_bright"]
-    ]
-    
-    palette_y = height - 50
+    # SECTION 2: ANIMATED SKILL BARS
+    skills_start_y = 220
     svg_lines.extend([
         '',
-        '  <!-- Bottom Terminal Palette Swatches -->',
-        f'  <g transform="translate(25, {palette_y})">',
+        f'  <!-- SECTION 2: SKILL MATRIX BARS -->',
+        f'  <g transform="translate(22, {skills_start_y})">',
+        '    <text x="0" y="0" class="section-title">// TECH SKILL MATRIX</text>',
+        '  </g>',
+        f'  <g transform="translate(22, {skills_start_y + 15})">'
+    ])
+
+    max_bar_width = 240
+    for s_idx, (skill_name, pct, c1, c2) in enumerate(skills):
+        sy = s_idx * 32
+        target_w = int(max_bar_width * (pct / 100))
+        s_delay = round(0.15 + len(info_rows) * 0.05 + s_idx * 0.08, 3)
+        grad_id = f"skill-grad-{s_idx}"
+
+        # Create gradient def for skill bar
+        svg_lines.insert(8, (
+            f'    <linearGradient id="{grad_id}" x1="0%" y1="0%" x2="100%" y2="0%">\n'
+            f'      <stop offset="0%" stop-color="{c1}"/>\n'
+            f'      <stop offset="100%" stop-color="{c2}"/>\n'
+            f'    </linearGradient>'
+        ))
+
+        skill_html = (
+            f'    <g opacity="0">\n'
+            f'      <text x="0" y="{sy}" class="skill-label">{skill_name}</text>\n'
+            f'      <text x="{width-45}" y="{sy}" class="skill-pct" text-anchor="end">{pct}%</text>\n'
+            f'      <!-- Background Bar Track -->\n'
+            f'      <rect x="0" y="{sy+6}" width="{max_bar_width+90}" height="8" rx="4" fill="#141c2e"/>\n'
+            f'      <!-- Animated Progress Bar -->\n'
+            f'      <rect x="0" y="{sy+6}" width="0" height="8" rx="4" fill="url(#{grad_id})">\n'
+            f'        <animate attributeName="width" values="0; {target_w+90}" dur="0.8s" begin="{s_delay}s" fill="freeze"/>\n'
+            f'      </rect>\n'
+            f'      <animate attributeName="opacity" values="0; 1" dur="0.2s" begin="{s_delay}s" fill="freeze"/>\n'
+            f'    </g>'
+        )
+        svg_lines.append(skill_html)
+
+    svg_lines.append('  </g>')
+
+    # Bottom Terminal Palette Swatches
+    palette_colors = [
+        COLORS["neon_pink"], COLORS["neon_gold"], COLORS["neon_green"],
+        COLORS["neon_cyan"], COLORS["neon_blue"], COLORS["neon_purple"], COLORS["text_bright"]
+    ]
+    
+    palette_y = height - 42
+    svg_lines.extend([
+        '',
+        '  <!-- Bottom Palette Swatches -->',
+        f'  <g transform="translate(22, {palette_y})">',
     ])
 
     for p_idx, p_color in enumerate(palette_colors):
-        px = p_idx * 44
-        p_delay = round(0.15 + len(info_rows) * 0.06 + p_idx * 0.04, 3)
+        px = p_idx * 52
+        p_delay = round(0.5 + p_idx * 0.04, 3)
         p_html = (
-            f'    <rect x="{px}" y="0" width="36" height="14" rx="3" fill="{p_color}" opacity="0">\n'
+            f'    <rect x="{px}" y="0" width="42" height="12" rx="3" fill="{p_color}" opacity="0">\n'
             f'      <animate attributeName="opacity" values="0; 1" dur="0.25s" begin="{p_delay}s" fill="freeze"/>\n'
-            f'      <animateTransform attributeName="transform" type="scale" values="0.2; 1" keyTimes="0; 1" dur="0.25s" begin="{p_delay}s" fill="freeze" transform-origin="{px+18}px 7px"/>\n'
+            f'      <animateTransform attributeName="transform" type="scale" values="0.2; 1" keyTimes="0; 1" dur="0.25s" begin="{p_delay}s" fill="freeze" transform-origin="{px+21}px 6px"/>\n'
             f'    </rect>'
         )
         svg_lines.append(p_html)
@@ -517,31 +578,27 @@ def generate_info_card_svg(username, output_file="info-card.svg"):
 
 # --- 5. README GENERATOR ---
 def generate_readme(username, readme_path="README.md"):
-    """
-    Creates / updates README.md with side-by-side table layout for cards
-    and centered contribution animation.
-    """
     content = f"""# <h1 align="center">✨ Hi there, I'm {username} 👋</h1>
 
 <p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=22&pause=1000&color=00F3FF&center=true&vcenter=true&width=600&lines=Full-Stack+Architect+%26+Systems+Developer;Building+Next-Gen+Interactive+Experiences;Cyberpunk+Aesthetics+%2B+High-Performance+Code" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=700&size=23&pause=1000&color=00F0FF&center=true&vcenter=true&width=650&lines=Full-Stack+Architect+%26+Systems+Developer;Building+Mind-Blowing+Interactive+Experiences;Cyberpunk+Aesthetics+%2B+High-Performance+Code" alt="Typing SVG" />
 </p>
 
 <p align="center">
   <a href="https://github.com/{username}">
-    <img src="https://img.shields.io/github/followers/{username}?label=Followers&style=for-the-badge&color=00f3ff&logo=github" alt="GitHub Followers"/>
+    <img src="https://img.shields.io/github/followers/{username}?label=Followers&style=for-the-badge&color=00f0ff&logo=github" alt="GitHub Followers"/>
   </a>
   <a href="https://github.com/{username}">
-    <img src="https://img.shields.io/github/stars/{username}?label=Total%20Stars&style=for-the-badge&color=ff9e3b&logo=star" alt="GitHub Stars"/>
+    <img src="https://img.shields.io/github/stars/{username}?label=Total%20Stars&style=for-the-badge&color=ff007f&logo=star" alt="GitHub Stars"/>
   </a>
   <a href="https://github.com/{username}">
-    <img src="https://img.shields.io/badge/Status-Active%20Building-39d353?style=for-the-badge&logo=terminal" alt="Status"/>
+    <img src="https://img.shields.io/badge/Status-100%25%20Operational-00ff66?style=for-the-badge&logo=terminal" alt="Status"/>
   </a>
 </p>
 
 <br />
 
-<!-- Side-by-Side Cards: Terminal ASCII Portrait + Neofetch Info Card -->
+<!-- Side-by-Side HUD Cards: Terminal ASCII Portrait + Glassmorphic Skill HUD -->
 <div align="center">
   <table border="0" cellspacing="0" cellpadding="0">
     <tr>
@@ -552,7 +609,7 @@ def generate_readme(username, readme_path="README.md"):
       </td>
       <td width="50%" align="center" valign="top" style="padding-left: 8px;">
         <a href="https://github.com/{username}">
-          <img src="./info-card.svg" alt="Neofetch Info Card" width="100%" />
+          <img src="./info-card.svg" alt="Glassmorphic Skill HUD" width="100%" />
         </a>
       </td>
     </tr>
@@ -561,10 +618,10 @@ def generate_readme(username, readme_path="README.md"):
 
 <br />
 
-<!-- Centered Animated Contribution Calendar -->
+<!-- Centered Holographic Contribution Matrix -->
 <div align="center">
   <a href="https://github.com/{username}">
-    <img src="./github-contribution-animation.svg" alt="GitHub Animated Contribution Graph" width="100%" />
+    <img src="./github-contribution-animation.svg" alt="GitHub Holographic Contribution Graph" width="100%" />
   </a>
 </div>
 
@@ -573,7 +630,7 @@ def generate_readme(username, readme_path="README.md"):
 ---
 
 <p align="center">
-  ⚡ <i>Generated with Cyberpunk Animated SVG Engine</i>
+  ⚡ <i>Powered by Cyberpunk Glassmorphic SVG Engine</i>
 </p>
 """
     with open(readme_path, 'w', encoding='utf-8') as f:
@@ -591,12 +648,10 @@ def main():
     outdir = args.outdir
     os.makedirs(outdir, exist_ok=True)
 
-    print(f"[+] Generating GitHub Profile SVGs for user '{username}'...")
+    print(f"[+] Generating Cyberpunk Glassmorphic SVGs for user '{username}'...")
 
-    # 1. Fetch ASCII Art
     ascii_lines = fetch_avatar_ascii(username)
 
-    # 2. Generate Files
     contrib_path = os.path.join(outdir, "github-contribution-animation.svg")
     terminal_path = os.path.join(outdir, "terminal-card.svg")
     info_path = os.path.join(outdir, "info-card.svg")
@@ -607,7 +662,7 @@ def main():
     generate_info_card_svg(username, info_path)
     generate_readme(username, readme_path)
 
-    print("[🎉] All tasks completed successfully!")
+    print("[🎉] All mind-blowing SVG cards generated successfully!")
 
 if __name__ == "__main__":
     main()
