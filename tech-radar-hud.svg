@@ -26,10 +26,8 @@
     .beacon-txt { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 9.5px; font-weight: bold; fill: #ffffff; }
   </style>
 
-  <!-- Window Outer Frame -->
   <rect x="2" y="2" width="436" height="436" rx="14" fill="url(#radar-bg)" stroke="url(#radar-border)" stroke-width="1.5"/>
 
-  <!-- Header -->
   <g transform="translate(20, 26)">
     <text x="0" y="0" class="hud-title">SCI-FI TECH SKILL RADAR</text>
     <text x="400" y="0" class="hud-sub" text-anchor="end">SYS://RADAR.v4</text>
@@ -42,7 +40,6 @@
   <line x1="55" y1="230" x2="385" y2="230" stroke="#00f0ff" stroke-opacity="0.25" stroke-width="1" stroke-dasharray="4 4"/>
   <line x1="220" y1="65" x2="220" y2="395" stroke="#00f0ff" stroke-opacity="0.25" stroke-width="1" stroke-dasharray="4 4"/>
 
-  <!-- 360 Degree Rotating Radar Beam -->
   <g transform="rotate(0 220 230)">
     <animateTransform attributeName="transform" type="rotate" from="0 220 230" to="360 220 230" dur="5s" repeatCount="indefinite"/>
     <path d="M 220 230 L 370 190 A 150 150 0 0 0 370 270 Z" fill="url(#beam-sweep-grad)"/>

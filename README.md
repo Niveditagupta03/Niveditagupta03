@@ -5,20 +5,16 @@
 </p>
 
 <!-- Hero Banner -->
-<div align="center">
-  <a href="https://github.com/Niveditagupta03">
-    <img src="https://raw.githubusercontent.com/Niveditagupta03/Niveditagupta03/main/cyber-hero-banner.svg" alt="Cyber Hero Banner" width="100%" />
-  </a>
-</div>
+<p align="center">
+  <img src="./cyber-hero-banner.svg" alt="Cyber Hero Banner" width="100%" />
+</p>
 
 <br />
 
 <!-- Animated Sci-Fi Activity Wave Graph -->
-<div align="center">
-  <a href="https://github.com/Niveditagupta03">
-    <img src="https://raw.githubusercontent.com/Niveditagupta03/Niveditagupta03/main/animated-wave-graph.svg" alt="Animated Sci-Fi Activity Wave Graph" width="100%" />
-  </a>
-</div>
+<p align="center">
+  <img src="./animated-wave-graph.svg" alt="Animated Sci-Fi Activity Wave Graph" width="100%" />
+</p>
 
 <br />
 
@@ -37,31 +33,17 @@
 <br />
 
 <!-- Side-by-Side HUD Cards: Skill Radar + Featured Pillars -->
-<div align="center">
-  <table border="0" cellspacing="0" cellpadding="0">
-    <tr>
-      <td width="50%" align="center" valign="top" style="padding-right: 8px;">
-        <a href="https://github.com/Niveditagupta03">
-          <img src="https://raw.githubusercontent.com/Niveditagupta03/Niveditagupta03/main/tech-radar-hud.svg" alt="Sci-Fi Tech Skill Radar" width="100%" />
-        </a>
-      </td>
-      <td width="50%" align="center" valign="top" style="padding-left: 8px;">
-        <a href="https://github.com/Niveditagupta03">
-          <img src="https://raw.githubusercontent.com/Niveditagupta03/Niveditagupta03/main/architecture-showcase.svg" alt="Featured Architecture Pillars" width="100%" />
-        </a>
-      </td>
-    </tr>
-  </table>
-</div>
+<p align="center">
+  <img src="./tech-radar-hud.svg" alt="Sci-Fi Tech Skill Radar" width="49%" />
+  <img src="./architecture-showcase.svg" alt="Featured Architecture Pillars" width="49%" />
+</p>
 
 <br />
 
 <!-- Centered Glass Metric Telemetry Strip -->
-<div align="center">
-  <a href="https://github.com/Niveditagupta03">
-    <img src="https://raw.githubusercontent.com/Niveditagupta03/Niveditagupta03/main/telemetry-metrics.svg" alt="Apple-Style Glass Metric Telemetry" width="100%" />
-  </a>
-</div>
+<p align="center">
+  <img src="./telemetry-metrics.svg" alt="Apple-Style Glass Metric Telemetry" width="100%" />
+</p>
 
 <br />
 
