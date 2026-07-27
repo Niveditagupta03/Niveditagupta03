@@ -1,181 +1,169 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 440" width="440" height="440">
   <defs>
-    <linearGradient id="term-bg-space" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0d1424" stop-opacity="0.98"/>
-      <stop offset="100%" stop-color="#050812" stop-opacity="0.99"/>
+    <filter id="sun-aura" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="8" result="blur1" />
+      <feGaussianBlur stdDeviation="3" result="blur2" />
+      <feMerge><feMergeNode in="blur1" /><feMergeNode in="blur2" /><feMergeNode in="SourceGraphic" /></feMerge>
+    </filter>
+    <filter id="planet-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+    </filter>
+    <linearGradient id="space-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#160829"/>
+      <stop offset="50%" stop-color="#070b18"/>
+      <stop offset="100%" stop-color="#030712"/>
     </linearGradient>
-    <linearGradient id="hud-border" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="orbit-border" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#00f0ff"/>
-      <stop offset="50%" stop-color="#ff007f"/>
-      <stop offset="100%" stop-color="#7928ca"/>
-    </linearGradient>
-    <linearGradient id="laser-line-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#00f0ff" stop-opacity="0"/>
-      <stop offset="50%" stop-color="#00f0ff" stop-opacity="0.9"/>
-      <stop offset="100%" stop-color="#ff007f" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#ffb800"/>
+      <stop offset="100%" stop-color="#ff007f"/>
     </linearGradient>
   </defs>
 
   <style>
-    .term-title { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; fill: #00f0ff; font-weight: 700; letter-spacing: 0.8px; }
-    .ascii-text { font-family: "Courier New", Courier, ui-monospace, monospace; font-size: 10px; font-weight: bold; white-space: pre; }
-    .prompt-user { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11.5px; font-weight: bold; fill: #ff007f; }
-    .prompt-host { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11.5px; font-weight: bold; fill: #00f0ff; }
-    .prompt-cmd { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11.5px; fill: #f0f6fc; }
-    .prompt-out { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11.5px; font-weight: bold; fill: #00ff66; }
+    .orbit-title { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 12px; fill: #f0f6fc; font-weight: 700; letter-spacing: 1px; }
+    .orbit-sub { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 10px; fill: #00f0ff; font-weight: 600; }
+    .planet-text { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 9px; font-weight: bold; fill: #ffffff; }
+    .sun-text { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 10px; font-weight: bold; fill: #030712; }
   </style>
 
-  <!-- Terminal Window Frame -->
-  <rect x="2" y="2" width="436" height="436" rx="12" fill="url(#term-bg-space)" stroke="url(#hud-border)" stroke-width="1.5"/>
+  <!-- Window Outer Frame -->
+  <rect x="2" y="2" width="436" height="436" rx="14" fill="url(#space-bg)" stroke="url(#orbit-border)" stroke-width="1.5"/>
 
-  <!-- Cyber Corner HUD Accents -->
-  <path d="M 6 18 L 6 6 L 18 6" fill="none" stroke="#00f0ff" stroke-width="2"/>
-  <path d="M 422 6 L 434 6 L 434 18" fill="none" stroke="#ff007f" stroke-width="2"/>
-  <path d="M 6 422 L 6 434 L 18 434" fill="none" stroke="#ff007f" stroke-width="2"/>
-  <path d="M 422 434 L 434 434 L 434 422" fill="none" stroke="#00f0ff" stroke-width="2"/>
+  <!-- Starfield -->
+  <circle cx="406" cy="212" r="1.3" fill="#ffffff" opacity="0.3">
+    <animate attributeName="opacity" values="0.1; 0.85; 0.1" dur="1.9s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="116" cy="115" r="1.3" fill="#ffffff" opacity="0.3">
+    <animate attributeName="opacity" values="0.1; 0.85; 0.1" dur="2.8s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="234" cy="241" r="1.5" fill="#ffffff" opacity="0.3">
+    <animate attributeName="opacity" values="0.1; 0.85; 0.1" dur="1.3s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="285" cy="181" r="0.9" fill="#ffffff" opacity="0.3">
+    <animate attributeName="opacity" values="0.1; 0.85; 0.1" dur="2.0s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="327" cy="401" r="1.5" fill="#ffffff" opacity="0.3">
+    <animate attributeName="opacity" values="0.1; 0.85; 0.1" dur="2.0s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="220" cy="182" r="1.1" fill="#ffffff" opacity="0.3">
+    <animate attributeName="opacity" values="0.1; 0.85; 0.1" dur="1.9s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="396" cy="381" r="1.4" fill="#ffffff" opacity="0.3">
+    <animate attributeName="opacity" values="0.1; 0.85; 0.1" dur="2.3s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="282" cy="142" r="1.4" fill="#ffffff" opacity="0.3">
+    <animate attributeName="opacity" values="0.1; 0.85; 0.1" dur="1.9s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="267" cy="153" r="1.6" fill="#ffffff" opacity="0.3">
+    <animate attributeName="opacity" values="0.1; 0.85; 0.1" dur="2.7s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="105" cy="335" r="1.4" fill="#ffffff" opacity="0.3">
+    <animate attributeName="opacity" values="0.1; 0.85; 0.1" dur="1.3s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="148" cy="20" r="0.9" fill="#ffffff" opacity="0.3">
+    <animate attributeName="opacity" values="0.1; 0.85; 0.1" dur="2.7s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="78" cy="198" r="0.8" fill="#ffffff" opacity="0.3">
+    <animate attributeName="opacity" values="0.1; 0.85; 0.1" dur="1.6s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="419" cy="349" r="0.9" fill="#ffffff" opacity="0.3">
+    <animate attributeName="opacity" values="0.1; 0.85; 0.1" dur="2.8s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="172" cy="347" r="1.0" fill="#ffffff" opacity="0.3">
+    <animate attributeName="opacity" values="0.1; 0.85; 0.1" dur="1.7s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="187" cy="250" r="1.6" fill="#ffffff" opacity="0.3">
+    <animate attributeName="opacity" values="0.1; 0.85; 0.1" dur="1.6s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="193" cy="408" r="0.8" fill="#ffffff" opacity="0.3">
+    <animate attributeName="opacity" values="0.1; 0.85; 0.1" dur="1.5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="211" cy="215" r="1.2" fill="#ffffff" opacity="0.3">
+    <animate attributeName="opacity" values="0.1; 0.85; 0.1" dur="2.1s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="193" cy="224" r="0.8" fill="#ffffff" opacity="0.3">
+    <animate attributeName="opacity" values="0.1; 0.85; 0.1" dur="2.1s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="193" cy="191" r="0.8" fill="#ffffff" opacity="0.3">
+    <animate attributeName="opacity" values="0.1; 0.85; 0.1" dur="1.5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="181" cy="22" r="0.8" fill="#ffffff" opacity="0.3">
+    <animate attributeName="opacity" values="0.1; 0.85; 0.1" dur="2.3s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="273" cy="214" r="1.2" fill="#ffffff" opacity="0.3">
+    <animate attributeName="opacity" values="0.1; 0.85; 0.1" dur="1.7s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="162" cy="392" r="0.9" fill="#ffffff" opacity="0.3">
+    <animate attributeName="opacity" values="0.1; 0.85; 0.1" dur="2.6s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="361" cy="270" r="1.6" fill="#ffffff" opacity="0.3">
+    <animate attributeName="opacity" values="0.1; 0.85; 0.1" dur="1.7s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="349" cy="348" r="1.5" fill="#ffffff" opacity="0.3">
+    <animate attributeName="opacity" values="0.1; 0.85; 0.1" dur="1.4s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="109" cy="355" r="1.2" fill="#ffffff" opacity="0.3">
+    <animate attributeName="opacity" values="0.1; 0.85; 0.1" dur="1.4s" repeatCount="indefinite"/>
+  </circle>
 
-  <!-- Header Control Bar -->
-  <path d="M 2 2 L 438 2 L 438 34 L 2 34 Z" fill="#141c2e" clip-path="inset(0 0 0 0 round 12px 12px 0 0)"/>
-  <circle cx="18" cy="18" r="5" fill="#ff5f56"/>
-  <circle cx="34" cy="18" r="5" fill="#ffbd2e"/>
-  <circle cx="50" cy="18" r="5" fill="#27c93f"/>
-  <text x="220.0" y="22" class="term-title" text-anchor="middle">SYS://OPTICAL_TERMINAL.v3 [LIVE]</text>
-  <line x1="2" y1="34" x2="438" y2="34" stroke="#1f293d" stroke-width="1"/>
+  <!-- Header -->
+  <g transform="translate(20, 26)">
+    <text x="0" y="0" class="orbit-title">PLANETARY TECH ORBIT</text>
+    <text x="400" y="0" class="orbit-sub" text-anchor="end">SYS://SOLAR_CORE</text>
+  </g>
+  <line x1="20" y1="36" x2="420" y2="36" stroke="#1f293d" stroke-width="1"/>
 
-  <!-- ASCII Portrait Terminal Area -->
-  <g transform="translate(20, 50)">
-    <text x="0" y="10.0" class="ascii-text" fill="#00f0ff" opacity="0">
-      +++==+**#%@@@@%%##*=-==+*+-----=**###***
-      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="0.1s" fill="freeze"/>
-      <animateTransform attributeName="transform" type="translate" values="-10 0; 0 0" dur="0.12s" begin="0.1s" fill="freeze"/>
-    </text>
-    <text x="0" y="23.5" class="ascii-text" fill="#00f0ff" opacity="0">
-      ###*+*****#########+=*+=--::::=#%%%%%%##
-      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="0.15s" fill="freeze"/>
-      <animateTransform attributeName="transform" type="translate" values="-10 0; 0 0" dur="0.12s" begin="0.15s" fill="freeze"/>
-    </text>
-    <text x="0" y="37.0" class="ascii-text" fill="#00f0ff" opacity="0">
-      *+=--+######****%%==+***-*%%%%%%%%%%%%%#
-      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="0.2s" fill="freeze"/>
-      <animateTransform attributeName="transform" type="translate" values="-10 0; 0 0" dur="0.12s" begin="0.2s" fill="freeze"/>
-    </text>
-    <text x="0" y="50.5" class="ascii-text" fill="#00f0ff" opacity="0">
-      @%****####%%%%%#%+=*=+=**=@@@@%%%%%%#*%#
-      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="0.25s" fill="freeze"/>
-      <animateTransform attributeName="transform" type="translate" values="-10 0; 0 0" dur="0.12s" begin="0.25s" fill="freeze"/>
-    </text>
-    <text x="0" y="64.0" class="ascii-text" fill="#00f0ff" opacity="0">
-      #===*+*#%#**#%%@%:+++**+***@%%%%%%%#=:*%
-      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="0.3s" fill="freeze"/>
-      <animateTransform attributeName="transform" type="translate" values="-10 0; 0 0" dur="0.12s" begin="0.3s" fill="freeze"/>
-    </text>
-    <text x="0" y="77.5" class="ascii-text" fill="#00f0ff" opacity="0">
-      *+--+++#%#*++*##*::+*+**+-+@%%%%%##=-=#%
-      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="0.35s" fill="freeze"/>
-      <animateTransform attributeName="transform" type="translate" values="-10 0; 0 0" dur="0.12s" begin="0.35s" fill="freeze"/>
-    </text>
-    <text x="0" y="91.0" class="ascii-text" fill="#00f0ff" opacity="0">
-      *-=*+**+*##*=-::::..--*%- -#%%%%#+=--+#%
-      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="0.4s" fill="freeze"/>
-      <animateTransform attributeName="transform" type="translate" values="-10 0; 0 0" dur="0.12s" begin="0.4s" fill="freeze"/>
-    </text>
-    <text x="0" y="104.5" class="ascii-text" fill="#ff007f" opacity="0">
-      **%####*#%*-::-.....-:.=##+#%%%#*******#
-      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="0.45s" fill="freeze"/>
-      <animateTransform attributeName="transform" type="translate" values="-10 0; 0 0" dur="0.12s" begin="0.45s" fill="freeze"/>
-    </text>
-    <text x="0" y="118.0" class="ascii-text" fill="#ff007f" opacity="0">
-      %%***+=--+-:... .::.:.  .=**############
-      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="0.5s" fill="freeze"/>
-      <animateTransform attributeName="transform" type="translate" values="-10 0; 0 0" dur="0.12s" begin="0.5s" fill="freeze"/>
-    </text>
-    <text x="0" y="131.5" class="ascii-text" fill="#ff007f" opacity="0">
-      #+*+=:--:--:...   ..      -+++**###*==#+
-      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="0.55s" fill="freeze"/>
-      <animateTransform attributeName="transform" type="translate" values="-10 0; 0 0" dur="0.12s" begin="0.55s" fill="freeze"/>
-    </text>
-    <text x="0" y="145.0" class="ascii-text" fill="#ff007f" opacity="0">
-      *-=--:----::...       .-+*##**+++###++#*
-      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="0.6s" fill="freeze"/>
-      <animateTransform attributeName="transform" type="translate" values="-10 0; 0 0" dur="0.12s" begin="0.6s" fill="freeze"/>
-    </text>
-    <text x="0" y="158.5" class="ascii-text" fill="#ff007f" opacity="0">
-      +-:::::.::::...  .:-+***##***####%%%%%%%
-      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="0.65s" fill="freeze"/>
-      <animateTransform attributeName="transform" type="translate" values="-10 0; 0 0" dur="0.12s" begin="0.65s" fill="freeze"/>
-    </text>
-    <text x="0" y="172.0" class="ascii-text" fill="#ff007f" opacity="0">
-      -:::....:..:.-+***#*+==*%%%%%%%%%%%%%*++
-      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="0.7s" fill="freeze"/>
-      <animateTransform attributeName="transform" type="translate" values="-10 0; 0 0" dur="0.12s" begin="0.7s" fill="freeze"/>
-    </text>
-    <text x="0" y="185.5" class="ascii-text" fill="#a371f7" opacity="0">
-      --:. ..::..=+***+=-:-*%%%%%%%%%%%%%%%%%%
-      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="0.75s" fill="freeze"/>
-      <animateTransform attributeName="transform" type="translate" values="-10 0; 0 0" dur="0.12s" begin="0.75s" fill="freeze"/>
-    </text>
-    <text x="0" y="199.0" class="ascii-text" fill="#a371f7" opacity="0">
-      +=: ..::.. :=-:.. :*%%%%%%%%%%%%%%%%%%%%
-      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="0.8s" fill="freeze"/>
-      <animateTransform attributeName="transform" type="translate" values="-10 0; 0 0" dur="0.12s" begin="0.8s" fill="freeze"/>
-    </text>
-    <text x="0" y="212.5" class="ascii-text" fill="#a371f7" opacity="0">
-      -. ..:.:-=+*******%@%%%%%%%%%%%%%%%%%%%%
-      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="0.85s" fill="freeze"/>
-      <animateTransform attributeName="transform" type="translate" values="-10 0; 0 0" dur="0.12s" begin="0.85s" fill="freeze"/>
-    </text>
-    <text x="0" y="226.0" class="ascii-text" fill="#a371f7" opacity="0">
-      :.::::+#%%%%%%%%@@%%%%%%%%%%%%%%%%%@@@%%
-      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="0.9s" fill="freeze"/>
-      <animateTransform attributeName="transform" type="translate" values="-10 0; 0 0" dur="0.12s" begin="0.9s" fill="freeze"/>
-    </text>
-    <text x="0" y="239.5" class="ascii-text" fill="#a371f7" opacity="0">
-      ::::. +%#####%%%%%%%%%%%%%%%%%%%%%%%@@%%
-      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="0.95s" fill="freeze"/>
-      <animateTransform attributeName="transform" type="translate" values="-10 0; 0 0" dur="0.12s" begin="0.95s" fill="freeze"/>
-    </text>
-    <text x="0" y="253.0" class="ascii-text" fill="#a371f7" opacity="0">
-      -=--===*###**+++****####%%%%%%%%%%%%%%%%
-      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="1.0s" fill="freeze"/>
-      <animateTransform attributeName="transform" type="translate" values="-10 0; 0 0" dur="0.12s" begin="1.0s" fill="freeze"/>
-    </text>
-    <text x="0" y="266.5" class="ascii-text" fill="#a371f7" opacity="0">
-      *##***+--+***+===========++++**###%%%%%%
-      <animate attributeName="opacity" values="0; 1" dur="0.12s" begin="1.05s" fill="freeze"/>
-      <animateTransform attributeName="transform" type="translate" values="-10 0; 0 0" dur="0.12s" begin="1.05s" fill="freeze"/>
-    </text>
-    <!-- Optical Laser Scanner Bar -->
-    <rect x="0" y="5" width="390" height="2" fill="url(#laser-line-grad)" opacity="0.95">
-      <animate attributeName="y" values="5; 271.5; 5" dur="3.2s" begin="0.1s" repeatCount="indefinite"/>
-    </rect>
+  <!-- Planetary Orbits & Revolving Satellites -->
+  <!-- Orbit Ring 1 -->
+  <circle cx="220" cy="230" r="75" fill="none" stroke="#00f0ff" stroke-opacity="0.25" stroke-width="1.2" stroke-dasharray="4 4"/>
+  <g transform="rotate(144.0 220 230)">
+    <g>
+      <animateTransform attributeName="transform" type="rotate" from="0 220 230" to="360 220 230" dur="14s" repeatCount="indefinite"/>
+      <!-- Planet Sphere -->
+      <circle cx="295" cy="230" r="11" fill="#00f0ff" filter="url(#planet-glow)"/>
+      <!-- Planet Label Badge -->
+      <rect x="309" y="221" width="87.2" height="18" rx="4" fill="#0d1424" stroke="#00f0ff" stroke-width="1" opacity="0.9"/>
+      <text x="313" y="233" class="planet-text">Python & AI</text>
+    </g>
+  </g>
+  <!-- Orbit Ring 2 -->
+  <circle cx="220" cy="230" r="125" fill="none" stroke="#ff007f" stroke-opacity="0.25" stroke-width="1.2" stroke-dasharray="4 4"/>
+  <g transform="rotate(251.99999999999997 220 230)">
+    <g>
+      <animateTransform attributeName="transform" type="rotate" from="0 220 230" to="360 220 230" dur="22s" repeatCount="indefinite"/>
+      <!-- Planet Sphere -->
+      <circle cx="345" cy="230" r="11" fill="#ff007f" filter="url(#planet-glow)"/>
+      <!-- Planet Label Badge -->
+      <rect x="359" y="221" width="80.0" height="18" rx="4" fill="#0d1424" stroke="#ff007f" stroke-width="1" opacity="0.9"/>
+      <text x="363" y="233" class="planet-text">TypeScript</text>
+    </g>
+  </g>
+  <!-- Orbit Ring 3 -->
+  <circle cx="220" cy="230" r="165" fill="none" stroke="#a371f7" stroke-opacity="0.25" stroke-width="1.2" stroke-dasharray="4 4"/>
+  <g transform="rotate(396.00000000000006 220 230)">
+    <g>
+      <animateTransform attributeName="transform" type="rotate" from="0 220 230" to="360 220 230" dur="32s" repeatCount="indefinite"/>
+      <!-- Planet Sphere -->
+      <circle cx="385" cy="230" r="11" fill="#a371f7" filter="url(#planet-glow)"/>
+      <!-- Planet Label Badge -->
+      <rect x="399" y="221" width="87.2" height="18" rx="4" fill="#0d1424" stroke="#a371f7" stroke-width="1" opacity="0.9"/>
+      <text x="403" y="233" class="planet-text">React & Web</text>
+    </g>
   </g>
 
-  <!-- Terminal Footer Typewriter Command Prompt -->
-  <line x1="15" y1="370" x2="425" y2="370" stroke="#1f293d" stroke-width="1"/>
-  <g transform="translate(20, 385)">
-    <text x="0" y="0">
-      <tspan class="prompt-user">cyber</tspan>
-      <tspan class="prompt-cmd">@node-x</tspan>
-      <tspan class="prompt-user">:</tspan>
-      <tspan class="prompt-host">~</tspan>
-      <tspan class="prompt-cmd">$ </tspan>
-    </text>
+  <!-- Core Sun -->
+  <circle cx="220" cy="230" r="32" fill="#ffb800" filter="url(#sun-aura)">
+    <animate attributeName="r" values="30; 34; 30" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="220" cy="230" r="28" fill="#ff9e3b"/>
+  <text x="220" y="227" class="sun-text" text-anchor="middle">CORE</text>
+  <text x="220" y="240" class="sun-text" text-anchor="middle" font-size="8px">Niveditagu</text>
 
-    <!-- Typewriter Command -->
-    <text x="125" y="0" class="prompt-cmd" opacity="0">
-      whoami --verbose
-      <animate attributeName="opacity" values="0; 1" dur="0.2s" begin="1.25s" fill="freeze"/>
-    </text>
-
-    <!-- Command Output -->
-    <text x="0" y="24" class="prompt-out" opacity="0">
-      &gt; USER: Niveditagupta03 | STATUS: ACTIVE
-      <animate attributeName="opacity" values="0; 1" dur="0.25s" begin="1.5s" fill="freeze"/>
-    </text>
-
-    <!-- Blinking Neon Cursor -->
-    <rect x="262.5" y="13" width="8" height="13" fill="#00f0ff" opacity="0">
-      <animate attributeName="opacity" values="0; 1; 1; 0" keyTimes="0; 0.1; 0.5; 1" dur="0.8s" begin="1.55s" repeatCount="indefinite"/>
-    </rect>
+  <!-- Footer Telemetry -->
+  <g transform="translate(20, 415)">
+    <text x="0" y="0" class="orbit-sub">✦ ORBITAL VELOCITY: OPTIMAL</text>
+    <text x="400" y="0" class="orbit-sub" text-anchor="end">STATUS: 100% OPERATIONAL</text>
   </g>
 </svg>
