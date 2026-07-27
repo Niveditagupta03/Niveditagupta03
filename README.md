@@ -44,11 +44,3 @@
 <p align="center">
   <img src="https://raw.githubusercontent.com/Niveditagupta03/Niveditagupta03/main/telemetry-metrics.svg" alt="Apple-Style Glass Metric Telemetry" width="100%" />
 </p>
-
-<br />
-
----
-
-<p align="center">
-  ⚡ <i>Powered by Sci-Fi Wave Engine</i>
-</p>

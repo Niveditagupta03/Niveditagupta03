@@ -464,14 +464,6 @@ def generate_readme(username, repo_name=DEFAULT_REPO, readme_path="README.md"):
 <p align="center">
   <img src="{raw_base}/telemetry-metrics.svg" alt="Apple-Style Glass Metric Telemetry" width="100%" />
 </p>
-
-<br />
-
----
-
-<p align="center">
-  ⚡ <i>Powered by Sci-Fi Wave Engine</i>
-</p>
 """
     with open(readme_path, 'w', encoding='utf-8') as f:
         f.write(content)
