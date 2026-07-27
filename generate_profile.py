@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
 """
-GitHub-Sanitizer Compliant Animated SVG Profile Generator
-========================================================
-Fixes GitHub static image rendering by removing base `opacity="0"` attributes
-(which caused GitHub's image cache engine to render invisible images).
-Now all elements are 100% visible statically by default!
+GitHub-Sanitizer Fully Compliant Animated SVG Profile Generator
+================================================================
+Fixes XML entity parsing errors (`xmlParseEntityRef: no name`) by escaping all
+ampersands `&` to `&amp;` across all text elements in SVG files!
 """
 
 import os
@@ -201,7 +200,7 @@ def generate_animated_wave_graph_svg(username, output_file="animated-wave-graph.
         f.write('\n'.join(svg_lines))
     print(f"[✓] Successfully generated '{output_file}'")
 
-# --- 3. SVG 3: SCI-FI TECH SKILL RADAR HUD (100% VISIBLE BASE STATE) ---
+# --- 3. SVG 3: SCI-FI TECH SKILL RADAR HUD (XML ESCAPED) ---
 def generate_radar_hud_svg(username, output_file="tech-radar-hud.svg"):
     width = 440
     height = 440
@@ -209,10 +208,10 @@ def generate_radar_hud_svg(username, output_file="tech-radar-hud.svg"):
     cy = 230
 
     beacons = [
-        ("Python & AI", cx + 75, cy - 60, "#00f0ff"),
-        ("TypeScript & React", cx - 95, cy - 45, "#ff007f"),
+        ("Python &amp; AI", cx + 75, cy - 60, "#00f0ff"),
+        ("TypeScript &amp; React", cx - 95, cy - 45, "#ff007f"),
         ("System Architecture", cx + 80, cy + 85, "#a371f7"),
-        ("Docker & Cloud", cx - 85, cy + 75, "#ffb800"),
+        ("Docker &amp; Cloud", cx - 85, cy + 75, "#ffb800"),
     ]
 
     svg_lines = [
@@ -259,10 +258,9 @@ def generate_radar_hud_svg(username, output_file="tech-radar-hud.svg"):
             f'  <g>\n'
             f'    <circle cx="{bx}" cy="{by}" r="5" fill="none" stroke="{b_color}" stroke-width="1.5" opacity="0.8">\n'
             f'      <animate attributeName="r" values="4; 18; 4" dur="2s" repeatCount="indefinite"/>\n'
-            f'      <animate attributeName="opacity" values="0.8; 0.2; 0.8" dur="2s" repeatCount="indefinite"/>\n'
             f'    </circle>\n'
             f'    <circle cx="{bx}" cy="{by}" r="4.5" fill="{b_color}"/>\n'
-            f'    <rect x="{bx + 10}" y="{by - 10}" width="125" height="18" rx="4" fill="#0d1424" stroke="{b_color}" stroke-width="1" opacity="0.9"/>\n'
+            f'    <rect x="{bx + 10}" y="{by - 10}" width="140" height="18" rx="4" fill="#0d1424" stroke="{b_color}" stroke-width="1" opacity="0.9"/>\n'
             f'    <text x="{bx + 14}" y="{by + 2}" font-family="monospace" font-size="9.5px" font-weight="bold" fill="#ffffff">{b_name}</text>\n'
             f'  </g>'
         )
@@ -281,15 +279,15 @@ def generate_radar_hud_svg(username, output_file="tech-radar-hud.svg"):
         f.write('\n'.join(svg_lines))
     print(f"[✓] Successfully generated '{output_file}'")
 
-# --- 4. SVG 4: ARCHITECTURE SHOWCASE PILLARS (100% VISIBLE BASE OPACITY) ---
+# --- 4. SVG 4: ARCHITECTURE SHOWCASE PILLARS (XML ESCAPED) ---
 def generate_architecture_showcase_svg(username=DEFAULT_USERNAME, output_file="architecture-showcase.svg"):
     width = 440
     height = 440
 
     pillars = [
-        ("AI & AGENTIC SYSTEMS", "Autonomous Workflows • Multi-Agent • LLMs", COLORS["cyan"], COLORS["pink"], "ai"),
+        ("AI &amp; AGENTIC SYSTEMS", "Autonomous Workflows • Multi-Agent • LLMs", COLORS["cyan"], COLORS["pink"], "ai"),
         ("HIGH-PERFORMANCE WEB", "React • Next.js • Tailwind • Glassmorphic UI", COLORS["pink"], COLORS["purple"], "web"),
-        ("DISTRIBUTED & CLOUD", "Python FastAPI • Docker • Microservices • CI/CD", COLORS["gold"], COLORS["green"], "cloud"),
+        ("DISTRIBUTED &amp; CLOUD", "Python FastAPI • Docker • Microservices • CI/CD", COLORS["gold"], COLORS["green"], "cloud"),
     ]
 
     svg_lines = [
@@ -336,7 +334,6 @@ def generate_architecture_showcase_svg(username=DEFAULT_USERNAME, output_file="a
         else:
             icon_svg = f'<g transform="translate(20, {py+18})"><rect x="1" y="2" width="18" height="4" rx="2" fill="{c1}"/><rect x="1" y="8" width="18" height="4" rx="2" fill="{c2}"/><rect x="1" y="14" width="18" height="4" rx="2" fill="{c1}"/></g>'
 
-        # NOTICE: No opacity="0" base state! Completely 100% visible statically by default!
         card_html = (
             f'    <g>\n'
             f'      <rect x="0" y="{py}" width="400" height="98" rx="10" fill="#0d1424" stroke="#1f293d" stroke-width="1"/>\n'
