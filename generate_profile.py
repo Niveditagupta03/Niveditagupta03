@@ -344,7 +344,88 @@ def generate_radar_hud_svg(username, output_file="tech-radar-hud.svg"):
         f.write('\n'.join(svg_lines))
     print(f"[✓] Successfully generated '{output_file}'")
 
-# --- 4. SVG GENERATOR 4: TELEMETRY METRICS ---
+# --- 4. SVG GENERATOR 4: ARCHITECTURE SHOWCASE PILLARS ---
+def generate_architecture_showcase_svg(username=DEFAULT_USERNAME, output_file="architecture-showcase.svg"):
+    width = 440
+    height = 440
+
+    pillars = [
+        ("🤖 AI & AGENTIC SYSTEMS", "Autonomous Workflows • Multi-Agent • LLMs", COLORS["cyan"], COLORS["pink"]),
+        ("⚡ HIGH-PERFORMANCE WEB", "React • Next.js • Tailwind • Glassmorphic UI", COLORS["pink"], COLORS["purple"]),
+        ("☁️ DISTRIBUTED & CLOUD", "Python FastAPI • Docker • Microservices • CI/CD", COLORS["gold"], COLORS["green"]),
+    ]
+
+    svg_lines = [
+        f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}" width="{width}" height="{height}">',
+        '  <defs>',
+        '    <linearGradient id="arch-bg" x1="0%" y1="0%" x2="100%" y2="100%">',
+        '      <stop offset="0%" stop-color="#160829"/>',
+        '      <stop offset="50%" stop-color="#070b18"/>',
+        '      <stop offset="100%" stop-color="#030712"/>',
+        '    </linearGradient>',
+        '    <linearGradient id="arch-border" x1="0%" y1="0%" x2="100%" y2="100%">',
+        '      <stop offset="0%" stop-color="#ff007f"/>',
+        '      <stop offset="50%" stop-color="#ffb800"/>',
+        '      <stop offset="100%" stop-color="#00f0ff"/>',
+        '    </linearGradient>',
+        '  </defs>',
+        '',
+        '  <style>',
+        '    .hud-title { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 12px; fill: #f0f6fc; font-weight: 700; letter-spacing: 1px; }',
+        '    .hud-sub { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 10px; fill: #00f0ff; font-weight: 600; }',
+        '    .card-title { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11.5px; font-weight: bold; fill: #f0f6fc; }',
+        '    .card-desc { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 10px; fill: #8b949e; }',
+        '  </style>',
+        '',
+        '  <!-- Window Outer Frame -->',
+        f'  <rect x="2" y="2" width="{width-4}" height="{height-4}" rx="14" fill="url(#arch-bg)" stroke="url(#arch-border)" stroke-width="1.5"/>',
+        '',
+        '  <!-- Header -->',
+        '  <g transform="translate(20, 26)">',
+        '    <text x="0" y="0" class="hud-title">// FEATURED SYSTEM PILLARS</text>',
+        f'    <text x="{width-40}" y="0" class="hud-sub" text-anchor="end">SYS://SHOWCASE</text>',
+        '  </g>',
+        '  <line x1="20" y1="36" x2="420" y2="36" stroke="#1f293d" stroke-width="1"/>',
+        '',
+        '  <!-- 3 Glassmorphic Feature Cards -->',
+        '  <g transform="translate(20, 55)">'
+    ]
+
+    for p_idx, (title, desc, c1, c2) in enumerate(pillars):
+        py = p_idx * 115
+        delay = round(0.15 + p_idx * 0.1, 3)
+        grad_id = f"pillar-grad-{p_idx}"
+
+        svg_lines.insert(8, (
+            f'    <linearGradient id="{grad_id}" x1="0%" y1="0%" x2="100%" y2="0%">\n'
+            f'      <stop offset="0%" stop-color="{c1}"/>\n'
+            f'      <stop offset="100%" stop-color="{c2}"/>\n'
+            f'    </linearGradient>'
+        ))
+
+        card_html = (
+            f'    <g opacity="0">\n'
+            f'      <rect x="0" y="{py}" width="400" height="98" rx="10" fill="#0d1424" stroke="#1f293d" stroke-width="1"/>\n'
+            f'      <rect x="0" y="{py}" width="5" height="98" rx="2" fill="url(#{grad_id})"/>\n'
+            f'      <text x="20" y="{py+30}" class="card-title">{title}</text>\n'
+            f'      <text x="20" y="{py+58}" class="card-desc">{desc}</text>\n'
+            f'      <rect x="20" y="{py+74}" width="360" height="3" rx="1.5" fill="url(#{grad_id})" opacity="0.6"/>\n'
+            f'      <animate attributeName="opacity" values="0; 1" dur="0.25s" begin="{delay}s" fill="freeze"/>\n'
+            f'      <animateTransform attributeName="transform" type="translate" values="0 10; 0 0" dur="0.25s" begin="{delay}s" fill="freeze"/>\n'
+            f'    </g>'
+        )
+        svg_lines.append(card_html)
+
+    svg_lines.extend([
+        '  </g>',
+        '</svg>'
+    ])
+
+    with open(output_file, 'w', encoding='utf-8') as f:
+        f.write('\n'.join(svg_lines))
+    print(f"[✓] Successfully generated '{output_file}'")
+
+# --- 5. SVG GENERATOR 5: TELEMETRY METRICS ---
 def generate_telemetry_metrics_svg(username, output_file="telemetry-metrics.svg"):
     width = 880
     height = 160

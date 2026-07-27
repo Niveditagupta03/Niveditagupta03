@@ -17,54 +17,41 @@
     .met-val { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 13px; font-weight: bold; fill: #f0f6fc; }
   </style>
 
-  <!-- Background Strip -->
   <rect x="2" y="2" width="876" height="156" rx="14" fill="url(#met-bg)" stroke="url(#met-border)" stroke-width="1.5"/>
 
-  <!-- Metric Pill 1 -->
   <g transform="translate(25, 25)">
     <rect x="0" y="0" width="195" height="110" rx="10" fill="#0d1424" stroke="#1f293d" stroke-width="1"/>
-    <!-- Circular Progress Arc -->
     <circle cx="45" cy="55" r="32" fill="none" stroke="#1f293d" stroke-width="6"/>
     <circle cx="45" cy="55" r="32" fill="none" stroke="#00f0ff" stroke-width="6" stroke-dasharray="201" stroke-dashoffset="201" stroke-linecap="round" transform="rotate(-90 45 55)">
       <animate attributeName="stroke-dashoffset" values="201; 10" dur="1.2s" begin="0.2s" fill="freeze"/>
     </circle>
-    <!-- Label Content -->
     <text x="92" y="48" class="met-title">GLOBAL REPOSITORIES</text>
     <text x="92" y="70" class="met-val" fill="#00f0ff">100% Active</text>
   </g>
-  <!-- Metric Pill 2 -->
   <g transform="translate(235, 25)">
     <rect x="0" y="0" width="195" height="110" rx="10" fill="#0d1424" stroke="#1f293d" stroke-width="1"/>
-    <!-- Circular Progress Arc -->
     <circle cx="45" cy="55" r="32" fill="none" stroke="#1f293d" stroke-width="6"/>
     <circle cx="45" cy="55" r="32" fill="none" stroke="#ff007f" stroke-width="6" stroke-dasharray="201" stroke-dashoffset="201" stroke-linecap="round" transform="rotate(-90 45 55)">
       <animate attributeName="stroke-dashoffset" values="201; 22" dur="1.2s" begin="0.30000000000000004s" fill="freeze"/>
     </circle>
-    <!-- Label Content -->
     <text x="92" y="48" class="met-title">CODE VELOCITY</text>
     <text x="92" y="70" class="met-val" fill="#ff007f">95% Rating</text>
   </g>
-  <!-- Metric Pill 3 -->
   <g transform="translate(445, 25)">
     <rect x="0" y="0" width="195" height="110" rx="10" fill="#0d1424" stroke="#1f293d" stroke-width="1"/>
-    <!-- Circular Progress Arc -->
     <circle cx="45" cy="55" r="32" fill="none" stroke="#1f293d" stroke-width="6"/>
     <circle cx="45" cy="55" r="32" fill="none" stroke="#00ff88" stroke-width="6" stroke-dasharray="201" stroke-dashoffset="201" stroke-linecap="round" transform="rotate(-90 45 55)">
       <animate attributeName="stroke-dashoffset" values="201; 2" dur="1.2s" begin="0.4s" fill="freeze"/>
     </circle>
-    <!-- Label Content -->
     <text x="92" y="48" class="met-title">SYSTEM UPTIME</text>
     <text x="92" y="70" class="met-val" fill="#00ff88">99.9% Operational</text>
   </g>
-  <!-- Metric Pill 4 -->
   <g transform="translate(655, 25)">
     <rect x="0" y="0" width="195" height="110" rx="10" fill="#0d1424" stroke="#1f293d" stroke-width="1"/>
-    <!-- Circular Progress Arc -->
     <circle cx="45" cy="55" r="32" fill="none" stroke="#1f293d" stroke-width="6"/>
     <circle cx="45" cy="55" r="32" fill="none" stroke="#ffb800" stroke-width="6" stroke-dasharray="201" stroke-dashoffset="201" stroke-linecap="round" transform="rotate(-90 45 55)">
       <animate attributeName="stroke-dashoffset" values="201; 30" dur="1.2s" begin="0.5s" fill="freeze"/>
     </circle>
-    <!-- Label Content -->
     <text x="92" y="48" class="met-title">AI WORKFLOWS</text>
     <text x="92" y="70" class="met-val" fill="#ffb800">92% Automated</text>
   </g>

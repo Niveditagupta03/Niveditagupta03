@@ -44,40 +44,28 @@
   <!-- 3 Glassmorphic Feature Cards -->
   <g transform="translate(20, 55)">
     <g opacity="0">
-      <!-- Card Background -->
       <rect x="0" y="0" width="400" height="98" rx="10" fill="#0d1424" stroke="#1f293d" stroke-width="1"/>
-      <!-- Accent Side Bar -->
       <rect x="0" y="0" width="5" height="98" rx="2" fill="url(#pillar-grad-0)"/>
-      <!-- Content -->
       <text x="20" y="30" class="card-title">🤖 AI & AGENTIC SYSTEMS</text>
       <text x="20" y="58" class="card-desc">Autonomous Workflows • Multi-Agent • LLMs</text>
-      <!-- Bottom Accent Glow Bar -->
       <rect x="20" y="74" width="360" height="3" rx="1.5" fill="url(#pillar-grad-0)" opacity="0.6"/>
       <animate attributeName="opacity" values="0; 1" dur="0.25s" begin="0.15s" fill="freeze"/>
       <animateTransform attributeName="transform" type="translate" values="0 10; 0 0" dur="0.25s" begin="0.15s" fill="freeze"/>
     </g>
     <g opacity="0">
-      <!-- Card Background -->
       <rect x="0" y="115" width="400" height="98" rx="10" fill="#0d1424" stroke="#1f293d" stroke-width="1"/>
-      <!-- Accent Side Bar -->
       <rect x="0" y="115" width="5" height="98" rx="2" fill="url(#pillar-grad-1)"/>
-      <!-- Content -->
       <text x="20" y="145" class="card-title">⚡ HIGH-PERFORMANCE WEB</text>
       <text x="20" y="173" class="card-desc">React • Next.js • Tailwind • Glassmorphic UI</text>
-      <!-- Bottom Accent Glow Bar -->
       <rect x="20" y="189" width="360" height="3" rx="1.5" fill="url(#pillar-grad-1)" opacity="0.6"/>
       <animate attributeName="opacity" values="0; 1" dur="0.25s" begin="0.25s" fill="freeze"/>
       <animateTransform attributeName="transform" type="translate" values="0 10; 0 0" dur="0.25s" begin="0.25s" fill="freeze"/>
     </g>
     <g opacity="0">
-      <!-- Card Background -->
       <rect x="0" y="230" width="400" height="98" rx="10" fill="#0d1424" stroke="#1f293d" stroke-width="1"/>
-      <!-- Accent Side Bar -->
       <rect x="0" y="230" width="5" height="98" rx="2" fill="url(#pillar-grad-2)"/>
-      <!-- Content -->
       <text x="20" y="260" class="card-title">☁️ DISTRIBUTED & CLOUD</text>
       <text x="20" y="288" class="card-desc">Python FastAPI • Docker • Microservices • CI/CD</text>
-      <!-- Bottom Accent Glow Bar -->
       <rect x="20" y="304" width="360" height="3" rx="1.5" fill="url(#pillar-grad-2)" opacity="0.6"/>
       <animate attributeName="opacity" values="0; 1" dur="0.25s" begin="0.35s" fill="freeze"/>
       <animateTransform attributeName="transform" type="translate" values="0 10; 0 0" dur="0.25s" begin="0.35s" fill="freeze"/>
