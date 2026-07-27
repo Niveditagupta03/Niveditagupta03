@@ -124,7 +124,7 @@
       <animate attributeName="r" values="34; 38; 34" dur="3s" repeatCount="indefinite"/>
     </circle>
     <circle cx="0" cy="0" r="32" fill="#0d1424"/>
-    <text x="0" y="8" font-family="monospace" font-size="20px" font-weight="bold" fill="#00f0ff" text-anchor="middle">SYS</text>
+    <path d="M -10 -5 L 0 -15 L 10 -5 L 0 15 Z" fill="#00f0ff"/>
   </g>
 
   <g transform="translate(200, 60)">

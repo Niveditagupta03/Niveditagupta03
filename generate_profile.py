@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-GitHub-Sanitizer Fully Compliant Animated SVG Profile Generator
-================================================================
-Fixes SVG rendering errors on GitHub by removing raw emojis inside SVG text
-(which trigger GitHub SVG Sanitizer 'Invalid image source' errors) and using clean ASCII vector labels!
+GitHub-Sanitizer Compliant Animated SVG Profile Generator
+========================================================
+Features Pure SVG Vector Shapes & Glowing Icons (No raw text emojis)
+for 100% reliable rendering on GitHub Profile READMEs!
 """
 
 import os
@@ -91,7 +91,7 @@ def generate_hero_banner_svg(username, output_file="cyber-hero-banner.svg"):
         '      <animate attributeName="r" values="34; 38; 34" dur="3s" repeatCount="indefinite"/>',
         '    </circle>',
         '    <circle cx="0" cy="0" r="32" fill="#0d1424"/>',
-        '    <text x="0" y="8" font-family="monospace" font-size="20px" font-weight="bold" fill="#00f0ff" text-anchor="middle">SYS</text>',
+        '    <path d="M -10 -5 L 0 -15 L 10 -5 L 0 15 Z" fill="#00f0ff"/>',
         '  </g>',
         ''
     ])
@@ -227,10 +227,6 @@ def generate_radar_hud_svg(username, output_file="tech-radar-hud.svg"):
         '      <stop offset="50%" stop-color="#7928ca"/>',
         '      <stop offset="100%" stop-color="#ff007f"/>',
         '    </linearGradient>',
-        '    <linearGradient id="beam-sweep-grad" x1="0%" y1="0%" x2="100%" y2="100%">',
-        '      <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.4"/>',
-        '      <stop offset="100%" stop-color="#00f0ff" stop-opacity="0"/>',
-        '    </linearGradient>',
         '  </defs>',
         '',
         f'  <rect x="2" y="2" width="{width-4}" height="{height-4}" rx="14" fill="url(#radar-bg)" stroke="url(#radar-border)" stroke-width="1.5"/>',
@@ -284,15 +280,19 @@ def generate_radar_hud_svg(username, output_file="tech-radar-hud.svg"):
         f.write('\n'.join(svg_lines))
     print(f"[✓] Successfully generated '{output_file}'")
 
-# --- 4. SVG 4: ARCHITECTURE SHOWCASE PILLARS (NO EMOJIS - SANITIZER COMPLIANT) ---
+# --- 4. SVG 4: ARCHITECTURE SHOWCASE PILLARS (WITH PURE SVG VECTOR ICONS) ---
 def generate_architecture_showcase_svg(username=DEFAULT_USERNAME, output_file="architecture-showcase.svg"):
     width = 440
     height = 440
 
+    # Icons are pure SVG vector paths:
+    # 0: AI Neural Node Icon
+    # 1: Code Brackets Icon </ >
+    # 2: Cloud Blade Stack Icon
     pillars = [
-        ("[AI] AI & AGENTIC SYSTEMS", "Autonomous Workflows • Multi-Agent • LLMs", COLORS["cyan"], COLORS["pink"]),
-        ("[WEB] HIGH-PERFORMANCE WEB", "React • Next.js • Tailwind • Glassmorphic UI", COLORS["pink"], COLORS["purple"]),
-        ("[CLOUD] DISTRIBUTED & CLOUD", "Python FastAPI • Docker • Microservices • CI/CD", COLORS["gold"], COLORS["green"]),
+        ("AI & AGENTIC SYSTEMS", "Autonomous Workflows • Multi-Agent • LLMs", COLORS["cyan"], COLORS["pink"], "ai"),
+        ("HIGH-PERFORMANCE WEB", "React • Next.js • Tailwind • Glassmorphic UI", COLORS["pink"], COLORS["purple"], "web"),
+        ("DISTRIBUTED & CLOUD", "Python FastAPI • Docker • Microservices • CI/CD", COLORS["gold"], COLORS["green"], "cloud"),
     ]
 
     svg_lines = [
@@ -321,7 +321,7 @@ def generate_architecture_showcase_svg(username=DEFAULT_USERNAME, output_file="a
         '  <g transform="translate(20, 55)">'
     ]
 
-    for p_idx, (title, desc, c1, c2) in enumerate(pillars):
+    for p_idx, (title, desc, c1, c2, icon_type) in enumerate(pillars):
         py = p_idx * 115
         delay = round(0.15 + p_idx * 0.1, 3)
         grad_id = f"pillar-grad-{p_idx}"
@@ -333,11 +333,20 @@ def generate_architecture_showcase_svg(username=DEFAULT_USERNAME, output_file="a
             f'    </linearGradient>'
         ))
 
+        # Vector Icon Geometry
+        if icon_type == "ai":
+            icon_svg = f'<g transform="translate(22, {py+18})"><circle cx="10" cy="10" r="4" fill="{c1}"/><circle cx="2" cy="4" r="2.5" fill="{c2}"/><circle cx="18" cy="4" r="2.5" fill="{c2}"/><circle cx="10" cy="18" r="2.5" fill="{c2}"/><line x1="10" y1="10" x2="2" y2="4" stroke="{c1}" stroke-width="1.2"/><line x1="10" y1="10" x2="18" y2="4" stroke="{c1}" stroke-width="1.2"/><line x1="10" y1="10" x2="10" y2="18" stroke="{c1}" stroke-width="1.2"/></g>'
+        elif icon_type == "web":
+            icon_svg = f'<g transform="translate(20, {py+18})"><path d="M 6 4 L 1 10 L 6 16" fill="none" stroke="{c1}" stroke-width="2"/><path d="M 14 4 L 19 10 L 14 16" fill="none" stroke="{c1}" stroke-width="2"/><line x1="12" y1="3" x2="8" y2="17" stroke="{c2}" stroke-width="2"/></g>'
+        else:
+            icon_svg = f'<g transform="translate(20, {py+18})"><rect x="1" y="2" width="18" height="4" rx="2" fill="{c1}"/><rect x="1" y="8" width="18" height="4" rx="2" fill="{c2}"/><rect x="1" y="14" width="18" height="4" rx="2" fill="{c1}"/></g>'
+
         card_html = (
             f'    <g opacity="0">\n'
             f'      <rect x="0" y="{py}" width="400" height="98" rx="10" fill="#0d1424" stroke="#1f293d" stroke-width="1"/>\n'
             f'      <rect x="0" y="{py}" width="5" height="98" rx="2" fill="url(#{grad_id})"/>\n'
-            f'      <text x="20" y="{py+30}" font-family="monospace" font-size="11.5px" font-weight="bold" fill="#f0f6fc">{title}</text>\n'
+            f'      {icon_svg}\n'
+            f'      <text x="50" y="{py+30}" font-family="monospace" font-size="11.5px" font-weight="bold" fill="#f0f6fc">{title}</text>\n'
             f'      <text x="20" y="{py+58}" font-family="monospace" font-size="10px" font-weight="bold" fill="#8b949e">{desc}</text>\n'
             f'      <rect x="20" y="{py+74}" width="360" height="3" rx="1.5" fill="url(#{grad_id})" opacity="0.6"/>\n'
             f'      <animate attributeName="opacity" values="0; 1" dur="0.25s" begin="{delay}s" fill="freeze"/>\n'
