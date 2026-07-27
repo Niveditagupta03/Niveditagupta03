@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 430" width="440" height="430">
+  <defs>
+    <linearGradient id="info-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#161b22" stop-opacity="0.98"/>
+      <stop offset="100%" stop-color="#0d1117" stop-opacity="0.99"/>
+    </linearGradient>
+    <linearGradient id="info-border" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff7b72" stop-opacity="0.4"/>
+      <stop offset="50%" stop-color="#30363d" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#00f3ff" stop-opacity="0.5"/>
+    </linearGradient>
+  </defs>
+
+  <style>
+    .info-header { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 14px; font-weight: bold; }
+    .info-key { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11.5px; font-weight: bold; }
+    .info-val { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11.5px; fill: #c9d1d9; }
+    .palette-box { rx: 3px; }
+  </style>
+
+  <!-- Window Outer Frame -->
+  <rect x="2" y="2" width="436" height="426" rx="12" fill="url(#info-bg)" stroke="url(#info-border)" stroke-width="1.5"/>
+
+  <!-- Header Title: user@github-node -->
+  <g transform="translate(25, 42)">
+    <text class="info-header">
+      <tspan fill="#ff9e3b">Niveditagupta03</tspan>
+      <tspan fill="#f0f6fc">@</tspan>
+      <tspan fill="#00f3ff">github-node-01</tspan>
+    </text>
+    
+    <!-- Neofetch Separator Bar -->
+    <g transform="translate(0, 10)">
+      <rect x="0" y="0" width="60" height="2" fill="#ff9e3b"/>
+      <rect x="60" y="0" width="60" height="2" fill="#f1e05a"/>
+      <rect x="120" y="0" width="60" height="2" fill="#39d353"/>
+      <rect x="180" y="0" width="60" height="2" fill="#00f3ff"/>
+      <rect x="240" y="0" width="60" height="2" fill="#a371f7"/>
+      <rect x="300" y="0" width="85" height="2" fill="#bf5af2"/>
+    </g>
+  </g>
+
+  <!-- Neofetch Info Rows with Staggered SMIL Slide-up & Fade-in -->
+  <g transform="translate(25, 80)">
+    <g opacity="0">
+      <text x="0" y="0" class="info-key" fill="#ff9e3b">OS         :</text>
+      <text x="110" y="0" class="info-val">CyberOS 2026.7 (x86_64 Linux)</text>
+      <animate attributeName="opacity" values="0; 1" dur="0.2s" begin="0.15s" fill="freeze"/>
+      <animateTransform attributeName="transform" type="translate" values="0 6; 0 0" dur="0.2s" begin="0.15s" fill="freeze"/>
+    </g>
+    <g opacity="0">
+      <text x="0" y="28" class="info-key" fill="#f1e05a">Host       :</text>
+      <text x="110" y="28" class="info-val">GitHub Cloud Workstation</text>
+      <animate attributeName="opacity" values="0; 1" dur="0.2s" begin="0.21s" fill="freeze"/>
+      <animateTransform attributeName="transform" type="translate" values="0 6; 0 0" dur="0.2s" begin="0.21s" fill="freeze"/>
+    </g>
+    <g opacity="0">
+      <text x="0" y="56" class="info-key" fill="#39d353">Kernel     :</text>
+      <text x="110" y="56" class="info-val">5.19.0-cyber-agent-v6</text>
+      <animate attributeName="opacity" values="0; 1" dur="0.2s" begin="0.27s" fill="freeze"/>
+      <animateTransform attributeName="transform" type="translate" values="0 6; 0 0" dur="0.2s" begin="0.27s" fill="freeze"/>
+    </g>
+    <g opacity="0">
+      <text x="0" y="84" class="info-key" fill="#00ff88">Uptime     :</text>
+      <text x="110" y="84" class="info-val">99.9% Continuous Deployment</text>
+      <animate attributeName="opacity" values="0; 1" dur="0.2s" begin="0.33s" fill="freeze"/>
+      <animateTransform attributeName="transform" type="translate" values="0 6; 0 0" dur="0.2s" begin="0.33s" fill="freeze"/>
+    </g>
+    <g opacity="0">
+      <text x="0" y="112" class="info-key" fill="#00f3ff">Role       :</text>
+      <text x="110" y="112" class="info-val">Senior Full-Stack &amp; Systems Engineer</text>
+      <animate attributeName="opacity" values="0; 1" dur="0.2s" begin="0.39s" fill="freeze"/>
+      <animateTransform attributeName="transform" type="translate" values="0 6; 0 0" dur="0.2s" begin="0.39s" fill="freeze"/>
+    </g>
+    <g opacity="0">
+      <text x="0" y="140" class="info-key" fill="#38bdf8">Languages  :</text>
+      <text x="110" y="140" class="info-val">Python • TypeScript • Rust • Go</text>
+      <animate attributeName="opacity" values="0; 1" dur="0.2s" begin="0.45s" fill="freeze"/>
+      <animateTransform attributeName="transform" type="translate" values="0 6; 0 0" dur="0.2s" begin="0.45s" fill="freeze"/>
+    </g>
+    <g opacity="0">
+      <text x="0" y="168" class="info-key" fill="#a371f7">Frameworks :</text>
+      <text x="110" y="168" class="info-val">React • Next.js • Node • FastAPI</text>
+      <animate attributeName="opacity" values="0; 1" dur="0.2s" begin="0.51s" fill="freeze"/>
+      <animateTransform attributeName="transform" type="translate" values="0 6; 0 0" dur="0.2s" begin="0.51s" fill="freeze"/>
+    </g>
+    <g opacity="0">
+      <text x="0" y="196" class="info-key" fill="#bf5af2">DevOps     :</text>
+      <text x="110" y="196" class="info-val">Docker • Kubernetes • CI/CD • AWS</text>
+      <animate attributeName="opacity" values="0; 1" dur="0.2s" begin="0.57s" fill="freeze"/>
+      <animateTransform attributeName="transform" type="translate" values="0 6; 0 0" dur="0.2s" begin="0.57s" fill="freeze"/>
+    </g>
+    <g opacity="0">
+      <text x="0" y="224" class="info-key" fill="#f0f6fc">Status     :</text>
+      <text x="110" y="224" class="info-val">Building high-performance tools</text>
+      <animate attributeName="opacity" values="0; 1" dur="0.2s" begin="0.63s" fill="freeze"/>
+      <animateTransform attributeName="transform" type="translate" values="0 6; 0 0" dur="0.2s" begin="0.63s" fill="freeze"/>
+    </g>
+  </g>
+
+  <!-- Bottom Terminal Palette Swatches -->
+  <g transform="translate(25, 380)">
+    <rect x="0" y="0" width="36" height="14" rx="3" fill="#ff7b72" opacity="0">
+      <animate attributeName="opacity" values="0; 1" dur="0.25s" begin="0.69s" fill="freeze"/>
+      <animateTransform attributeName="transform" type="scale" values="0.2; 1" keyTimes="0; 1" dur="0.25s" begin="0.69s" fill="freeze" transform-origin="18px 7px"/>
+    </rect>
+    <rect x="44" y="0" width="36" height="14" rx="3" fill="#ff9e3b" opacity="0">
+      <animate attributeName="opacity" values="0; 1" dur="0.25s" begin="0.73s" fill="freeze"/>
+      <animateTransform attributeName="transform" type="scale" values="0.2; 1" keyTimes="0; 1" dur="0.25s" begin="0.73s" fill="freeze" transform-origin="62px 7px"/>
+    </rect>
+    <rect x="88" y="0" width="36" height="14" rx="3" fill="#f1e05a" opacity="0">
+      <animate attributeName="opacity" values="0; 1" dur="0.25s" begin="0.77s" fill="freeze"/>
+      <animateTransform attributeName="transform" type="scale" values="0.2; 1" keyTimes="0; 1" dur="0.25s" begin="0.77s" fill="freeze" transform-origin="106px 7px"/>
+    </rect>
+    <rect x="132" y="0" width="36" height="14" rx="3" fill="#39d353" opacity="0">
+      <animate attributeName="opacity" values="0; 1" dur="0.25s" begin="0.81s" fill="freeze"/>
+      <animateTransform attributeName="transform" type="scale" values="0.2; 1" keyTimes="0; 1" dur="0.25s" begin="0.81s" fill="freeze" transform-origin="150px 7px"/>
+    </rect>
+    <rect x="176" y="0" width="36" height="14" rx="3" fill="#00f3ff" opacity="0">
+      <animate attributeName="opacity" values="0; 1" dur="0.25s" begin="0.85s" fill="freeze"/>
+      <animateTransform attributeName="transform" type="scale" values="0.2; 1" keyTimes="0; 1" dur="0.25s" begin="0.85s" fill="freeze" transform-origin="194px 7px"/>
+    </rect>
+    <rect x="220" y="0" width="36" height="14" rx="3" fill="#38bdf8" opacity="0">
+      <animate attributeName="opacity" values="0; 1" dur="0.25s" begin="0.89s" fill="freeze"/>
+      <animateTransform attributeName="transform" type="scale" values="0.2; 1" keyTimes="0; 1" dur="0.25s" begin="0.89s" fill="freeze" transform-origin="238px 7px"/>
+    </rect>
+    <rect x="264" y="0" width="36" height="14" rx="3" fill="#a371f7" opacity="0">
+      <animate attributeName="opacity" values="0; 1" dur="0.25s" begin="0.93s" fill="freeze"/>
+      <animateTransform attributeName="transform" type="scale" values="0.2; 1" keyTimes="0; 1" dur="0.25s" begin="0.93s" fill="freeze" transform-origin="282px 7px"/>
+    </rect>
+    <rect x="308" y="0" width="36" height="14" rx="3" fill="#f0f6fc" opacity="0">
+      <animate attributeName="opacity" values="0; 1" dur="0.25s" begin="0.97s" fill="freeze"/>
+      <animateTransform attributeName="transform" type="scale" values="0.2; 1" keyTimes="0; 1" dur="0.25s" begin="0.97s" fill="freeze" transform-origin="326px 7px"/>
+    </rect>
+  </g>
+</svg>
