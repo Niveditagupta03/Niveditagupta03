@@ -6,14 +6,14 @@
 
 <!-- Hero Banner -->
 <p align="center">
-  <img src="./cyber-hero-banner.svg" alt="Cyber Hero Banner" width="100%" />
+  <img src="https://raw.githubusercontent.com/Niveditagupta03/Niveditagupta03/main/cyber-hero-banner.svg" alt="Cyber Hero Banner" width="100%" />
 </p>
 
 <br />
 
 <!-- Animated Sci-Fi Activity Wave Graph -->
 <p align="center">
-  <img src="./animated-wave-graph.svg" alt="Animated Sci-Fi Activity Wave Graph" width="100%" />
+  <img src="https://raw.githubusercontent.com/Niveditagupta03/Niveditagupta03/main/animated-wave-graph.svg" alt="Animated Sci-Fi Activity Wave Graph" width="100%" />
 </p>
 
 <br />
@@ -34,15 +34,15 @@
 
 <!-- Side-by-Side HUD Cards: Skill Radar + Featured Pillars -->
 <p align="center">
-  <img src="./tech-radar-hud.svg" alt="Sci-Fi Tech Skill Radar" width="49%" />
-  <img src="./architecture-showcase.svg" alt="Featured Architecture Pillars" width="49%" />
+  <img src="https://raw.githubusercontent.com/Niveditagupta03/Niveditagupta03/main/tech-radar-hud.svg" alt="Sci-Fi Tech Skill Radar" width="49%" />
+  <img src="https://raw.githubusercontent.com/Niveditagupta03/Niveditagupta03/main/architecture-showcase.svg" alt="Featured Architecture Pillars" width="49%" />
 </p>
 
 <br />
 
 <!-- Centered Glass Metric Telemetry Strip -->
 <p align="center">
-  <img src="./telemetry-metrics.svg" alt="Apple-Style Glass Metric Telemetry" width="100%" />
+  <img src="https://raw.githubusercontent.com/Niveditagupta03/Niveditagupta03/main/telemetry-metrics.svg" alt="Apple-Style Glass Metric Telemetry" width="100%" />
 </p>
 
 <br />

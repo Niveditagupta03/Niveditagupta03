@@ -34,37 +34,37 @@
   <g>
     <circle cx="295" cy="170" r="5" fill="none" stroke="#00f0ff" stroke-width="1.5" opacity="0.8">
       <animate attributeName="r" values="4; 18; 4" dur="2s" repeatCount="indefinite"/>
-      <animate attributeName="opacity" values="0.8; 0; 0.8" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.8; 0.2; 0.8" dur="2s" repeatCount="indefinite"/>
     </circle>
     <circle cx="295" cy="170" r="4.5" fill="#00f0ff"/>
-    <rect x="305" y="160" width="87.2" height="18" rx="4" fill="#0d1424" stroke="#00f0ff" stroke-width="1" opacity="0.9"/>
+    <rect x="305" y="160" width="125" height="18" rx="4" fill="#0d1424" stroke="#00f0ff" stroke-width="1" opacity="0.9"/>
     <text x="309" y="172" font-family="monospace" font-size="9.5px" font-weight="bold" fill="#ffffff">Python & AI</text>
   </g>
   <g>
     <circle cx="125" cy="185" r="5" fill="none" stroke="#ff007f" stroke-width="1.5" opacity="0.8">
       <animate attributeName="r" values="4; 18; 4" dur="2s" repeatCount="indefinite"/>
-      <animate attributeName="opacity" values="0.8; 0; 0.8" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.8; 0.2; 0.8" dur="2s" repeatCount="indefinite"/>
     </circle>
     <circle cx="125" cy="185" r="4.5" fill="#ff007f"/>
-    <rect x="135" y="175" width="137.6" height="18" rx="4" fill="#0d1424" stroke="#ff007f" stroke-width="1" opacity="0.9"/>
+    <rect x="135" y="175" width="125" height="18" rx="4" fill="#0d1424" stroke="#ff007f" stroke-width="1" opacity="0.9"/>
     <text x="139" y="187" font-family="monospace" font-size="9.5px" font-weight="bold" fill="#ffffff">TypeScript & React</text>
   </g>
   <g>
     <circle cx="300" cy="315" r="5" fill="none" stroke="#a371f7" stroke-width="1.5" opacity="0.8">
       <animate attributeName="r" values="4; 18; 4" dur="2s" repeatCount="indefinite"/>
-      <animate attributeName="opacity" values="0.8; 0; 0.8" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.8; 0.2; 0.8" dur="2s" repeatCount="indefinite"/>
     </circle>
     <circle cx="300" cy="315" r="4.5" fill="#a371f7"/>
-    <rect x="310" y="305" width="144.8" height="18" rx="4" fill="#0d1424" stroke="#a371f7" stroke-width="1" opacity="0.9"/>
+    <rect x="310" y="305" width="125" height="18" rx="4" fill="#0d1424" stroke="#a371f7" stroke-width="1" opacity="0.9"/>
     <text x="314" y="317" font-family="monospace" font-size="9.5px" font-weight="bold" fill="#ffffff">System Architecture</text>
   </g>
   <g>
     <circle cx="135" cy="305" r="5" fill="none" stroke="#ffb800" stroke-width="1.5" opacity="0.8">
       <animate attributeName="r" values="4; 18; 4" dur="2s" repeatCount="indefinite"/>
-      <animate attributeName="opacity" values="0.8; 0; 0.8" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.8; 0.2; 0.8" dur="2s" repeatCount="indefinite"/>
     </circle>
     <circle cx="135" cy="305" r="4.5" fill="#ffb800"/>
-    <rect x="145" y="295" width="108.8" height="18" rx="4" fill="#0d1424" stroke="#ffb800" stroke-width="1" opacity="0.9"/>
+    <rect x="145" y="295" width="125" height="18" rx="4" fill="#0d1424" stroke="#ffb800" stroke-width="1" opacity="0.9"/>
     <text x="149" y="307" font-family="monospace" font-size="9.5px" font-weight="bold" fill="#ffffff">Docker & Cloud</text>
   </g>
 

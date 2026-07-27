@@ -2,8 +2,9 @@
 """
 GitHub-Sanitizer Compliant Animated SVG Profile Generator
 ========================================================
-Features Pure SVG Vector Shapes & Glowing Icons (No raw text emojis)
-for 100% reliable rendering on GitHub Profile READMEs!
+Fixes GitHub static image rendering by removing base `opacity="0"` attributes
+(which caused GitHub's image cache engine to render invisible images).
+Now all elements are 100% visible statically by default!
 """
 
 import os
@@ -200,7 +201,7 @@ def generate_animated_wave_graph_svg(username, output_file="animated-wave-graph.
         f.write('\n'.join(svg_lines))
     print(f"[✓] Successfully generated '{output_file}'")
 
-# --- 3. SVG 3: SCI-FI TECH SKILL RADAR HUD ---
+# --- 3. SVG 3: SCI-FI TECH SKILL RADAR HUD (100% VISIBLE BASE STATE) ---
 def generate_radar_hud_svg(username, output_file="tech-radar-hud.svg"):
     width = 440
     height = 440
@@ -258,10 +259,10 @@ def generate_radar_hud_svg(username, output_file="tech-radar-hud.svg"):
             f'  <g>\n'
             f'    <circle cx="{bx}" cy="{by}" r="5" fill="none" stroke="{b_color}" stroke-width="1.5" opacity="0.8">\n'
             f'      <animate attributeName="r" values="4; 18; 4" dur="2s" repeatCount="indefinite"/>\n'
-            f'      <animate attributeName="opacity" values="0.8; 0; 0.8" dur="2s" repeatCount="indefinite"/>\n'
+            f'      <animate attributeName="opacity" values="0.8; 0.2; 0.8" dur="2s" repeatCount="indefinite"/>\n'
             f'    </circle>\n'
             f'    <circle cx="{bx}" cy="{by}" r="4.5" fill="{b_color}"/>\n'
-            f'    <rect x="{bx + 10}" y="{by - 10}" width="{len(b_name)*7.2 + 8}" height="18" rx="4" fill="#0d1424" stroke="{b_color}" stroke-width="1" opacity="0.9"/>\n'
+            f'    <rect x="{bx + 10}" y="{by - 10}" width="125" height="18" rx="4" fill="#0d1424" stroke="{b_color}" stroke-width="1" opacity="0.9"/>\n'
             f'    <text x="{bx + 14}" y="{by + 2}" font-family="monospace" font-size="9.5px" font-weight="bold" fill="#ffffff">{b_name}</text>\n'
             f'  </g>'
         )
@@ -280,15 +281,11 @@ def generate_radar_hud_svg(username, output_file="tech-radar-hud.svg"):
         f.write('\n'.join(svg_lines))
     print(f"[✓] Successfully generated '{output_file}'")
 
-# --- 4. SVG 4: ARCHITECTURE SHOWCASE PILLARS (WITH PURE SVG VECTOR ICONS) ---
+# --- 4. SVG 4: ARCHITECTURE SHOWCASE PILLARS (100% VISIBLE BASE OPACITY) ---
 def generate_architecture_showcase_svg(username=DEFAULT_USERNAME, output_file="architecture-showcase.svg"):
     width = 440
     height = 440
 
-    # Icons are pure SVG vector paths:
-    # 0: AI Neural Node Icon
-    # 1: Code Brackets Icon </ >
-    # 2: Cloud Blade Stack Icon
     pillars = [
         ("AI & AGENTIC SYSTEMS", "Autonomous Workflows • Multi-Agent • LLMs", COLORS["cyan"], COLORS["pink"], "ai"),
         ("HIGH-PERFORMANCE WEB", "React • Next.js • Tailwind • Glassmorphic UI", COLORS["pink"], COLORS["purple"], "web"),
@@ -323,7 +320,6 @@ def generate_architecture_showcase_svg(username=DEFAULT_USERNAME, output_file="a
 
     for p_idx, (title, desc, c1, c2, icon_type) in enumerate(pillars):
         py = p_idx * 115
-        delay = round(0.15 + p_idx * 0.1, 3)
         grad_id = f"pillar-grad-{p_idx}"
 
         svg_lines.insert(8, (
@@ -333,7 +329,6 @@ def generate_architecture_showcase_svg(username=DEFAULT_USERNAME, output_file="a
             f'    </linearGradient>'
         ))
 
-        # Vector Icon Geometry
         if icon_type == "ai":
             icon_svg = f'<g transform="translate(22, {py+18})"><circle cx="10" cy="10" r="4" fill="{c1}"/><circle cx="2" cy="4" r="2.5" fill="{c2}"/><circle cx="18" cy="4" r="2.5" fill="{c2}"/><circle cx="10" cy="18" r="2.5" fill="{c2}"/><line x1="10" y1="10" x2="2" y2="4" stroke="{c1}" stroke-width="1.2"/><line x1="10" y1="10" x2="18" y2="4" stroke="{c1}" stroke-width="1.2"/><line x1="10" y1="10" x2="10" y2="18" stroke="{c1}" stroke-width="1.2"/></g>'
         elif icon_type == "web":
@@ -341,16 +336,15 @@ def generate_architecture_showcase_svg(username=DEFAULT_USERNAME, output_file="a
         else:
             icon_svg = f'<g transform="translate(20, {py+18})"><rect x="1" y="2" width="18" height="4" rx="2" fill="{c1}"/><rect x="1" y="8" width="18" height="4" rx="2" fill="{c2}"/><rect x="1" y="14" width="18" height="4" rx="2" fill="{c1}"/></g>'
 
+        # NOTICE: No opacity="0" base state! Completely 100% visible statically by default!
         card_html = (
-            f'    <g opacity="0">\n'
+            f'    <g>\n'
             f'      <rect x="0" y="{py}" width="400" height="98" rx="10" fill="#0d1424" stroke="#1f293d" stroke-width="1"/>\n'
             f'      <rect x="0" y="{py}" width="5" height="98" rx="2" fill="url(#{grad_id})"/>\n'
             f'      {icon_svg}\n'
             f'      <text x="50" y="{py+30}" font-family="monospace" font-size="11.5px" font-weight="bold" fill="#f0f6fc">{title}</text>\n'
             f'      <text x="20" y="{py+58}" font-family="monospace" font-size="10px" font-weight="bold" fill="#8b949e">{desc}</text>\n'
             f'      <rect x="20" y="{py+74}" width="360" height="3" rx="1.5" fill="url(#{grad_id})" opacity="0.6"/>\n'
-            f'      <animate attributeName="opacity" values="0; 1" dur="0.25s" begin="{delay}s" fill="freeze"/>\n'
-            f'      <animateTransform attributeName="transform" type="translate" values="0 10; 0 0" dur="0.25s" begin="{delay}s" fill="freeze"/>\n'
             f'    </g>'
         )
         svg_lines.append(card_html)
@@ -420,6 +414,8 @@ def generate_telemetry_metrics_svg(username, output_file="telemetry-metrics.svg"
 
 # --- 6. README GENERATOR ---
 def generate_readme(username, repo_name=DEFAULT_REPO, readme_path="README.md"):
+    raw_base = f"https://raw.githubusercontent.com/{username}/{repo_name}/main"
+
     content = f"""# <h1 align="center">✨ Hi there, I'm {username} 👋</h1>
 
 <p align="center">
@@ -428,14 +424,14 @@ def generate_readme(username, repo_name=DEFAULT_REPO, readme_path="README.md"):
 
 <!-- Hero Banner -->
 <p align="center">
-  <img src="./cyber-hero-banner.svg" alt="Cyber Hero Banner" width="100%" />
+  <img src="{raw_base}/cyber-hero-banner.svg" alt="Cyber Hero Banner" width="100%" />
 </p>
 
 <br />
 
 <!-- Animated Sci-Fi Activity Wave Graph -->
 <p align="center">
-  <img src="./animated-wave-graph.svg" alt="Animated Sci-Fi Activity Wave Graph" width="100%" />
+  <img src="{raw_base}/animated-wave-graph.svg" alt="Animated Sci-Fi Activity Wave Graph" width="100%" />
 </p>
 
 <br />
@@ -456,15 +452,15 @@ def generate_readme(username, repo_name=DEFAULT_REPO, readme_path="README.md"):
 
 <!-- Side-by-Side HUD Cards: Skill Radar + Featured Pillars -->
 <p align="center">
-  <img src="./tech-radar-hud.svg" alt="Sci-Fi Tech Skill Radar" width="49%" />
-  <img src="./architecture-showcase.svg" alt="Featured Architecture Pillars" width="49%" />
+  <img src="{raw_base}/tech-radar-hud.svg" alt="Sci-Fi Tech Skill Radar" width="49%" />
+  <img src="{raw_base}/architecture-showcase.svg" alt="Featured Architecture Pillars" width="49%" />
 </p>
 
 <br />
 
 <!-- Centered Glass Metric Telemetry Strip -->
 <p align="center">
-  <img src="./telemetry-metrics.svg" alt="Apple-Style Glass Metric Telemetry" width="100%" />
+  <img src="{raw_base}/telemetry-metrics.svg" alt="Apple-Style Glass Metric Telemetry" width="100%" />
 </p>
 
 <br />
