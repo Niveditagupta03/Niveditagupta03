@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 440" width="440" height="440">
+  <defs>
+    <linearGradient id="radar-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#160829"/>
+      <stop offset="50%" stop-color="#070b18"/>
+      <stop offset="100%" stop-color="#030712"/>
+    </linearGradient>
+    <linearGradient id="radar-border" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00f0ff"/>
+      <stop offset="50%" stop-color="#7928ca"/>
+      <stop offset="100%" stop-color="#ff007f"/>
+    </linearGradient>
+    <linearGradient id="beam-sweep-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#00f0ff" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="ping-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+    </filter>
+  </defs>
+
+  <style>
+    .hud-title { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 12px; fill: #f0f6fc; font-weight: 700; letter-spacing: 1px; }
+    .hud-sub { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 10px; fill: #00f0ff; font-weight: 600; }
+    .beacon-txt { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 9.5px; font-weight: bold; fill: #ffffff; }
+  </style>
+
+  <!-- Window Outer Frame -->
+  <rect x="2" y="2" width="436" height="436" rx="14" fill="url(#radar-bg)" stroke="url(#radar-border)" stroke-width="1.5"/>
+
+  <!-- Header -->
+  <g transform="translate(20, 26)">
+    <text x="0" y="0" class="hud-title">SCI-FI TECH SKILL RADAR</text>
+    <text x="400" y="0" class="hud-sub" text-anchor="end">SYS://RADAR.v4</text>
+  </g>
+  <line x1="20" y1="36" x2="420" y2="36" stroke="#1f293d" stroke-width="1"/>
+
+  <!-- Concentric Radar Grid Rings -->
+  <circle cx="220" cy="230" r="50" fill="none" stroke="#00f0ff" stroke-opacity="0.2" stroke-width="1.2"/>
+  <circle cx="220" cy="230" r="100" fill="none" stroke="#00f0ff" stroke-opacity="0.2" stroke-width="1.2"/>
+  <circle cx="220" cy="230" r="150" fill="none" stroke="#00f0ff" stroke-opacity="0.2" stroke-width="1.2"/>
+  <!-- Axis Crosshairs -->
+  <line x1="55" y1="230" x2="385" y2="230" stroke="#00f0ff" stroke-opacity="0.25" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="220" y1="65" x2="220" y2="395" stroke="#00f0ff" stroke-opacity="0.25" stroke-width="1" stroke-dasharray="4 4"/>
+
+  <!-- 360 Degree Rotating Radar Beam -->
+  <g transform="rotate(0 220 230)">
+    <animateTransform attributeName="transform" type="rotate" from="0 220 230" to="360 220 230" dur="5s" repeatCount="indefinite"/>
+    <path d="M 220 230 L 370 190 A 150 150 0 0 0 370 270 Z" fill="url(#beam-sweep-grad)"/>
+    <line x1="220" y1="230" x2="370" y2="230" stroke="#00f0ff" stroke-width="2" opacity="0.9"/>
+  </g>
+
+  <!-- Signal Beacons on Radar -->
+  <g>
+    <!-- Pulsing Aura Ping -->
+    <circle cx="295" cy="170" r="5" fill="none" stroke="#00f0ff" stroke-width="1.5" opacity="0.8">
+      <animate attributeName="r" values="4; 18; 4" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.8; 0; 0.8" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <!-- Center Beacon Point -->
+    <circle cx="295" cy="170" r="4.5" fill="#00f0ff" filter="url(#ping-glow)"/>
+    <!-- Label Card -->
+    <rect x="305" y="160" width="87.2" height="18" rx="4" fill="#0d1424" stroke="#00f0ff" stroke-width="1" opacity="0.9"/>
+    <text x="309" y="172" class="beacon-txt">Python & AI</text>
+  </g>
+  <g>
+    <!-- Pulsing Aura Ping -->
+    <circle cx="125" cy="185" r="5" fill="none" stroke="#ff007f" stroke-width="1.5" opacity="0.8">
+      <animate attributeName="r" values="4; 18; 4" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.8; 0; 0.8" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <!-- Center Beacon Point -->
+    <circle cx="125" cy="185" r="4.5" fill="#ff007f" filter="url(#ping-glow)"/>
+    <!-- Label Card -->
+    <rect x="135" y="175" width="137.6" height="18" rx="4" fill="#0d1424" stroke="#ff007f" stroke-width="1" opacity="0.9"/>
+    <text x="139" y="187" class="beacon-txt">TypeScript & React</text>
+  </g>
+  <g>
+    <!-- Pulsing Aura Ping -->
+    <circle cx="300" cy="315" r="5" fill="none" stroke="#a371f7" stroke-width="1.5" opacity="0.8">
+      <animate attributeName="r" values="4; 18; 4" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.8; 0; 0.8" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <!-- Center Beacon Point -->
+    <circle cx="300" cy="315" r="4.5" fill="#a371f7" filter="url(#ping-glow)"/>
+    <!-- Label Card -->
+    <rect x="310" y="305" width="144.8" height="18" rx="4" fill="#0d1424" stroke="#a371f7" stroke-width="1" opacity="0.9"/>
+    <text x="314" y="317" class="beacon-txt">System Architecture</text>
+  </g>
+  <g>
+    <!-- Pulsing Aura Ping -->
+    <circle cx="135" cy="305" r="5" fill="none" stroke="#ffb800" stroke-width="1.5" opacity="0.8">
+      <animate attributeName="r" values="4; 18; 4" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.8; 0; 0.8" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <!-- Center Beacon Point -->
+    <circle cx="135" cy="305" r="4.5" fill="#ffb800" filter="url(#ping-glow)"/>
+    <!-- Label Card -->
+    <rect x="145" y="295" width="108.8" height="18" rx="4" fill="#0d1424" stroke="#ffb800" stroke-width="1" opacity="0.9"/>
+    <text x="149" y="307" class="beacon-txt">Docker & Cloud</text>
+  </g>
+
+  <!-- Footer Status -->
+  <g transform="translate(20, 418)">
+    <text x="0" y="0" class="hud-sub">✦ RADAR SCANNER: ACTIVE</text>
+    <text x="400" y="0" class="hud-sub" text-anchor="end">4 BEACONS TRACKED</text>
+  </g>
+</svg>
